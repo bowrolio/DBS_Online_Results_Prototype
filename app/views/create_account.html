@@ -1,0 +1,65 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  <div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="https://www.gov.uk">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="/start">DBS</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link">Create Account</a>
+      </li>
+    </ol>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        Create an Account
+      </h1>
+
+      <p>You'll need an email address and a UK mobile phone number. It will take about 2 minutes.</p>
+
+      <div style="text-align:center";>
+      <a href="#" role="button" style="background-color: #663399; text-align: center;" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"  data-module="govuk-button">
+        Create a GOV.UK Account
+        <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="350" height="30" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+          <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+        </svg>
+      </a>
+      </div>
+
+      <h2 class="govuk-heading-m">If you already have a GOV.UK account you can <a href="/start"> sign in</a></h2>
+
+      <h2 class="govuk-heading-s">
+        About GOV.UK Accounts
+      </h2>
+      <div style="border-left; padding: 1em 0 1em 1em; margin: 2em 0;">
+      <p>
+        The GOV.UK account is a new account, which will one day allow you to access all online government services. <br>
+        We're still building the GOV.UK account and will be adding more services to it. <br> 
+        For now, you need to use different accounts to access different government services.
+      </p>
+      </div>
+
+
+
+    </div>
+
+  </div>
+{% endblock %}
