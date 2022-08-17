@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  View someone's DBS check result – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">
+        View someone's DBS check result
+      </h1>
+
+      <p>Use this service to view someone's DBS check result.</p>
+
+      <h2 class="govuk-heading-m">What you will need</h2>
+      <ul class="govuk-list govuk-list--bullet" style="margin-left: 20px">
+        <li>the one-time share code which the applicant will have shared with you</li>
+        <li>the last six digits of your certificate number, which the applicant will have shared with you</li>
+      </ul>
+
+      <div style="border-left: 10px solid #b1b4b6; padding: 1em 0 1em 1em; margin: 2em 0;" 
+      role="note" aria-label="Information" class="application-notice info-notice">
+        <p> You can only use the share code once, and you must use it within 21 days. 
+            <br>
+            <br>
+            If you want to view the certificate more than once, you will have to ask the applicant for another share code. 
+            <br>
+            <br> 
+            We will let the applicant know when you have viewed their result.
+        </p>
+        </div>
+        <a href="#" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"  data-module="govuk-button">
+            Start now
+            <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
+              <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
+            </svg>
+          </a>
+      </div>
+{% endblock %}

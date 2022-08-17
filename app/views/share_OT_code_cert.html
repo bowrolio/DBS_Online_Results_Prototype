@@ -5,6 +5,8 @@
   Home – GOV.UK Prototype Kit
 {% endblock %}
 
+{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
+
 {% block beforeContent %}
 {{ govukPhaseBanner({
     tag: {
@@ -13,7 +15,9 @@
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
 {% endblock %}
+
 {% block content %}
+
   <div class="govuk-grid-row">
 
     <div class="govuk-grid-column-three-thirds">
@@ -180,47 +184,47 @@
                   <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
                 </svg>
               </a>
+
+              
             </div>
 
-      
+            
+
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="share-result">
-              <h2 class="govuk-heading-l">Share Result</h2>
-              <p>
-                You can share the result of your Enhanced (or Standard?) DBS check with someone else, like your employer.
-              </p>
+              <div class="boxed" style="border: 1px solid black">
+                <h3 class="govuk-heading-l" style="text-align: center;" >8w Ds xn 72</h3>
 
-              <h2 class="govuk-heading-m">How to share your result</h2>
-              
+                
+                <p class="govuk-body" style="margin-left: 20px">This code:</p>
+                  <ul class="govuk-list govuk-list--bullet" style="margin-left: 40px">
+                    <li>is case sensitive</li>
+                    <li>valid for 21 days</li>
+                    <li>can only be used once</li>
+                  </ul>
+              </div>
+              <br>
 
-              <p>
-                To share your result, you will need to send them:
-              </p>
 
-              <ul class="govuk-list govuk-list--bullet">
-                <li>a one-time share code</li>
-                <li>the last 6 digits of your certificate number</li>
-                <li>a web link:
-                <a href="https://www.view-criminal-record-check.service.gov.uk/view-result/employer">Employer View of results</a>
-                </li>
-              </ul>
+                <h3 class="govuk-heading-m">What to do next</h3>
 
-              <p>
-                When generating a share code you will also receive an email containing the web link and last 6 digits of your certification number
-              </p>
+                <ol class="govuk-list govuk-list--number">
+                    <li>Give the share code to the person you want to see your DBS check result.</li>
+                    <li>Forward the email we have just sent you, to the person you want to see your DBS check result.</li>
+                    <li>To view your check results they must select the web link in the email, enter the last 6 digits of your certificate number and enter the one-time share code.</li>
+                  </ol>
 
-              <div style="border-left: 10px solid #b1b4b6; padding: 1em 0 1em 1em; margin: 2em 0;" 
-              role="note" aria-label="Information" class="application-notice info-notice">
-                <p>The share code you receive can only be used once</p>
+                  <div style="border-left: 10px solid #b1b4b6; padding: 1em 0 1em 1em; margin: 2em 0;" 
+                  role="note" aria-label="Information" class="application-notice info-notice">
+              <p> Didn't receive an email? <a href="/RB_cert_email" id="RB email">Request another one.</a>  </p>
               </div>
 
-              <a href="/share_results_cert#share-result" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"  data-module="govuk-button">
-                Share your Result
-                <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
-                  <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
-                </svg>
-              </a>
+              <h3 class="govuk-heading-m">Need another one-time share code?</h3>
 
-          
+              <p>
+                You can only share the above share code with one person. If you need to share your results with another person you will need to request another share code.
+              </p>
+
+              <a href="/share_OT_code_cert#share-result"" id="req-share-code">Request share code.</a>
             </div>
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="manage-codes">
               <h2 class="govuk-heading-l">Manage Share Codes</h2>

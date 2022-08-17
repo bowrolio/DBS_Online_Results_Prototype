@@ -5,6 +5,15 @@
   Home – GOV.UK Prototype Kit
 {% endblock %}
 
+{% block beforeContent %}
+{{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+{% endblock %}
+
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -33,6 +42,9 @@
       <ul class="govuk-list govuk-list--bullet">
         <li>
           <a href="/initial_cert_email">Certification Email Confirmation</a>
+        </li>
+        <li>
+          <a href="/RB_cert_email"> RB Email </a>
         </li>
         <li>
           <a href="/create_account">Create an Account</a>
