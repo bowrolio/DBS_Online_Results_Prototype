@@ -24,21 +24,51 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
-        Enter the share details
+        Enter the applicant share details
       </h1>
 
       <p>Enter the following details that you were sent from the applicant into the section below.</p>
 
-      <h2 class="govuk-heading-s">Certificate number</h2>
-      <p style="color: #4E4E4E">
-          Enter only the last 6 digits of the certificate number which the applicant has shared with you.
-      </p>
+    
+      <h2 class="govuk-heading-m">Applicant's surname</h2>
         <input class="govuk-input" id="event-name" name="event-name" type="text">
+      
         <br>
         <br>
         <br>
 
-      <h2 class="govuk-heading-s">Share code</h2>
+        
+        {% from "govuk/components/date-input/macro.njk" import govukDateInput %}
+
+        {{ govukDateInput({
+          id: "applicant-dob",
+          namePrefix: "applicant-dob",
+          fieldset: {
+            legend: {
+              text: "Applicant date of birth",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--m"
+            }
+          },
+          hint: {
+            text: "For example, 27 3 1990"
+          }
+        }) }} 
+      
+        
+      
+      <h2 class="govuk-heading-m">Certificate number</h2>
+      <p style="color: #4E4E4E">
+          Enter only the last 6 digits of the certificate number which the applicant has shared with you.
+      </p>
+        <input class="govuk-input" id="event-name" name="event-name" type="text">
+        
+        <br>
+        <br>
+        <br>
+
+        
+      <h2 class="govuk-heading-m">Share code</h2>
       <p style="color: #4E4E4E">
           Enter the share code the applicant has given you. It is 8 characters long and is case sensitive, for example, gH 34 5h bN 
       </p>
