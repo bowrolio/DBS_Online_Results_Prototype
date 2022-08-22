@@ -15,7 +15,8 @@
       text: "beta"
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
-  }) }}
+  }) }} 
+
   <div class="govuk-breadcrumbs">
     <ol class="govuk-breadcrumbs__list">
       <li class="govuk-breadcrumbs__list-item">
@@ -51,19 +52,19 @@
 
       <h2 class="govuk-heading-m">If you already have a GOV.UK account you can <a href="/start"> sign in</a></h2>
 
-      <h2 class="govuk-heading-s">
-        About GOV.UK Accounts
-      </h2>
-      <div style="border-left; padding: 1em 0 1em 1em; margin: 2em 0;">
-      <p>
-        The GOV.UK account is a new account, which will one day allow you to access all online government services. <br>
-        We're still building the GOV.UK account and will be adding more services to it. <br> 
-        For now, you need to use different accounts to access different government services.
-      </p>
-      </div>
 
-
-
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text">
+                About GOV.UK Accounts
+            </span>
+      </summary>
+        <div class="govuk-details__text">
+          The GOV.UK account is a new account, which will one day allow you to access all online government services. <br>
+          We're still building the GOV.UK account and will be adding more services to it. <br> 
+          For now, you need to use different accounts to access different government services.
+        </div>
+    </details>
     </div>
 
   </div>
