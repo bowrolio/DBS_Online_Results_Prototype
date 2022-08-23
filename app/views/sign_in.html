@@ -37,35 +37,24 @@
     <div class="govuk-grid-column-two-thirds">
 
       <h1 class="govuk-heading-xl">
-        Create an Account
+        Sign in to your GOV.UK account
       </h1>
 
-      <p>You'll need an email address and a UK mobile phone number. It will take about 2 minutes.</p>
+      <p>Enter your email address to sign in to your account.</p>
+
+      <h2 class="govuk-heading-m">Email Address</h2>
+        <input class="govuk-input" id="event-name" name="event-name" type="email">
+
+        <br>
+        <br>
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
       {{ govukButton({
-        text: "Create a GOV.UK account",
-        href: "/sign_in",
+        text: "Sign in",
+        href: "/sign_in_verify",
         isStartButton: true
       }) }}
-      
-
-      <h2 class="govuk-heading-m">If you already have a GOV.UK account you can <a href="/sign_in"> sign in</a></h2>
-
-
-      <details class="govuk-details" data-module="govuk-details">
-        <summary class="govuk-details__summary">
-            <span class="govuk-details__summary-text">
-                About GOV.UK Accounts
-            </span>
-      </summary>
-        <div class="govuk-details__text">
-          The GOV.UK account is a new account, which will one day allow you to access all online government services. <br>
-          We're still building the GOV.UK account and will be adding more services to it. <br> 
-          For now, you need to use different accounts to access different government services.
-        </div>
-    </details>
     </div>
 
   </div>
