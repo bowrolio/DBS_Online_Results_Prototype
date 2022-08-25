@@ -10,7 +10,32 @@
       {% for account in accounts %}
           <span style='width: 100%; display: block; margin-bottom: 10px; border-bottom: 3px solid teal;'> </span>
           </br>
-          <p> Account {{ loop.index }} - Certificate Number: <strong style='margin-left: 8px;'> {{ account["certificateNumber"] }} </strong></p>
+          <p> Account {{ loop.index }} - <br> Account Information: <strong style='margin-left: 8px;'> 
+            <br>
+            Application No: {{ account["applicationNumber"] }} <br>
+            First Name: {{ account["firstName"] }} <br>
+            Last Name: {{ account["lastName"] }} <br>
+            Date of Birth: {{ account["DOB"] }} <br>
+            Certificate Issue Date: {{ account["certificateIssueDate"] }} <br>
+            Certificate Number: {{ account["certificateNumber"] }} <br>
+            Email Address: {{ account["emailAddress"] }} <br>
+            Email Password: {{ account["signInPassword"] }} <br>
+            Phone Number: {{ account["mobileNumber"] }} <br>
+            Security code: {{ account["securityCode"] }} <br>
+            Check Performed Date:{{ account["resultsDayPerformed"] }} <br>
+            Type of Check: {{ account["typeOfCheck"] }} <br>
+            Type of Workforce: {{ account["typeOfWorkforce"] }} <br>
+            Date of Issue: {{ account["dateOfIssue"] }} <br>
+            First Line of Address: {{ account["firstLineAddress"] }} <br>
+            Police Records of Convictions: {{ account["policeRecordsOfConvictions"] }} <br>
+            Section 142 Education: {{ account["infoSection142Education"] }} <br>
+            DBS Children Barred List: {{ account["dbsChildrenBarList"] }} <br>
+            DBS Adult Barred List:{{ account["dbsAdultBarList"] }} <br>
+            Other info from Chief of Police: {{ account["otherInfoChiefPolice"] }} <br>
+            Organisation Name: {{ account["organisationName"] }} <br>
+            Share Code: {{ account["oneTimeShareCode"] }} <br>
+
+            </strong></p>
         </br>
         
       {% endfor %}

@@ -26,14 +26,6 @@ const cms = {
 
 // Add your routes here - above the module.exports line
 
-router.get('/initial_cert_email', (req, res) => {
-  res.render('initial_cert_email');
-});
-
-router.get('/start', (req, res) => {
-  res.render('start');
-});
-
 router.get('/create_account', (req, res) => {
   res.render('create_account');
 });
@@ -54,7 +46,7 @@ router.get('/list-accounts', (req, res, _next) => {
 });
 
 router.get('/enter-certificate', (req, res, _next) => {
-  res.render('dashboard/enter-certificate');
+  res.render('/dashboard/enter-certificate');
 });
 
 router.post('/dashboard/enter-certificate', (req, res, _next) => {
@@ -104,7 +96,7 @@ router.get('/dashboard/request-otp', (req, res, _next) => {
   res.render('dashboard/request-otp', {
     backButton: backButton,
     cache: null,
-    phoneNumber: req.session?.selectedCertificate?.phoneNumber || '',
+    mobileNumber: req.session?.selectedCertificate?.mobileNumber || '',
     validation: null,
   });
 });
@@ -115,25 +107,25 @@ router.post('/dashboard/request-otp', (req, res, _next) => {
 
 router.get('/dashboard/enter-otp', (req, res, _next) => {
   let backButton = '/dashboard/request-otp';
-  req.session.selectedCertificate.otpCode = Math.floor(Math.random() * 999999);
-  console.log('OTP', req.session.selectedCertificate);
+  req.session.selectedCertificate.securityCode;
+  console.log('OTP', req.session.selectedCertificate.securityCode);
   res.render('dashboard/enter-otp', {
     backButton: backButton,
-    phoneNumber: req.session?.selectedCertificate?.phoneNumber || '',
+    mobileNumber: req.session?.selectedCertificate?.mobileNumber || '',
     validation: null,
   });
 });
 
 router.post('/dashboard/enter-otp', (req, res, _next) => {
-  let otpCode = req.body['otp-code'];
+  let securityCode = req.body['securityCode'];
   const dataValidation = {};
 
-  if (!otpCode) {
-    dataValidation['otp-code'] = 'Enter security code';
+  if (!securityCode) {
+    dataValidation['securityCode'] = 'Enter security code';
   }
 
-  if (otpCode != req.session.selectedCertificate.otpCode) {
-    dataValidation['otp-code'] = 'Incorrect security code';
+  if (securityCode != req.session.selectedCertificate.securityCode) {
+    dataValidation['securityCode'] = 'Incorrect security code';
   }
 
   if (Object.keys(dataValidation).length) {
@@ -142,7 +134,39 @@ router.post('/dashboard/enter-otp', (req, res, _next) => {
       validation: dataValidation,
     });
   } else {
-    res.send('SUCCESS');
+    res.redirect('/results_certificate');
+  }
+});
+
+router.get('/sign_in', (req, res, _next) => {
+  let backButton = '/create_account';
+  console.log(req.session.selectedCertificate.emailAddress);
+  res.render('sign_in', {
+    backButton: backButton,
+    emailAddress: req.session?.selectedCertificate?.emailAddress || '',
+    validation: null,
+  });
+});
+
+router.post('/dashboard/sign_in', (req, res, _next) => {
+  let submEmail = req.body['subEmail'];
+  const dataValidation = {};
+
+  if (!subEmail) {
+    dataValidation['subEmail'] = 'Enter security code';
+  }
+
+  if (subEmail != req.session.selectedCertificate.emailAddress) {
+    dataValidation['subEmail'] = 'Incorrect security code';
+  }
+
+  if (Object.keys(dataValidation).length) {
+    res.render('sign_in_verify', {
+      backButton: '/create_account',
+      validation: dataValidation,
+    });
+  } else {
+    res.redirect('/sign_in_verify');
   }
 });
 
@@ -158,13 +182,54 @@ router.post('/prototype-admin/clear-data', function (req, res) {
 const generateAccounts = (req, refresh) => {
   if (!req.session?.mockDBaccounts) {
     const accounts = [];
-
-    for (let i = 1; i <= 3; i++) {
-      accounts.push({
-        certificateNumber: '00' + String(1111111111 + i),
-        phoneNumber: '0712312300' + String(i),
-      });
-    }
+    accounts.push({
+      applicationNumber: 'E2233445566',
+      firstName: 'Tariq',
+      lastName: 'Aziz',
+      DOB: '14 / 05 / 1995',
+      certificateIssueDate: '25 / 07 / 2022',
+      certificateNumber: '001122334455',
+      emailAddress: 'tariq.doc@gmail.com',
+      signInPassword: 'superman3',
+      mobileNumber: '07456782308',
+      securityCode: '123456',
+      resultsDayPerformed: '25 / 07 / 2022',
+      typeOfCheck: 'Enhanced with Barred',
+      typeOfWorkforce: 'Adult and Children',
+      dateOfIssue: '25 / 07 / 2022',
+      firstLineAddress: '1 Arcadia Avenue',
+      policeRecordsOfConvictions: 'None recorded',
+      infoSection142Education: 'None recorded',
+      dbsChildrenBarList: 'None recorded',
+      dbsAdultBarList: 'None recorded',
+      otherInfoChiefPolice: 'None recorded',
+      organisationName: 'North Tees Hospital',
+      oneTimeShareCode: '8w Ds xn 72',
+    });
+    accounts.push({
+      applicationNumber: 'E1177889910',
+      firstName: 'Jack',
+      lastName: 'Morton',
+      DOB: '03 / 02 / 1978',
+      certificateIssueDate: '04 / 08 / 2022',
+      certificateNumber: '006677889910',
+      emailAddress: 'jack.beanstalk@hotmail.co.uk',
+      signInPassword: 'spiderman99!',
+      mobileNumber: '07621432112',
+      securityCode: '654321',
+      resultsDayPerformed: '04 / 08 / 2022',
+      typeOfCheck: 'Basic',
+      typeOfWorkforce: 'NA',
+      dateOfIssue: '04 / 08 / 2022',
+      firstLineAddress: '23a Flatts Lane',
+      policeRecordsOfConvictions: 'None recorded',
+      infoSection142Education: 'None recorded',
+      dbsChildrenBarList: 'None recorded',
+      dbsAdultBarList: 'None recorded',
+      otherInfoChiefPolice: 'None recorded',
+      organisationName: 'JW Building Services',
+      oneTimeShareCode: '2F vc PB 24',
+    });
     req.session.mockDBaccounts = accounts;
   } else if (req.session.mockDBaccounts && refresh) {
     delete req.session.mockDBaccounts;
