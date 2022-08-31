@@ -40,26 +40,19 @@
         Sign in to your GOV.UK account
       </h1>
 
-      <p>Enter your email address to sign in to your account.</p>
-
-      <h2 class="govuk-heading-m">Email Address</h2>
-        <input class="govuk-input" id="event-name" name="event-name" type="email">
-
-        <br>
-        <br>
         <form class="form" action="" method="post">
-          <div class="govuk-form-group  {% if validation['emailAddress'] %}govuk-form-group--error{% endif %}">
-              <label class="govuk-label" for="account-number"> Enter Email Address </label>
+          <div class="govuk-form-group  {% if validation['subEmail'] %}govuk-form-group--error{% endif %}">
+              <label class="govuk-heading-m" for="account-number"> Enter Email Address </label>
                 {% if validation['subEmail'] %}
                     <span id="nino-error" class="govuk-error-message">
                         <span class="govuk-visually-hidden">Error:</span> {{ validation['subEmail'] }}
                     </span>
                 {% endif %}
               <input
-                  class="govuk-input govuk-input--width-10"
+                  class="govuk-input govuk-input--width-20"
                   id="subEmail"
                   name="subEmail"
-                  type="text"
+                  type="email"
                   value="{{cache['subEmail']}}"
                   spellcheck="false"
                   aria-describedby="account-number-hint"

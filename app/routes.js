@@ -45,6 +45,7 @@ router.get('/list-accounts', (req, res, _next) => {
   res.render('list-accounts', { accounts: req.session?.mockDBaccounts });
 });
 
+//enter cert num
 router.get('/enter-certificate', (req, res, _next) => {
   res.render('/dashboard/enter-certificate');
 });
@@ -91,6 +92,7 @@ router.post('/dashboard/enter-certificate', (req, res, _next) => {
   }
 });
 
+//request OTP
 router.get('/dashboard/request-otp', (req, res, _next) => {
   let backButton = '/dashboard/enter-certificate';
   res.render('dashboard/request-otp', {
@@ -105,10 +107,10 @@ router.post('/dashboard/request-otp', (req, res, _next) => {
   res.redirect('/dashboard/enter-otp');
 });
 
+//enter OTP
 router.get('/dashboard/enter-otp', (req, res, _next) => {
   let backButton = '/dashboard/request-otp';
   req.session.selectedCertificate.securityCode;
-  console.log('OTP', req.session.selectedCertificate.securityCode);
   res.render('dashboard/enter-otp', {
     backButton: backButton,
     mobileNumber: req.session?.selectedCertificate?.mobileNumber || '',
@@ -134,40 +136,102 @@ router.post('/dashboard/enter-otp', (req, res, _next) => {
       validation: dataValidation,
     });
   } else {
-    res.redirect('/results_certificate');
+    res.redirect('/sign_in');
   }
 });
 
+//sign in email
 router.get('/sign_in', (req, res, _next) => {
   let backButton = '/create_account';
-  console.log(req.session.selectedCertificate.emailAddress);
   res.render('sign_in', {
     backButton: backButton,
-    emailAddress: req.session?.selectedCertificate?.emailAddress || '',
+    emailAddr: req.session?.selectedCertificate?.emailAddress || '',
     validation: null,
   });
 });
 
-router.post('/dashboard/sign_in', (req, res, _next) => {
-  let submEmail = req.body['subEmail'];
+router.post('/sign_in', (req, res, _next) => {
+  let postEmail = req.body['subEmail'];
   const dataValidation = {};
 
-  if (!subEmail) {
-    dataValidation['subEmail'] = 'Enter security code';
+  if (!postEmail) {
+    dataValidation['subEmail'] = 'Enter email address';
   }
 
-  if (subEmail != req.session.selectedCertificate.emailAddress) {
-    dataValidation['subEmail'] = 'Incorrect security code';
+  if (postEmail != req.session.selectedCertificate.emailAddress) {
+    dataValidation['subEmail'] = 'Invalid email address';
   }
 
   if (Object.keys(dataValidation).length) {
-    res.render('sign_in_verify', {
-      backButton: '/create_account',
+    res.render('sign_in', {
+      backButton: '/start',
       validation: dataValidation,
     });
   } else {
     res.redirect('/sign_in_verify');
   }
+});
+
+//sign in password
+router.get('/sign_in_verify', (req, res, _next) => {
+  let backButton = '/sign_in';
+  console.log(req.session.selectedCertificate.signInPassword);
+  res.render('sign_in_verify', {
+    backButton: backButton,
+    password: req.session?.selectedCertificate?.signInPassword || '',
+    validation: null,
+  });
+});
+
+router.post('/sign_in_verify', (req, res, _next) => {
+  let signInPass = req.body['userPass'];
+  const dataValidation = {};
+
+  if (!signInPass) {
+    dataValidation['userPass'] = 'Enter password';
+  }
+
+  if (signInPass != req.session.selectedCertificate.signInPassword) {
+    dataValidation['userPass'] = 'Incorrect password';
+  }
+
+  if (Object.keys(dataValidation).length) {
+    res.render('sign_in_verify', {
+      backButton: '/sign_in',
+      validation: dataValidation,
+    });
+  } else {
+    res.redirect('/results_certificate');
+  }
+});
+//applicant certificate
+router.get('/results_certificate', (req, res, _next) => {
+  if (!req.session?.mockDBaccounts) {
+    res.render('results_certificate', {
+      certificateIssueDate:
+        req.session?.selectedCertificate?.certificateIssueDate,
+      certificateNumber:
+        req.session?.selectedCertificate?.certificateNumber || '',
+      typeOfCheck: req.session?.selectedCertificate?.typeOfCheck || '',
+      typeOfWorkforce: req.session?.selectedCertificate?.typeOfWorkforce || '',
+      lastName: req.session?.selectedCertificate?.lastName || '',
+      firstName: req.session?.selectedCertificate?.firstName || '',
+      DOB: req.session?.selectedCertificate?.DOB || '',
+      firstLineAddress:
+        req.session?.selectedCertificate?.firstLineAddress || '',
+      policeRecordsOfConvictions:
+        req.session?.selectedCertificate?.policeRecordsOfConvictions || '',
+      infoSection142Education:
+        req.session?.selectedCertificate?.infoSection142Education || '',
+      dbsChildrenBarList:
+        req.session?.selectedCertificate?.dbsChildrenBarList || '',
+      dbsAdultBarList: req.session?.selectedCertificate?.dbsAdultBarList || '',
+      otherInfoChiefPolice:
+        req.session?.selectedCertificate?.otherInfoChiefPolice || '',
+      validation: null,
+    });
+  }
+  res.render('list-accounts', { accounts: req.session?.mockDBaccounts });
 });
 
 // Clear all data in session if you open /prototype-admin/clear-data
