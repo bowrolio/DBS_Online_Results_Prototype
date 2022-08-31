@@ -60,9 +60,8 @@
               <h2 class="govuk-heading-l">Your DBS result</h2>
               
               <p>
-                  This result only relates to the DBS check carried out on the <strong>23/04/2022</strong>.
-                  It is only valid when viewed online. <br>
-                  It is not valid if printed.
+                  This result only relates to the DBS check carried out on the <strong>{{ certificateIssueDate }}</strong>. <br>
+                  It is only valid when viewed online. It is not valid if printed.
               </p>
 
               <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
@@ -73,7 +72,7 @@
                 </div>
                 <div class="govuk-notification-banner__content">
                   <p class="govuk-notification-banner__heading">
-                    The Standard DBS check contains relevant information
+                    The DBS check contains relevant information
                   </p>
                 </div>
               </div>
@@ -83,7 +82,7 @@
                 <tbody class="govuk-table__body">
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">Certificate Number:</th>
-                    <td class="govuk-table__cell">{{ certificateNumber }}</td>
+                    <td class="govuk-table__cell"> {{ certificateNumber }}</td>
                   </tr>
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">Type of check:</th>
@@ -99,19 +98,19 @@
                   </tr>
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">Last Name:</th>
-                    <td class="govuk-table__cell">Smith</td>
+                    <td class="govuk-table__cell">{{ lastName }}</td>
                   </tr>
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">First name(s):</th>
-                    <td class="govuk-table__cell">Anna Marie</td>
+                    <td class="govuk-table__cell">{{ firstName }}</td>
                   </tr>
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">Date of Birth</th>
-                    <td class="govuk-table__cell">14/08/1983</td>
+                    <td class="govuk-table__cell">{{ DOB }}</td>
                   </tr>
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">First line of address:</th>
-                    <td class="govuk-table__cell">1 Arcadia Avenue</td>
+                    <td class="govuk-table__cell">{{ firstLineAddress }}</td>
                   </tr>
                 </tbody>
               </table>

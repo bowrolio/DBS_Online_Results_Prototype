@@ -30,10 +30,6 @@ router.get('/create_account', (req, res) => {
   res.render('create_account');
 });
 
-router.get('/results_certificate', (req, res) => {
-  res.render('results_certificate');
-});
-
 router.get('/test', (req, res) => {
   res.render('test');
 });
@@ -175,7 +171,6 @@ router.post('/sign_in', (req, res, _next) => {
 //sign in password
 router.get('/sign_in_verify', (req, res, _next) => {
   let backButton = '/sign_in';
-  console.log(req.session.selectedCertificate.signInPassword);
   res.render('sign_in_verify', {
     backButton: backButton,
     password: req.session?.selectedCertificate?.signInPassword || '',
@@ -204,34 +199,56 @@ router.post('/sign_in_verify', (req, res, _next) => {
     res.redirect('/results_certificate');
   }
 });
+
 //applicant certificate
 router.get('/results_certificate', (req, res, _next) => {
-  if (!req.session?.mockDBaccounts) {
-    res.render('results_certificate', {
-      certificateIssueDate:
-        req.session?.selectedCertificate?.certificateIssueDate,
-      certificateNumber:
-        req.session?.selectedCertificate?.certificateNumber || '',
-      typeOfCheck: req.session?.selectedCertificate?.typeOfCheck || '',
-      typeOfWorkforce: req.session?.selectedCertificate?.typeOfWorkforce || '',
-      lastName: req.session?.selectedCertificate?.lastName || '',
-      firstName: req.session?.selectedCertificate?.firstName || '',
-      DOB: req.session?.selectedCertificate?.DOB || '',
-      firstLineAddress:
-        req.session?.selectedCertificate?.firstLineAddress || '',
-      policeRecordsOfConvictions:
-        req.session?.selectedCertificate?.policeRecordsOfConvictions || '',
-      infoSection142Education:
-        req.session?.selectedCertificate?.infoSection142Education || '',
-      dbsChildrenBarList:
-        req.session?.selectedCertificate?.dbsChildrenBarList || '',
-      dbsAdultBarList: req.session?.selectedCertificate?.dbsAdultBarList || '',
-      otherInfoChiefPolice:
-        req.session?.selectedCertificate?.otherInfoChiefPolice || '',
-      validation: null,
-    });
+  let backButton = '/start';
+  let certificateIssueDate =
+    req.session?.selectedCertificate?.certificateIssueDate;
+  let certificateNumber = req.session?.selectedCertificate?.certificateNumber;
+  let typeOfCheck = req.session?.selectedCertificate?.typeOfCheck;
+  let typeOfWorkforce = req.session?.selectedCertificate?.typeOfWorkforce;
+  let lastName = req.session?.selectedCertificate?.lastName;
+  let firstName = req.session?.selectedCertificate?.firstName;
+  let DOB = req.session?.selectedCertificate?.DOB;
+  let firstLineAddress = req.session?.selectedCertificate?.firstLineAddress;
+  let policeRecordsOfConvictions =
+    req.session?.selectedCertificate?.policeRecordsOfConvictions;
+  let infoSection142Education =
+    req.session?.selectedCertificate?.infoSection142Education;
+  let dbsChildrenBarList = req.session?.selectedCertificate?.dbsChildrenBarList;
+  let dbsAdultBarList = req.session?.selectedCertificate?.dbsAdultBarList;
+  let otherInfoChiefPolice =
+    req.session?.selectedCertificate?.otherInfoChiefPolice;
+  let clearResult = null;
+  if (
+    policeRecordsOfConvictions &&
+    infoSection142Education &&
+    dbsChildrenBarList &&
+    dbsAdultBarList &&
+    otherInfoChiefPolice == 'None recorded'
+  ) {
+    clearResult = true;
   }
-  res.render('list-accounts', { accounts: req.session?.mockDBaccounts });
+
+  res.render('results_certificate', {
+    backButton: backButton,
+    certificateIssueDate: certificateIssueDate,
+    certificateNumber: certificateNumber,
+    typeOfCheck: typeOfCheck,
+    typeOfWorkforce: typeOfWorkforce,
+    lastName: lastName,
+    firstName: firstName,
+    DOB: DOB,
+    firstLineAddress: firstLineAddress,
+    policeRecordsOfConvictions: policeRecordsOfConvictions,
+    infoSection142Education: infoSection142Education,
+    dbsChildrenBarList: dbsChildrenBarList,
+    dbsAdultBarList: dbsAdultBarList,
+    otherInfoChiefPolice: otherInfoChiefPolice,
+    clearResult: clearResult,
+    validation: null,
+  });
 });
 
 // Clear all data in session if you open /prototype-admin/clear-data
@@ -239,7 +256,6 @@ router.post('/prototype-admin/clear-data', function (req, res) {
   req.session.data = {};
   req.session.cache = {};
   generateAccounts(req, true);
-  console.log('Mock Accounts:', req.session.mockDBaccounts);
   res.redirect('/start');
 });
 
