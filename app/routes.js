@@ -251,6 +251,39 @@ router.get('/results_certificate', (req, res, _next) => {
   });
 });
 
+//share OT code for viewing cert
+
+router.get('/share_OT_code_cert', (req, res, _next) => {
+  let OT_code_cert = req.session?.selectedCertificate?.oneTimeShareCode;
+  res.render('share_OT_code_cert', {
+    OT_code_cert: OT_code_cert,
+    validation: null,
+  });
+});
+
+//needs to be updated from /sign in to /share_OT_code_cert and functionality
+router.post('/sign_in', (req, res, _next) => {
+  let postEmail = req.body['subEmail'];
+  const dataValidation = {};
+
+  if (!postEmail) {
+    dataValidation['subEmail'] = 'Enter email address';
+  }
+
+  if (postEmail != req.session.selectedCertificate.emailAddress) {
+    dataValidation['subEmail'] = 'Invalid email address';
+  }
+
+  if (Object.keys(dataValidation).length) {
+    res.render('sign_in', {
+      backButton: '/start',
+      validation: dataValidation,
+    });
+  } else {
+    res.redirect('/sign_in_verify');
+  }
+});
+
 // Clear all data in session if you open /prototype-admin/clear-data
 router.post('/prototype-admin/clear-data', function (req, res) {
   req.session.data = {};
@@ -266,17 +299,17 @@ const generateAccounts = (req, refresh) => {
       applicationNumber: 'E2233445566',
       firstName: 'Tariq',
       lastName: 'Aziz',
-      DOB: '14 / 05 / 1995',
-      certificateIssueDate: '25 / 07 / 2022',
+      DOB: '14/05/1995',
+      certificateIssueDate: '25/07/2022',
       certificateNumber: '001122334455',
       emailAddress: 'tariq.doc@gmail.com',
       signInPassword: 'superman3',
       mobileNumber: '07456782308',
       securityCode: '123456',
-      resultsDayPerformed: '25 / 07 / 2022',
+      resultsDayPerformed: '25/07/2022',
       typeOfCheck: 'Enhanced with Barred',
       typeOfWorkforce: 'Adult and Children',
-      dateOfIssue: '25 / 07 / 2022',
+      dateOfIssue: '25/07/2022',
       firstLineAddress: '1 Arcadia Avenue',
       policeRecordsOfConvictions: 'None recorded',
       infoSection142Education: 'None recorded',
@@ -290,17 +323,17 @@ const generateAccounts = (req, refresh) => {
       applicationNumber: 'E1177889910',
       firstName: 'Jack',
       lastName: 'Morton',
-      DOB: '03 / 02 / 1978',
-      certificateIssueDate: '04 / 08 / 2022',
+      DOB: '03/02/1978',
+      certificateIssueDate: '04/08/2022',
       certificateNumber: '006677889910',
       emailAddress: 'jack.beanstalk@hotmail.co.uk',
       signInPassword: 'spiderman99!',
       mobileNumber: '07621432112',
       securityCode: '654321',
-      resultsDayPerformed: '04 / 08 / 2022',
+      resultsDayPerformed: '04/08/2022',
       typeOfCheck: 'Basic',
       typeOfWorkforce: 'NA',
-      dateOfIssue: '04 / 08 / 2022',
+      dateOfIssue: '04/08/2022',
       firstLineAddress: '23a Flatts Lane',
       policeRecordsOfConvictions: 'None recorded',
       infoSection142Education: 'None recorded',
