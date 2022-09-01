@@ -119,9 +119,11 @@
               padding-bottom:3px;" class="govuk-heading-l">
                   Detail of Check Results
               </h2>
+              
 
               <h3 class="govuk-heading-m">Police Records of Convictions and Cautions</h3>
-
+              {{ policeRecordsOfConvictions }}
+              
               <h3 class="govuk-heading-s">Date of conviction: <br>
               </h3>
               <p>
@@ -152,6 +154,31 @@
 
               <h3 class="govuk-heading-s">Police Force:<br></h3>
               <p>Merseyside Police</p>
+
+              <hr />
+
+              <h3 class="govuk-heading-m">Information from the list held under Section 142 of the Education Act 2002</h3>
+                <p>
+                  {{ infoSection142Education }}
+                </p>
+                <hr />
+              <h3 class="govuk-heading-m">DBS Children's Barred List Information</h3>
+                <p>
+                  {{ dbsChildrenBarList }}
+                </p>
+                <hr />
+              <h3 class="govuk-heading-m">DBS Adult's Barred List Information</h3>
+                <p>
+                  {{ dbsAdultBarList }}
+                </p>
+
+                <hr />
+              <h3 class="govuk-heading-m">Other relevant information disclosed at the Chief Police Officer(s) discretion</h3>
+                <p>
+                  {{ otherInfoChiefPolice }}
+                </p>
+
+                <hr />
 
               <h2 style="border-bottom:1px solid #CCC;
               padding-bottom:3px;" class="govuk-heading-l">
@@ -316,42 +343,45 @@
     </div>
 
     <div class="govuk-grid-column-one-third">
-
-    
       <aside class="app-related-items" role="complementary">
-      <h2 class="govuk-heading-m" id="subsection-title">
-          Related Content
-      </h2>
-      <nav role="navigation" aria-labelledby="subsection-title">
-          <ul class="govuk-list govuk-!-font-size-16">
-            <li>
-              <a href="#">
-                Apply for a basic DBS check
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Update your result
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                DBS Checks - Guidance
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                DBS Checks - Eligibility Criteria
-              </a>
-            </li>
-            <li>
-              <a href="#">
-                Barring Referrals
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </aside>
+        <h2 class="govuk-heading-m" id="subsection-title">
+            Related Content
+        </h2>
+        <nav role="navigation" aria-labelledby="subsection-title">
+            <ul class="govuk-list govuk-!-font-size-16">
+              <li>
+                <a href="https://www.gov.uk/government/collections/dbs-checking-service-guidance--2">
+                  DBS Checks - Guidance
+                </a>
+              </li>
+              <li>
+                <a href="https://www.gov.uk/government/collections/dbs-eligibility-guidance">
+                  DBS Checks - Eligibility Criteria 
+                </a>
+              </li>
+              <li>
+                <a href="https://www.gov.uk/request-copy-criminal-record">
+                  Apply for a basic DBS check 
+                </a>
+              </li>
+              <li>
+                <a href="https://www.gov.uk/government/collections/dbs-update-service-promotional-material#guidance-for-applicants-">
+                  Update your result
+                </a>
+              </li>
+              <li>
+                <a href="https://www.gov.uk/report-problem-criminal-record-certificate">
+                  Appeals and Disputes 
+                </a>
+              </li>
+              <li>
+                <a href="https://www.gov.uk/guidance/barring-referrals">
+                  Barring Referrals 
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </aside>
     </div> 
     
   </div>
