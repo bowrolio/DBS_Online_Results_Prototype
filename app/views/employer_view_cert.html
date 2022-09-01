@@ -30,18 +30,18 @@
                   It is not valid if printed.
               </p>
 
-              {% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
-
-              {{ govukErrorSummary({
-                titleText: "DBS Check Result",
-                disableAutoFocus: true,
-                errorList: [
-                  {
-                    text: "The Standard DBS check contains relevant information",
-                    href: "#DBS-check-flagged"
-                  }
-                ]
-              }) }}
+              <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                <div class="govuk-notification-banner__header">
+                  <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                    DBS Check Result
+                  </h2>
+                </div>
+                <div class="govuk-notification-banner__content">
+                  <p class="govuk-notification-banner__heading">
+                    The DBS check contains relevant information
+                  </p>
+                </div>
+              </div>
 
 
               <table class="govuk-table">
@@ -144,6 +144,9 @@
                 </p>
 
                 <hr />
+                <br>
+                <br>
+                <br>
               <h2 style="border-bottom:1px solid #CCC;
               padding-bottom:3px;" class="govuk-heading-l">
                   Download receipt
