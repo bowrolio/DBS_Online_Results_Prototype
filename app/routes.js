@@ -132,7 +132,7 @@ router.post('/dashboard/enter-otp', (req, res, _next) => {
       validation: dataValidation,
     });
   } else {
-    res.redirect('/sign_in');
+    res.redirect('/create_account');
   }
 });
 
@@ -252,7 +252,6 @@ router.get('/results_certificate', (req, res, _next) => {
 });
 
 //share OT code for viewing cert
-
 router.get('/share_OT_code_cert', (req, res, _next) => {
   let OT_code_cert = req.session?.selectedCertificate?.oneTimeShareCode;
   res.render('share_OT_code_cert', {

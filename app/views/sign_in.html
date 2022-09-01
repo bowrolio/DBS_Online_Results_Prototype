@@ -36,13 +36,18 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">
-        Sign in to your GOV.UK account
+      <h1 class="govuk-heading-l">
+        Sign in to your GOV.UK account to resume
       </h1>
+      <p>
+        Enter your email address to sign in.
+      </p>
+      <br>
+      <br>
 
         <form class="form" action="" method="post">
           <div class="govuk-form-group  {% if validation['subEmail'] %}govuk-form-group--error{% endif %}">
-              <label class="govuk-heading-m" for="account-number"> Enter Email Address </label>
+              <label class="govuk-heading-m" for="account-number"> Email Address </label>
                 {% if validation['subEmail'] %}
                     <span id="nino-error" class="govuk-error-message">
                         <span class="govuk-visually-hidden">Error:</span> {{ validation['subEmail'] }}
