@@ -1,0 +1,100 @@
+
+{% block bodyStart %}
+<h2 class="govuk-heading-s">From: Basic DBS Check (basic.dbs.check@notifications.service.gov.uk)</h2> 
+
+<h2 class="govuk-heading-s">Date: 17th August 2022 at 09:00:00 BST</h2>
+
+<h2 class="govuk-heading-s">To: tariq.doc@gmail.com </h2>
+
+<h2 class="govuk-heading-s">Subject: Sharing your Basic result </h2>
+
+
+{% endblock %}
+
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-three-thirds">
+     
+
+      <p>Application reference number: <strong>E2233445566</strong>
+      </p>
+
+      <p>Dear Tariq,</p>
+      <p> Your Disclosure and Barring Service (DBS) check is complete and your DBS Online Result is ready to view.
+        You should save this email so you can return to it in the future. 
+      </p>
+
+      <p>
+        Your certificate was issued on <strong>25/07/2022</strong> and your certificate number is: <strong>001122334455</strong>
+      </p>
+
+      <p>Go to <a href="/start" id="start">https://dbs-or-prototype.herokuapp.com/start </a> to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>View your DBS Online Result</li>
+        <li>Share your DBS Online Result with someone else, like an employer</li>
+        <li>Cancel any share codes that haven't expired or been used</li>
+      </ul>
+
+      <h2 class="govuk-heading-m">What you'll need</h2>
+
+      <p>Before you view your DBS Online Result you'll need:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>Your mobile phone, as you will receive a text containing a security code to allow you to access the service</li>
+        <div style="border-left: 10px solid #b1b4b6; padding: 1em 0 1em 1em; margin: 2em 0;" 
+            role="note" aria-label="Information" class="application-notice info-notice">
+        <p>There is currently a problem sending one-time passcodes to users with international phone numbers. <br>
+          We are investigating this and will fix it as soon as possible. </p>
+        </div>
+        <li>Your certificate number detailed above in this email</li>
+        <li>
+            Your GOV.UK Sign In login details. You will be able to create an account if you do not already have one.  
+        </li>
+      </ul>
+
+      
+
+      <h2 class="govuk-heading-m">Contact DBS</h2>
+
+      <p> 
+        If you have any questions, contact the DBS:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>DBS Helpline: 03000 200 190 (Select option 2 and then press 1)</li>
+        <li>Minicom: 03000 200 912</li>
+        <li>Welsh: 03000 200 191</li>
+        <li>International: +44 151 676 9390</li>
+
+        </ul>
+
+        <p> 
+          Opening times:
+        </p>
+  
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>Monday to Friday, 8am to 6pm</li>
+          <li>Saturday, 10am to 5pm</li>
+        </ul>
+
+
+
+        <h2 class="govuk-heading-m">Give Feedback</h2>
+        <p>
+          You can tell us what you think of the service through our <a href="https://give-feedback-dbs.service.gov.uk/#/en/e-result" id="feedback">feedback</a>  service <br>
+           
+        </p>
+    </div>
+    
+  </div>
+
+{% endblock %}
