@@ -214,6 +214,21 @@ router.get('/results_certificate', (req, res, _next) => {
   let firstLineAddress = req.session?.selectedCertificate?.firstLineAddress;
   let policeRecordsOfConvictions =
     req.session?.selectedCertificate?.policeRecordsOfConvictions;
+  if (
+    req.session?.selectedCertificate?.policeRecordsOfConvictions !=
+    'None recorded'
+  ) {
+    policeRecordsOfConvictions = '';
+    req.session?.selectedCertificate?.policeRecordsOfConvictions.forEach(
+      (element) => {
+        Object.keys(element).forEach((key) => {
+          policeRecordsOfConvictions += key + ' : ' + element[key] + '\n';
+          console.log(`Key: ${key}`);
+          console.log(`Value: ${element[key]}`);
+        });
+      }
+    );
+  }
   let infoSection142Education =
     req.session?.selectedCertificate?.infoSection142Education;
   let dbsChildrenBarList = req.session?.selectedCertificate?.dbsChildrenBarList;
@@ -241,6 +256,7 @@ router.get('/results_certificate', (req, res, _next) => {
     firstName: firstName,
     DOB: DOB,
     firstLineAddress: firstLineAddress,
+
     policeRecordsOfConvictions: policeRecordsOfConvictions,
     infoSection142Education: infoSection142Education,
     dbsChildrenBarList: dbsChildrenBarList,
