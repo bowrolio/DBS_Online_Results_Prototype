@@ -5,8 +5,6 @@
   Home – GOV.UK Prototype Kit
 {% endblock %}
 
-{% from "govuk/components/phase-banner/macro.njk" import govukPhaseBanner %}
-
 {% block beforeContent %}
 {{ govukPhaseBanner({
     tag: {
@@ -15,12 +13,10 @@
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
 {% endblock %}
-
 {% block content %}
   <div class="govuk-grid-row">
 
     <div class="govuk-grid-column-three-thirds">
-     
         <div class="govuk-tabs" data-module="govuk-tabs">
             <h2 class="govuk-tabs__title">
               Contents
@@ -52,11 +48,10 @@
                 </a>
               </li>
             </ul>
-          </div>
-    </div>
-            < class="govuk-grid-column-two-thirds">
+
+            <div class="govuk-grid-column-two-thirds">
             <div class="govuk-tabs__panel" id="dbs-result">
-                  
+              
               <h1 class="govuk-heading-xl"> Your DBS Online Result</h1>
               
               <p>
@@ -64,15 +59,18 @@
                   It is only valid when viewed online. It is not valid if printed.
               </p>
 
+
+          
               <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
                 <div class="govuk-notification-banner__header">
                   <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
                     DBS Check Result
                   </h2>
                 </div>
+                
                 <div class="govuk-notification-banner__content">
-                  <p class="govuk-notification-banner__heading">
-                    The DBS check contains relevant information
+                  <p class="govuk-notification-banner__heading" id="banner-content">
+                  The DBS check performed has found {{ result }}.
                   </p>
                 </div>
               </div>
@@ -123,19 +121,41 @@
 
               <h3 class="govuk-heading-m">Police Records of Convictions and Cautions</h3>
 
-              <p id="prc">{{ policeRecordsOfConvictions }} </p>
+              <h3 class="govuk-heading-s">Date of conviction: <br>
+              </h3>
+              <p>
+                {{ dateOfConviction }}
+              </p>
               
-              <p id ="dc">{{ dateOfConviction }} </p>
+              <h3 class="govuk-heading-s">Offence: <br>
+              </h3>
+              <p>
+                {{ offence }}
+              </p>
               
-              <p id="offence"> {{ offence }} </p>
+              <h3 class="govuk-heading-s">Date of offence: <br>
+              </h3>
+              <p>
+                {{ date_offence }}
+              </p>
              
-              <p id="doffence">{{ date_offence }} </p>
-             
-              <p id="court">{{ court }}</p>
+              <h3 class="govuk-heading-s">Court: <br>
+              </h3>
+              <p>
+                {{ court }}
+              </p>
               
-              <p id="disp"> {{ disposal }} </p>
+              <h3 class="govuk-heading-s">Disposal: <br>
+              </h3>
+              <p>
+                {{ disposal }}
+              </p>
               
-              <p id="pf"> {{ police_force }} </p>
+              <h3 class="govuk-heading-s">Police Force: <br>
+              </h3>
+              <p>
+                {{ police_force }}
+              </p>
 
               <hr />
 
@@ -191,9 +211,8 @@
                   <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
                 </svg>
               </a>
+            
             </div>
-                        
-
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="share-result">
               <h2 class="govuk-heading-m">Who do you want to share your result with?</h2>
               
