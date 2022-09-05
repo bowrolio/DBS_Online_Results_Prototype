@@ -306,6 +306,99 @@ router.post('/sign_in', (req, res, _next) => {
   }
 });
 
+//employer sharing applicant details
+router.get('/employer_share_details', (req, res, _next) => {
+  res.render('employer_share_details');
+});
+
+router.post('/employer_share_details', (req, res, _next) => {
+  const surname = req.body['lastName'];
+  const applicant_DOB = req.body['DOB'];
+  const dbsCertificateNumber = req.body['dbs-certificate-nr'];
+  const shareCode = req.body['share-code'];
+
+  savePageData(req, req.body);
+  const inputCache = loadPageData(req);
+  const dataValidation = {};
+
+  let selectedSurname = undefined;
+  let selectedDOB = undefined;
+  let selectedCertificate = undefined;
+
+  if (!surname) {
+    dataValidation['lastName'] = "Enter the applicant's last name";
+  }
+  if (!applicant_DOB) {
+    dataValidation['DOB'] = "Enter the applicant's date of birth";
+  }
+  if (!dbsCertificateNumber) {
+    dataValidation['dbs-certificate-nr'] =
+      "Enter the applicant's certificate number";
+  }
+  if (!shareCode) {
+    dataValidation['share-code'] = "Enter the applicant's share code";
+  }
+
+  if (surname) {
+    if (req.session?.mockDBaccounts) {
+      selectedSurname = req.session?.mockDBaccounts.find(
+        (el) => surname === el.lastName
+      );
+    } else {
+      dataValidation['lastName'] = 'Enter valid applicant surname';
+    }
+  }
+  if (applicant_DOB) {
+    if (req.session?.mockDBaccounts) {
+      selectedDOB = req.session?.mockDBaccounts.find(
+        (el) => applicant_DOB === el.DOB
+      );
+    } else {
+      dataValidation['DOB'] = "Enter the applicant's correct date of birth.";
+    }
+  }
+
+  if (
+    dbsCertificateNumber.length !== 6 ||
+    /^[0-9]+$/.test(dbsCertificateNumber) === false
+  ) {
+    dataValidation['dbs-certificate-nr'] =
+      'Enter valid certificate number - only the last 6 digits are required';
+  }
+
+  if (dbsCertificateNumber) {
+    if (req.session?.mockDBaccounts) {
+      selectedCertificate = req.session?.mockDBaccounts.find(
+        (el) => dbsCertificateNumber === el.certificateNumber
+      );
+      if (selectedCertificate) {
+        req.session.selectedCertificate = selectedCertificate;
+      } else {
+        dataValidation['dbs-certificate-nr'] = 'Enter valid certificate number';
+      }
+    }
+  }
+
+  if (shareCode) {
+    if (req.session?.mockDBaccounts) {
+      selectedShareCode = req.session?.mockDBaccounts.find(
+        (el) => shareCode === el.securityCode
+      );
+    } else {
+      dataValidation['share-code'] = 'Enter a valid share code.';
+    }
+  }
+
+  if (Object.keys(dataValidation).length) {
+    res.render('employer_share_details', {
+      cache: inputCache,
+      validation: dataValidation,
+    });
+  } else {
+    res.redirect('/employer_view_cert');
+  }
+});
+
 // Clear all data in session if you open /prototype-admin/clear-data
 router.post('/prototype-admin/clear-data', function (req, res) {
   req.session.data = {};
