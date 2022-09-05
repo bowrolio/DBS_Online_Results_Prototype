@@ -236,15 +236,16 @@ router.get('/results_certificate', (req, res, _next) => {
   let dbsAdultBarList = req.session?.selectedCertificate?.dbsAdultBarList;
   let otherInfoChiefPolice =
     req.session?.selectedCertificate?.otherInfoChiefPolice;
-  let clearResult = null;
+  let result = 'revelant information';
   if (
-    policeRecordsOfConvictions &&
-    infoSection142Education &&
-    dbsChildrenBarList &&
-    dbsAdultBarList &&
+    policeRecordsOfConvictions[0].date_conviction ==
+      'None recorded - Not applicable' &&
+    infoSection142Education == 'None recorded' &&
+    dbsChildrenBarList == 'None recorded' &&
+    dbsAdultBarList == 'None recorded' &&
     otherInfoChiefPolice == 'None recorded'
   ) {
-    clearResult = true;
+    result = 'no relevant information';
   }
 
   res.render('results_certificate', {
@@ -268,7 +269,7 @@ router.get('/results_certificate', (req, res, _next) => {
     dbsChildrenBarList: dbsChildrenBarList,
     dbsAdultBarList: dbsAdultBarList,
     otherInfoChiefPolice: otherInfoChiefPolice,
-    clearResult: clearResult,
+    result: result,
     validation: null,
   });
 });
