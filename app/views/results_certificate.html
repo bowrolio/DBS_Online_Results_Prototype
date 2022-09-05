@@ -48,6 +48,7 @@
                 </a>
               </li>
             </ul>
+
             <div class="govuk-grid-column-two-thirds">
             <div class="govuk-tabs__panel" id="dbs-result">
               
@@ -64,6 +65,7 @@
                     DBS Check Result
                   </h2>
                 </div>
+                
                 <div class="govuk-notification-banner__content">
                   <p class="govuk-notification-banner__heading">
                     The DBS check contains relevant information
@@ -117,8 +119,40 @@
 
               <h3 class="govuk-heading-m">Police Records of Convictions and Cautions</h3>
 
+              <h3 class="govuk-heading-s">Date of conviction: <br>
+              </h3>
               <p>
-                {{ policeRecordsOfConvictions }}
+                {{ dateOfConviction }}
+              </p>
+              
+              <h3 class="govuk-heading-s">Offence: <br>
+              </h3>
+              <p>
+                {{ offence }}
+              </p>
+              
+              <h3 class="govuk-heading-s">Date of offence: <br>
+              </h3>
+              <p>
+                {{ date_offence }}
+              </p>
+             
+              <h3 class="govuk-heading-s">Court: <br>
+              </h3>
+              <p>
+                {{ court }}
+              </p>
+              
+              <h3 class="govuk-heading-s">Disposal: <br>
+              </h3>
+              <p>
+                {{ disposal }}
+              </p>
+              
+              <h3 class="govuk-heading-s">Police Force: <br>
+              </h3>
+              <p>
+                {{ police_force }}
               </p>
 
               <hr />
@@ -175,10 +209,10 @@
                   <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
                 </svg>
               </a>
+            
             </div>
-
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="share-result">
-              <h1 class="govuk-heading-xl">Share Result</h1>
+              <h1 class="govuk-heading-l">Share Result</h1>
               <p>
                 You can share the result of your DBS check with someone else, like your employer.
               </p>
@@ -308,8 +342,6 @@
               </div>
           </div>
         </div>
-      
-    </div>
 
     <div class="govuk-grid-column-one-third">
       <aside class="app-related-items" role="complementary">

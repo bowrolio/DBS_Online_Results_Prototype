@@ -214,21 +214,22 @@ router.get('/results_certificate', (req, res, _next) => {
   let firstLineAddress = req.session?.selectedCertificate?.firstLineAddress;
   let policeRecordsOfConvictions =
     req.session?.selectedCertificate?.policeRecordsOfConvictions;
-  if (
-    req.session?.selectedCertificate?.policeRecordsOfConvictions !=
-    'None recorded'
-  ) {
-    policeRecordsOfConvictions = '';
-    req.session?.selectedCertificate?.policeRecordsOfConvictions.forEach(
-      (element) => {
-        Object.keys(element).forEach((key) => {
-          policeRecordsOfConvictions += key + ' : ' + element[key] + '\n';
-          console.log(`Key: ${key}`);
-          console.log(`Value: ${element[key]}`);
-        });
-      }
-    );
+  let dateOfConviction = '';
+  let offence = '';
+  let date_offence = '';
+  let court = '';
+  let disposal = '';
+  let police_force = '';
+
+  if (policeRecordsOfConvictions != 'None recorded') {
+    dateOfConviction += policeRecordsOfConvictions[0].date_conviction;
+    offence += policeRecordsOfConvictions[1].offence;
+    date_offence += policeRecordsOfConvictions[2].date_offence;
+    court += policeRecordsOfConvictions[3].court;
+    disposal += policeRecordsOfConvictions[4].disposal;
+    police_force += policeRecordsOfConvictions[5].police_force;
   }
+
   let infoSection142Education =
     req.session?.selectedCertificate?.infoSection142Education;
   let dbsChildrenBarList = req.session?.selectedCertificate?.dbsChildrenBarList;
@@ -256,8 +257,13 @@ router.get('/results_certificate', (req, res, _next) => {
     firstName: firstName,
     DOB: DOB,
     firstLineAddress: firstLineAddress,
-
     policeRecordsOfConvictions: policeRecordsOfConvictions,
+    dateOfConviction: dateOfConviction,
+    offence: offence,
+    date_offence: date_offence,
+    court: court,
+    disposal: disposal,
+    police_force: police_force,
     infoSection142Education: infoSection142Education,
     dbsChildrenBarList: dbsChildrenBarList,
     dbsAdultBarList: dbsAdultBarList,
@@ -326,7 +332,14 @@ const generateAccounts = (req, refresh) => {
       typeOfWorkforce: 'Adult and Children',
       dateOfIssue: '25/07/2022',
       firstLineAddress: '1 Arcadia Avenue',
-      policeRecordsOfConvictions: 'None recorded',
+      policeRecordsOfConvictions: [
+        { date_conviction: 'None recorded - Not applicable' },
+        { offence: 'None recorded - Not applicable' },
+        { date_offence: 'None recorded - Not applicable' },
+        { court: 'None recorded - Not applicable' },
+        { disposal: 'None recorded - Not applicable' },
+        { police_force: 'None recorded - Not applicable' },
+      ],
       infoSection142Education: 'None recorded',
       dbsChildrenBarList: 'None recorded',
       dbsAdultBarList: 'None recorded',
@@ -352,7 +365,7 @@ const generateAccounts = (req, refresh) => {
       firstLineAddress: '23a Flatts Lane',
       policeRecordsOfConvictions: [
         { date_conviction: '12/08/2017' },
-        { offense: 'Obtaining property by deception' },
+        { offence: 'Obtaining property by deception' },
         { date_offence: '1/09/2006' },
         { court: 'Coventry' },
         { disposal: 'Probation order - 12 months' },

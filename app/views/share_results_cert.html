@@ -21,12 +21,6 @@
 
     <div class="govuk-grid-column-three-thirds">
      
-        <h1 class="govuk-heading-xl">
-          <br>
-          
-             Your DBS Online Result
-          </h1>
-
         <div class="govuk-tabs" data-module="govuk-tabs">
             <h2 class="govuk-tabs__title">
               Contents
@@ -58,14 +52,16 @@
                 </a>
               </li>
             </ul>
-            <div class="govuk-grid-column-two-thirds">
+          </div>
+    </div>
+            < class="govuk-grid-column-two-thirds">
             <div class="govuk-tabs__panel" id="dbs-result">
-              <h2 class="govuk-heading-l">Your DBS result</h2>
+                  
+              <h1 class="govuk-heading-xl"> Your DBS Online Result</h1>
               
               <p>
-                  This result only relates to the DBS check carried out on the <strong>23/04/2022</strong>.
-                  It is only valid when viewed online. <br>
-                  It is not valid if printed.
+                  This result only relates to the DBS check carried out on the <strong>{{ certificateIssueDate }}</strong>. <br>
+                  It is only valid when viewed online. It is not valid if printed.
               </p>
 
               <div class="govuk-notification-banner" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
@@ -76,7 +72,7 @@
                 </div>
                 <div class="govuk-notification-banner__content">
                   <p class="govuk-notification-banner__heading">
-                    The Standard DBS check contains relevant information
+                    The DBS check contains relevant information
                   </p>
                 </div>
               </div>
@@ -86,35 +82,35 @@
                 <tbody class="govuk-table__body">
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">Certificate Number:</th>
-                    <td class="govuk-table__cell">12345678</td>
+                    <td class="govuk-table__cell"> {{ certificateNumber }}</td>
                   </tr>
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">Type of check:</th>
-                    <td class="govuk-table__cell">Enhanced</td>
+                    <td class="govuk-table__cell">{{ typeOfCheck }}</td>
                   </tr>
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">Type of workforce:</th>
-                    <td class="govuk-table__cell">Children Services</td>
+                    <td class="govuk-table__cell">{{ typeOfWorkforce }}</td>
                   </tr>
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">Date of issue:</th>
-                    <td class="govuk-table__cell"> 23/04/2022 </td>
+                    <td class="govuk-table__cell"> {{ certificateIssueDate }} </td>
                   </tr>
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">Last Name:</th>
-                    <td class="govuk-table__cell">Smith</td>
+                    <td class="govuk-table__cell">{{ lastName }}</td>
                   </tr>
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">First name(s):</th>
-                    <td class="govuk-table__cell">Anna Marie</td>
+                    <td class="govuk-table__cell">{{ firstName }}</td>
                   </tr>
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">Date of Birth</th>
-                    <td class="govuk-table__cell">14/08/1983</td>
+                    <td class="govuk-table__cell">{{ DOB }}</td>
                   </tr>
                   <tr class="govuk-table__row">
                     <th scope="row" class="govuk-table__header">First line of address:</th>
-                    <td class="govuk-table__cell">1 Arcadia Avenue</td>
+                    <td class="govuk-table__cell">{{ firstLineAddress }}</td>
                   </tr>
                 </tbody>
               </table>
@@ -123,39 +119,51 @@
               padding-bottom:3px;" class="govuk-heading-l">
                   Detail of Check Results
               </h2>
+              
 
               <h3 class="govuk-heading-m">Police Records of Convictions and Cautions</h3>
 
-              <h3 class="govuk-heading-s">Date of conviction: <br>
-              </h3>
-              <p>
-                12th August 2017
-              </p>
+              <p id="prc">{{ policeRecordsOfConvictions }} </p>
+              
+              <p id ="dc">{{ dateOfConviction }} </p>
+              
+              <p id="offence"> {{ offence }} </p>
+             
+              <p id="doffence">{{ date_offence }} </p>
+             
+              <p id="court">{{ court }}</p>
+              
+              <p id="disp"> {{ disposal }} </p>
+              
+              <p id="pf"> {{ police_force }} </p>
 
-              <h3 class="govuk-heading-s">Offence:<br>
-              </h3>
-              <p>
-                Obtaining property by deception
-              </p>
+              <hr />
 
-              <h3 class="govuk-heading-s">Date of offence:<br>
-              </h3>
-              <p>
-                1st September 2006
-              </p>
+              <h3 class="govuk-heading-m">Information from the list held under Section 142 of the Education Act 2002</h3>
+                <p>
+                  {{ infoSection142Education }}
+                </p>
+                <hr />
+              <h3 class="govuk-heading-m">DBS Children's Barred List Information</h3>
+                <p>
+                  {{ dbsChildrenBarList }}
+                </p>
+                <hr />
+              <h3 class="govuk-heading-m">DBS Adult's Barred List Information</h3>
+                <p>
+                  {{ dbsAdultBarList }}
+                </p>
 
-              <h3 class="govuk-heading-s">Court:<br></h3>
-              <p>
-                  Coventry Magistrates Court
-              </p>
+                <hr />
+              <h3 class="govuk-heading-m">Other relevant information disclosed at the Chief Police Officer(s) discretion</h3>
+                <p>
+                  {{ otherInfoChiefPolice }}
+                </p>
 
-              <h3 class="govuk-heading-s">Disposal:<br></h3>
-              <p>
-                  Probation order - 12 months
-              </p>
-
-              <h3 class="govuk-heading-s">Police Force:<br></h3>
-              <p>Merseyside Police</p>
+                <hr />
+                <br>
+                <br>
+                <br>
 
               <h2 style="border-bottom:1px solid #CCC;
               padding-bottom:3px;" class="govuk-heading-l">
@@ -165,29 +173,26 @@
               <p>
                 You can download a receipt for your own records that confirms you have viewed the results.
               </p>
-              <button width="17.5" height="19">
-              <a href="#" role="button" draggable="false" fill="#b1b4b6">
-                Download receipt
-                <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
-                  <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
-                </svg>
-              </a>
-            </button>
-              <br>
+
+
+
+              {% from "govuk/components/button/macro.njk" import govukButton %}
+
+                {{ govukButton({
+                  text: "Download receipt",
+                  classes: "govuk-button--secondary"
+                }) }}
+              
               <br>
               
-
               <a href="#" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"  data-module="govuk-button">
                 Finish viewing certificate
                 <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
                   <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
                 </svg>
               </a>
-
-              
             </div>
-
-            
+                        
 
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="share-result">
               <h2 class="govuk-heading-m">Who do you want to share your result with?</h2>
@@ -207,9 +212,9 @@
                   <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
                 </svg>
               </a>
-
-          
             </div>
+
+
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="manage-codes">
               <h2 class="govuk-heading-l">Manage Share Codes</h2>
               <table class="govuk-table">
@@ -240,6 +245,8 @@
               </table>
           
             </div>
+
+
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="dispute-result">
               <h2 class="govuk-heading-l">Dispute Result</h2>
               <table class="govuk-table">
@@ -268,7 +275,6 @@
                   </tr>
                 </tbody>
               </table>
-          
             </div>
 
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="contact-dbs">
@@ -301,14 +307,12 @@
                 </table>
             
               </div>
-          </div>
         </div>
       
-    </div>
+  
 
     <div class="govuk-grid-column-one-third">
 
-    
       <aside class="app-related-items" role="complementary">
       <h2 class="govuk-heading-m" id="subsection-title">
           Related Content
