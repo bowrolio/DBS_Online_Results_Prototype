@@ -1,7 +1,9 @@
 {% import "../macros/error-summary/govukErrorSummary.njk" as  es %}
 {% extends "layout.html" %}
 
-{% block pageTitle %} Question page {% endblock %}
+{% block pageTitle %}
+  Send a mobile security code – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
 
 {% block beforeContent %}
 {{ govukPhaseBanner({

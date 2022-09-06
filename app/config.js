@@ -4,7 +4,7 @@
 
 module.exports = {
   // Service name used in header. Eg: 'Renew your passport'
-  serviceName: 'View your DBS Online Result',
+  serviceName: 'DBS Online Result',
 
   // Default port that prototype runs on
   port: '4000',
@@ -23,6 +23,5 @@ module.exports = {
   useHttps: 'true',
 
   // Enable or disable Browser Sync (local development only)
-  useBrowserSync: 'true'
-
-}
+  useBrowserSync: 'true',
+};

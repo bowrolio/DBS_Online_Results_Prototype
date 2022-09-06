@@ -1,7 +1,7 @@
-{% import "../macros/error-summary/govukErrorSummary.njk" as  es %}
+{% import "macros/error-summary/govukErrorSummary.njk" as  es %}
 {% extends "layout.html" %}
 {% block pageTitle %}
-  Enter your certificate number – {{ serviceName }} – GOV.UK Prototype Kit
+  Enter applicant's certificate number – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 
@@ -13,7 +13,7 @@
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
-  <a class="govuk-back-link" href="/start">Back</a>
+  <a class="govuk-back-link" href="/employer_view_check">Back</a>
 {% endblock %}
 
 {% block content %}
@@ -37,31 +37,21 @@
               <div class="govuk-form-group">
                   <fieldset class="govuk-fieldset">
                       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                          <h1 class="govuk-fieldset__heading">Enter your certificate number</h1>
+                          <h1 class="govuk-fieldset__heading">Enter the applicant's certificate number</h1>
                       </legend>
+                      <p style="color: #4E4E4E">
+                        Enter only the last 6 digits of the certificate number which the applicant has shared with you.
+                    </p>
                       <div class="govuk-form-group  {% if validation['dbs-certificate-nr'] %}govuk-form-group--error{% endif %}">
-                          <p>You can find this number on the email we sent you to tell you that your DBS result is ready to view.</p>
                             {% if validation['dbs-certificate-nr'] %}
                                 <span id="ninonr-error" class="govuk-error-message">
                                     <span class="govuk-visually-hidden">Error:</span> {{  validation['dbs-certificate-nr'] }}
                                 </span>
                             {% endif %}
-                          <input class="govuk-input govuk-input--width-20" id="dbs-certificate-nr" name="dbs-certificate-nr" value="{{cache['dbs-certificate-nr']}}" type="text" />
+                          <input class="govuk-input govuk-input--width-20" id="dbs-certificate-nr" name="dbs-certificate-nr" value="{{cache['dbs-certificate-nr']}}" type="number" />
                       </div>
                   </fieldset>
                 </div>
-
-            
-            <details class="govuk-details" data-module="govuk-details">
-                    <summary class="govuk-details__summary">
-                        <span class="govuk-details__summary-text">
-                            Help with your certificate number
-                        </span>
-                  </summary>
-                    <div class="govuk-details__text">
-                       This number is 12 digits starting with 00.
-                    </div>
-                </details>
 
 
 
