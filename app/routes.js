@@ -206,6 +206,7 @@ router.get('/results_certificate', (req, res, _next) => {
   let firstLineAddress = req.session?.selectedCertificate?.firstLineAddress;
   let policeRecordsOfConvictions =
     req.session?.selectedCertificate?.policeRecordsOfConvictions;
+  let bannerColour = '';
   let dateOfConviction = '';
   let offence = '';
   let date_offence = '';
@@ -214,6 +215,7 @@ router.get('/results_certificate', (req, res, _next) => {
   let police_force = '';
 
   if (policeRecordsOfConvictions != 'None recorded') {
+    bannerColour = 'blue';
     dateOfConviction += policeRecordsOfConvictions[0].date_conviction;
     offence += policeRecordsOfConvictions[1].offence;
     date_offence += policeRecordsOfConvictions[2].date_offence;
@@ -237,6 +239,7 @@ router.get('/results_certificate', (req, res, _next) => {
     dbsAdultBarList == 'None recorded' &&
     otherInfoChiefPolice == 'None recorded'
   ) {
+    bannerColour = 'green';
     result = 'no relevant information';
   }
 
@@ -251,6 +254,7 @@ router.get('/results_certificate', (req, res, _next) => {
     DOB: DOB,
     firstLineAddress: firstLineAddress,
     policeRecordsOfConvictions: policeRecordsOfConvictions,
+    bannerColour: bannerColour,
     dateOfConviction: dateOfConviction,
     offence: offence,
     date_offence: date_offence,
