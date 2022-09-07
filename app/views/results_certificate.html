@@ -136,6 +136,10 @@
 
               <h3 class="govuk-heading-m">Police Records of Convictions and Cautions</h3>
 
+              {% if result == 'no relevant information' %}
+              <p> None recorded </p>
+              {% elif result == 'revelant information' %}
+
               <h3 class="govuk-heading-s">Date of conviction: <br>
               </h3>
               <p>
@@ -171,7 +175,8 @@
               <p>
                 {{ police_force }}
               </p>
-
+              {% endif %}
+              
               <hr />
 
               <h3 class="govuk-heading-m">Information from the list held under Section 142 of the Education Act 2002</h3>
