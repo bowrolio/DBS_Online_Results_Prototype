@@ -17,44 +17,27 @@
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
-  <a class="govuk-back-link" href="/employer_view_check">Back</a>
+  <a class="govuk-back-link" href="/employer_enter_cert">Back</a>
 {% endblock %}
 
 {% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl"> Enter the applicant's details</h1>
+      <h2 class="govuk-heading-m">Enter the following details to access the DBS Online Result</h2>
+      <br>
+      <br>
 
-      {% if validation | length %}
-
-          {% set errorList = [] %}
-
-            {% for key, value in validation %}
-                {% set errorList = (errorList.push({
-                    "text": value,
-                    "href": "#" + key
-                }), errorList) %}
-            {% endfor %}
-
-          {{ es.govukErrorSummary({ "titleText": "There is a problem", "errorList": errorList }) }}
-
-        {% endif %}
-        <form class="form" action="" method="post">
+        <form class="form" action="/employer_view_cert" method="post">
           <div class="govuk-form-group">
             <fieldset class="govuk-fieldset">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                <h1 class="govuk-fieldset__heading">Enter the applicant details</h1>
+                <h1 class="govuk-fieldset__heading">Applicant surname</h1>
               </legend>
               <br>
-              <br>
-                <div class="govuk-form-group  {% if validation['dbs-certificate-nr'] %}govuk-form-group--error{% endif %}">
-                  <p class = "govuk-fieldset__legend--m"> Applicant's surname</p>
-                    {% if validation['lastName'] %}
-                        <span id="ninonr-error" class="govuk-error-message">
-                            <span class="govuk-visually-hidden">Error:</span> {{  validation['lastName'] }}
-                        </span>
-                    {% endif %}
+
                   <input class="govuk-input govuk-input--width-20" id="lastName" name="lastName" value="{{cache['lastName']}}" type="text" />
-                </div>
+                
             </fieldset>
             </div>
         <br>
@@ -69,7 +52,7 @@
             legend: {
               text: "Applicant's date of birth",
               isPageHeading: true,
-              classes: "govuk-fieldset__legend--m"
+              classes: "govuk-fieldset__legend--l"
             }
           },
           hint: {
@@ -79,32 +62,8 @@
 
         <br>
         <br>
-        
-        <h2 class="govuk-heading-m">Enter the following details that you were sent from the applicant into the section below.</h2>
-        <br>
+        <button style="margin-top: 0px; width: 50%;" class="govuk-button" type='submit' data-module="govuk-button">Continue</button>
       
-      <h2 class="govuk-fieldset__legend--m">Certificate number</h2>
-      <p style="color: #4E4E4E">
-          Enter only the last 6 digits of the certificate number which the applicant has shared with you.
-      </p>
-        <input class="govuk-input" id="dbs-certificate-nr" name="dbs-certificate-nr" type="text">
-        
-        <br>
-        <br>
-        <br>
 
-
-        
-      <h2 class="govuk-fieldset__legend--m">Share code</h2>
-      <p style="color: #4E4E4E">
-          Enter the share code the applicant has given you. It is 8 characters long and is case sensitive, for example, gH 34 5h bN 
-      </p>
-        <input class="govuk-input" id="share-code" name="share-code" type="text"> 
-
-      <br>
-      <br>
-
-          <button style="margin-top: 0px;" class="govuk-button" type='submit' data-module="govuk-button">Continue</button>
-        </div>
       </form>
 {% endblock %}
