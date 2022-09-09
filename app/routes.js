@@ -307,49 +307,6 @@ router.get('/employer_enter_cert', (req, res, _next) => {
   res.render('employer_enter_cert');
 });
 
-router.post('/employer_enter_cert', (req, res, _next) => {
-  const dbsCertificateNumber = req.body['dbs-certificate-nr'];
-  savePageData(req, req.body);
-  const inputCache = loadPageData(req);
-  const dataValidation = {};
-  let selectedCertificate = undefined;
-
-  if (!dbsCertificateNumber) {
-    dataValidation['dbs-certificate-nr'] = 'Enter certificate number';
-  }
-
-  if (
-    dbsCertificateNumber.length !== 12 ||
-    dbsCertificateNumber.slice(0, 2) !== '00' ||
-    /^[0-9]+$/.test(dbsCertificateNumber) === false
-  ) {
-    dataValidation['dbs-certificate-nr'] = 'Enter valid certificate number';
-  }
-  console.log(dbsCertificateNumber);
-
-  if (dbsCertificateNumber) {
-    if (req.session?.mockDBaccounts) {
-      selectedCertificate = req.session?.mockDBaccounts.find(
-        (el) => dbsCertificateNumber === el.certificateNumber
-      );
-      if (selectedCertificate) {
-        req.session.selectedCertificate = selectedCertificate;
-      } else {
-        dataValidation['dbs-certificate-nr'] = 'Enter valid certificate number';
-      }
-    }
-  }
-
-  if (Object.keys(dataValidation).length) {
-    res.render('employer_enter_cert', {
-      cache: inputCache,
-      validation: dataValidation,
-    });
-  } else {
-    res.redirect('/employer_share_details');
-  }
-});
-
 //employer sharing applicant details
 router.get('/employer_share_details', (req, res, _next) => {
   res.render('employer_share_details');

@@ -19,38 +19,44 @@
 {% block content %}
   <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        {% if validation | length %}
+        <h1 class="govuk-heading-xl"> Enter the share details </h1>
 
-          {% set errorList = [] %}
-
-            {% for key, value in validation %}
-                {% set errorList = (errorList.push({
-                    "text": value,
-                    "href": "#" + key
-                }), errorList) %}
-            {% endfor %}
-
-          {{ es.govukErrorSummary({ "titleText": "There is a problem", "errorList": errorList }) }}
-
-        {% endif %}
-          <form class="form" action="" method="post">
+        <h2 class="govuk-heading-m">Enter the following details that you were sent from the applicant into the sections below.</h2>
+        <br>
+        <br>
+        <br>  
+        
+        
+        <form class="form" action="/employer_share_details" method="post">
               <div class="govuk-form-group">
                   <fieldset class="govuk-fieldset">
                       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                          <h1 class="govuk-fieldset__heading">Enter the applicant's certificate number</h1>
+                          <h1 class="govuk-fieldset__heading">Certificate number</h1>
                       </legend>
                       <p style="color: #4E4E4E">
                         Enter only the last 6 digits of the certificate number which the applicant has shared with you.
                     </p>
-                      <div class="govuk-form-group  {% if validation['dbs-certificate-nr'] %}govuk-form-group--error{% endif %}">
-                            {% if validation['dbs-certificate-nr'] %}
-                                <span id="ninonr-error" class="govuk-error-message">
-                                    <span class="govuk-visually-hidden">Error:</span> {{  validation['dbs-certificate-nr'] }}
-                                </span>
-                            {% endif %}
+                      <div class="govuk-form-group">
+                            
                           <input class="govuk-input govuk-input--width-20" id="dbs-certificate-nr" name="dbs-certificate-nr" value="{{cache['dbs-certificate-nr']}}" type="number" />
                       </div>
                   </fieldset>
+                  <br>
+                  <br>
+                  <br>
+                  <fieldset class="govuk-fieldset">
+                    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                        <h1 class="govuk-fieldset__heading">Share Code</h1>
+                    </legend>
+                    <p style="color: #4E4E4E">
+                      Enter the share code the applicant has given you. It is 8 characters long and is case sensitive, for example, gH 34 5h bN.
+                  </p>
+                    <div class="govuk-form-group">
+                          
+                             
+                        <input class="govuk-input govuk-input--width-20" id="dbs_share_code" name="dbs-certificate-nr" value="{{cache['dbs-certificate-nr']}}" type="number" />
+                    </div>
+                </fieldset>
                 </div>
 
 
