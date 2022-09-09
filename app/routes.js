@@ -454,8 +454,8 @@ const generateAccounts = (req, refresh) => {
       mobileNumber: '07621432112',
       securityCode: '654321',
       resultsDayPerformed: '04/08/2022',
-      typeOfCheck: 'Basic',
-      typeOfWorkforce: 'NA',
+      typeOfCheck: 'Enhanced',
+      typeOfWorkforce: 'Adult and Children',
       dateOfIssue: '04/08/2022',
       firstLineAddress: '23a Flatts Lane',
       policeRecordsOfConvictions: [
