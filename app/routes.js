@@ -213,6 +213,8 @@ router.get('/results_certificate', (req, res, _next) => {
   let court = '';
   let disposal = '';
   let police_force = '';
+  let organisationName = req.session.selectedCertificate.organisationName;
+  let shareCode = req.session.selectedCertificate.oneTimeShareCode;
 
   if (policeRecordsOfConvictions != 'None recorded') {
     bannerColour = 'blue';
@@ -266,6 +268,8 @@ router.get('/results_certificate', (req, res, _next) => {
     dbsAdultBarList: dbsAdultBarList,
     otherInfoChiefPolice: otherInfoChiefPolice,
     result: result,
+    organisationName: organisationName,
+    shareCode: shareCode,
     validation: null,
   });
 });
@@ -456,7 +460,7 @@ const generateAccounts = (req, refresh) => {
       dbsAdultBarList: 'None recorded',
       otherInfoChiefPolice: 'None recorded',
       organisationName: 'North Tees Hospital',
-      oneTimeShareCode: '8w Ds xn 72',
+      oneTimeShareCode: '8wDsxn72',
     });
     accounts.push({
       applicationNumber: 'E1177889910',
@@ -487,7 +491,7 @@ const generateAccounts = (req, refresh) => {
       dbsAdultBarList: 'None recorded',
       otherInfoChiefPolice: 'None recorded',
       organisationName: 'JW Building Services',
-      oneTimeShareCode: '2F vc PB 24',
+      oneTimeShareCode: '2FvcPB24',
     });
     req.session.mockDBaccounts = accounts;
   } else if (req.session.mockDBaccounts && refresh) {
