@@ -4,7 +4,7 @@
 
 <h2 class="govuk-heading-s">Date: 17th August 2022 at 09:00:00 BST</h2>
 
-<h2 class="govuk-heading-s">To: mary@email.com </h2>
+<h2 class="govuk-heading-s">To: {{ applicantEmail }} </h2>
 
 <h2 class="govuk-heading-s">Subject: View your DBS check result</h2>
 
@@ -22,17 +22,17 @@
 
     <div class="govuk-grid-column-three-thirds">
      
-      <p>Application reference number: 12345678
+      <p>Application reference number: {{ applicationNo }}
       </p>
 
-      <p>Certificate number: ******654321
+      <p>Certificate number: {{ certLastSix }}
       </p>
 
       <p>Link: <a href="https://dbs-or-prototype.herokuapp.com/employer_view_check"> https://dbs-or-prototype.herokuapp.com/employer_view_check</a>
       </p>
 
 
-      <p>Dear Mary,</p>
+      <p>Dear {{ applicantName }},</p>
       <p> You have received this email as you need to share your DBS Online Result with someone else, 
           such as your employer. Or you are the employer who needs to see the result of the applicant. 
       </p>

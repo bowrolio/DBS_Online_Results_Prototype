@@ -302,6 +302,22 @@ router.post('/sign_in', (req, res, _next) => {
   }
 });
 
+//RB email
+router.get('/RB_cert_email', (req, res, _next) => {
+  const applicantName = req.session.selectedCertificate.firstName;
+  const applicantEmail = req.session.selectedCertificate.emailAddress;
+  const applicationNo = req.session.selectedCertificate.applicationNumber;
+  const certNo = req.session.selectedCertificate.certificateNumber;
+  const certLastSix = '******' + certNo.substr(certNo.length - 6);
+
+  res.render('RB_cert_email', {
+    applicantName: applicantName,
+    applicantEmail: applicantEmail,
+    applicationNo: applicationNo,
+    certLastSix: certLastSix,
+  });
+});
+
 //employer enter cert num
 router.get('/employer_enter_cert', (req, res, _next) => {
   res.render('employer_enter_cert');
