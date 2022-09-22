@@ -1,7 +1,6 @@
 {% extends "layout.html" %}
-
 {% block pageTitle %}
-  Start page template – {{ serviceName }} – GOV.UK Prototype Kit
+  View results complete – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 
 {% block header %}
@@ -42,22 +41,10 @@
         html: ""
       }) }}
       <p>
-        We will let the applicant know when you have viewed their result. 
+        We have let the applicant know you have viewed their result
       </p>
       <br>
       <br>
-      <h3 class="govuk-heading-m">Download receipt</h3>
-      <p>
-        You can download a receipt for your own records that confirms you have viewed the results.
-      </p>
-      {% from "govuk/components/button/macro.njk" import govukButton %}
-
-      <a href="#" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"  data-module="govuk-button">
-        Download receipt
-        <svg class="govuk-button__start-icon" xmlns="http://www.w3.org/2000/svg" width="17.5" height="19" viewBox="0 0 33 40" aria-hidden="true" focusable="false">
-          <path fill="currentColor" d="M0 0h13l20 20-20 20H0l20-20z"></path>
-        </svg>
-      </a>
 
       <h3 class="govuk-heading-m">Want to view the certificate again?</h3>
       <p>

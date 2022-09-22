@@ -19,21 +19,6 @@
 {% block content %}
   <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        {% if validation | length %}
-
-          {% set errorList = [] %}
-
-            {% for key, value in validation %}
-                {% set errorList = (errorList.push({
-                    "text": value,
-                    "href": "#" + key
-                }), errorList) %}
-            {% endfor %}
-
-          {{ es.govukErrorSummary({ "titleText": "There is a problem", "errorList": errorList }) }}
-
-        {% endif %}
-          <form class="form" action="" method="post">
               <div class="govuk-form-group">
                   <fieldset class="govuk-fieldset">
                       <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -41,11 +26,6 @@
                       </legend>
                       <div class="govuk-form-group  {% if validation['dbs-certificate-nr'] %}govuk-form-group--error{% endif %}">
                           <p>You can find this number on the email we sent you to tell you that your DBS result is ready to view.</p>
-                            {% if validation['dbs-certificate-nr'] %}
-                                <span id="ninonr-error" class="govuk-error-message">
-                                    <span class="govuk-visually-hidden">Error:</span> {{  validation['dbs-certificate-nr'] }}
-                                </span>
-                            {% endif %}
                           <input class="govuk-input govuk-input--width-20" id="dbs-certificate-nr" name="dbs-certificate-nr" value="{{cache['dbs-certificate-nr']}}" type="text" />
                       </div>
                   </fieldset>
@@ -64,9 +44,10 @@
                 </details>
 
 
+                <a href="/create_account" role="button" style="width: 30%;" draggable="false" class="govuk-button"  data-module="govuk-button">
+                  Continue
+                </a>
 
-              <button style="margin-top: 0px;" class="govuk-button" type='submit' data-module="govuk-button">Continue</button>
-            
               
           </form>
       </div>

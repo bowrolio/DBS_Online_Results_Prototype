@@ -76,7 +76,7 @@ router.post('/dashboard/enter-certificate', (req, res, _next) => {
       validation: dataValidation,
     });
   } else {
-    res.redirect('/dashboard/request-otp');
+    res.redirect('/create_account');
   }
 });
 
@@ -304,22 +304,6 @@ router.post('/sign_in', (req, res, _next) => {
   } else {
     res.redirect('/sign_in_verify');
   }
-});
-
-//RB email
-router.get('/RB_cert_email', (req, res, _next) => {
-  const applicantName = req.session.selectedCertificate.firstName;
-  const applicantEmail = req.session.selectedCertificate.emailAddress;
-  const applicationNo = req.session.selectedCertificate.applicationNumber;
-  const certNo = req.session.selectedCertificate.certificateNumber;
-  const certLastSix = '******' + certNo.substr(certNo.length - 6);
-
-  res.render('RB_cert_email', {
-    applicantName: applicantName,
-    applicantEmail: applicantEmail,
-    applicationNo: applicationNo,
-    certLastSix: certLastSix,
-  });
 });
 
 //employer enter cert num

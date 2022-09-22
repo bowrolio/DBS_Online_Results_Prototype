@@ -42,14 +42,10 @@
 
       <p>Enter your password to sign in to your account.</p>
 
-        <form class="form" action="" method="post">
-          <div class="govuk-form-group  {% if validation['userPass'] %}govuk-form-group--error{% endif %}">
+     
+          <div class="govuk-form-group">
               <label class="govuk-heading-m for="account-number"> Password </label>
-                {% if validation['userPass'] %}
-                    <span id="nino-error" class="govuk-error-message">
-                        <span class="govuk-visually-hidden">Error:</span> {{ validation['userPass'] }}
-                    </span>
-                {% endif %}
+              
               <input
                   class="govuk-input govuk-input--width-20"
                   id="userPass"
@@ -61,8 +57,10 @@
                   inputmode="text"
               />
           </div>
-          <button class="govuk-button" data-module="govuk-button">Continue</button>
-        </form>
+        
+          <a href="/results_certificate_1" role="button" style="width: 30%;" draggable="false" class="govuk-button"  data-module="govuk-button">
+            Continue
+          </a>
 
         <br>
         <br>

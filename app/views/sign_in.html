@@ -44,19 +44,15 @@
       </p>
       <br>
 
-        <form class="form" action="" method="post">
-          <div class="govuk-form-group  {% if validation['subEmail'] %}govuk-form-group--error{% endif %}">
+        
+          <div class="govuk-form-group">
               <label class="govuk-heading-m" for="account-number"> Email Address </label>
-                {% if validation['subEmail'] %}
-                    <span id="nino-error" class="govuk-error-message">
-                        <span class="govuk-visually-hidden">Error:</span> {{ validation['subEmail'] }}
-                    </span>
-                {% endif %}
+        
               <input
                   class="govuk-input govuk-input--width-20"
                   id="subEmail"
                   name="subEmail"
-                  type="email"
+                  type="text"
                   value="{{cache['subEmail']}}"
                   spellcheck="false"
                   aria-describedby="account-number-hint"
@@ -64,8 +60,9 @@
               />
           </div>
 
-          <button class="govuk-button" data-module="govuk-button">Continue</button>
-      </form>
+          <a href="/sign_in_verify" role="button" style="width: 30%;" draggable="false" class="govuk-button"  data-module="govuk-button">
+            Continue
+          </a>
 
     </div>
 
