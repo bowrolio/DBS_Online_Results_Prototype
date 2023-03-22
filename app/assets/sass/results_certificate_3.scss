@@ -1,0 +1,37 @@
+.crest {
+    border-left: 2px solid #9325b2;
+    background: url(/public/images/crest.png) no-repeat 6px 0;
+    height: 68px;
+    margin-bottom: 40px;
+
+    h1 {
+        display: flex;
+        align-items: center;
+        height: inherit;
+        margin-left: 56px;
+    }
+}
+
+.govuk-notification-banner__heading {
+    max-width: unset !important;
+}
+
+.govuk-notification-banner__content {
+    p {
+        max-width: unset !important;
+    }
+}
+
+.govuk-\!-width-one-half-override {
+    width: 50% !important;
+}
+
+.govuk-table__cell {
+    padding-bottom: 32px;
+}
+
+.govuk-button-group {
+    display:flex;
+  justify-content:space-between;
+  padding-top: 48px;
+}
