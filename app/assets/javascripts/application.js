@@ -25,3 +25,8 @@ function selectTab(id) {
   document.getElementById('contact-dbs').style.display = 'none';
   document.getElementById(id).style.display = 'block';
 }
+
+function reveal() {
+  document.getElementById('containOne').style.display = 'none';
+  document.getElementById('containTwo').style.display = 'block';
+}
