@@ -17,3 +17,11 @@ ready(() => {
   window.GOVUKFrontend.initAll();
   window.MOJFrontend.initAll();
 });
+
+function selectTab(id) {
+  document.getElementById('share-result').style.display = 'none';
+  document.getElementById('manage-codes').style.display = 'none';
+  document.getElementById('dispute-result').style.display = 'none';
+  document.getElementById('contact-dbs').style.display = 'none';
+  document.getElementById(id).style.display = 'block';
+}

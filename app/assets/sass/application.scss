@@ -1,2 +1,8 @@
 @import 'node_modules/govuk-frontend/govuk/all';
 @import 'results_certificate_3.scss';
+
+.js-enabled {
+    .tabs-mobile {
+        display: none;
+      }
+}
