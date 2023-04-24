@@ -6,3 +6,8 @@
         display: none;
       }
 }
+
+.govuk-tabs__list-item--selected {
+  margin-bottom: 0 !important;
+  border-bottom: unset !important;
+}
