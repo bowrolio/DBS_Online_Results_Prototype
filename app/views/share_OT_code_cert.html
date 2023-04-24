@@ -50,41 +50,42 @@
           </ul>
 
           <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="share-result">
-              <div class="boxed" style="border: 1px solid black">
-                <h3 class="govuk-heading-l" style="text-align: center;" >8w Ds xn 72</h3>
+              {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
 
-                
-                <p class="govuk-body" style="margin-left: 20px">This code:</p>
-                  <ul class="govuk-list govuk-list--bullet" style="margin-left: 40px">
-                    <li>is case sensitive</li>
-                    <li>valid for 21 days</li>
-                    <li>can only be used once</li>
-                  </ul>
-              </div>
+{% set html %}
+  <h3 class="govuk-heading-l govuk-notification-banner__heading " style="text-align: center; font-size: 2.25rem;">8wDsxn72</h3>
+  <p>This share code:</p>
+  <ul>
+    <li>is case sensitive</li>
+    <li>is valid for 21 days</li>
+    <li>can only be used once</li>
+  </ul>
+  
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html,
+  titleText: 'Share Code'
+}) }}
               <br>
 
 
-                <h3 class="govuk-heading-m">What to do next</h3>
+                <h3 class="govuk-heading-m">What you need to do now</h3>
+                <p>You need to:</p>
+                <ul class="govuk-list govuk-list--bullet">
+                    <li>Give the share code to the person you want to see your DBS check result</li>
+                    <li>Forward the email we have just sent you, to the person you want to see your DBS check result. If you did not receive an email or you cannot find it you can <a href="/RB_cert_email">request another email</a></li>
+                </ul>
 
-                <ol class="govuk-list govuk-list--number">
-                    <li>Give the share code to the person you want to see your DBS check result.</li>
-                    <li>Forward the email we have just sent you, to the person you want to see your DBS check result.</li>
-                    <li>To view your check results they must select the link in the email, enter the last 6 digits of your certificate number and enter the share code.</li>
-                  </ol>
 
-                  <div style="border-left: 10px solid #b1b4b6; padding: 1em 0 1em 1em; margin: 2em 0;" 
-                  role="note" aria-label="Information" class="application-notice info-notice">
-              <p> Didn't receive an email? <a href="/RB_cert_email" id="RB email">Request another one.</a>  </p>
-              </div>
+                {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
-              <h3 class="govuk-heading-m">Need another share code?</h3>
-
-              <p>
-                You can only share the above share code with one person. If you need to share your results with another person you will need to request another share code.
-              </p>
-
-              <a href="/share_OT_code_cert#share-result" id="req-share-code">Request share code.</a>
+                {{ govukInsetText({
+                  html: "<p>If you need to share your results with another person you will need to <a href='/tab-view'>request another share code.</a></p>"
+                }) }}
             </div>
+
+
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="manage-codes">
               <h2 class="govuk-heading-l">Manage Share Codes</h2>
               <table class="govuk-table">
