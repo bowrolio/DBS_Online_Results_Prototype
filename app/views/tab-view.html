@@ -47,19 +47,19 @@
 
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="share-result">
               <div id="containOne">
-              <h1 class="govuk-heading-l">Share Result</h1>
+              <h1 class="govuk-heading-l">Share your DBS Online Result</h1>
                 <p>
-                  You can share the result of your DBS check with someone else, like your employer.
+                  You can share your DBS Online Result with someone else, like your employer.
                 </p>
   
-                <h2 class="govuk-heading-m">How to share your result</h2>
+                <h2 class="govuk-heading-m">How to share your DBS Online Result</h2>
                 
                 <p>
-                  To share your result, you will need to send them:
+                  To share your DBS Online Result with someone else, you will need to send them:
                 </p>
   
                 <ul class="govuk-list govuk-list--bullet">
-                  <li>a share code</li>
+                  <li>a share code, which will be generated on the next screen</li>
                   <li>the last 6 digits of your certificate number</li>
                   <li>a link: 
                   <a href="https://www.view-criminal-record-check.service.gov.uk/view-result/employer">https://www.view-criminal-record-check.service.gov.uk/view-result/employer</a>
@@ -67,17 +67,23 @@
                 </ul>
   
                 <p>
-                  When generating a share code you will also receive an email containing the web link and last 6 digits of your certification number
+                  When you generate a share code you will receive an email containing the last 6 digits of your certificate number and the web link.
                 </p>
+
+                {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+{{ govukWarningText({
+  text: "The share code you receive can only be used once.",
+  iconFallbackText: "Warning"
+}) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+        {{ govukButton({
+          text: "Continue",
+          attributes: {"onclick": "reveal()"}
+        }) }}
   
-                <div style="border-left: 10px solid #b1b4b6; padding: 1em 0 1em 1em; margin: 2em 0;" 
-                role="note" aria-label="Information" class="application-notice info-notice">
-                  <p>The share code you receive can only be used once</p>
-                </div>
-  
-                <a role="button" draggable="false" class="govuk-button"  data-module="govuk-button" onclick="reveal()">
-                  Continue
-                </a>
                 </div>
                 
                 <div id="containTwo" style="display: none;">
