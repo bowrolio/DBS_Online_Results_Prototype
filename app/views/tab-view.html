@@ -12,6 +12,20 @@
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
+
+  <div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="/start">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="/results_certificate_3">Your DBS Online Result</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="/tab-view">Share your DBS Online Result</a>
+      </li>
+    </ol>
+  </div>
 {% endblock %}
 {% block content %}
   <div class="govuk-grid-row">
@@ -52,7 +66,7 @@
                   You can share your DBS Online Result with someone else, like your employer.
                 </p>
   
-                <h2 class="govuk-heading-m">How to share your DBS Online Result</h2>
+                <h3 class="govuk-heading-m">How to share your DBS Online Result</h3>
                 
                 <p>
                   To share your DBS Online Result with someone else, you will need to send them:
@@ -117,115 +131,45 @@
                     <tr class="govuk-table__row">
                       <th scope="col" class="govuk-table__header">Shared with </th>
                       <th scope="col" class="govuk-table__header">Code</th>
-                      <th scope="col" class="govuk-table__header">Expiry</th>
-                      <th scope="col" class="govuk-table__header">Code used</th>
+                      <th scope="col" class="govuk-table__header">Status</th>
                       <th scope="col" class="govuk-table__header"></th>
                     </tr>
                   </thead>
                   <tbody class="govuk-table__body">
-                    <br>
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">North Tees Hospital</td>
-                      <td class="govuk-table__cell">8w Ds xn 72</td>
-                      <td class="govuk-table__cell">29/11/22</td>
-                      <td class="govuk-table__cell">No</td>
+                      <td class="govuk-table__cell">NHS</td>
+                      <td class="govuk-table__cell">8wDsxn72</td>
+                      <td class="govuk-table__cell">Active</td>
                       <td class="govuk-table__cell"><a href="#">Cancel</a></td>
                     </tr>
-                    <br>
+                    
                     <tr class="govuk-table__row">
-                      <td class="govuk-table__cell">Biggest Employ PLC</td>
-                      <td class="govuk-table__cell">O8 o9 j8 46</td>
-                      <td class="govuk-table__cell">16/08/22</td>
-                      <td class="govuk-table__cell">Yes</td>
-                      <td class="govuk-table__cell"><a href="#">Cancel</a></td>
+                      <td class="govuk-table__cell">DfE</td>
+                      <td class="govuk-table__cell">O8o9j846</td>
+                      <td class="govuk-table__cell">Used</td>
+                      <td class="govuk-table__cell"></td>
+                    </tr>
+                  
+                    <tr class="govuk-table__row">
+                      <td class="govuk-table__cell">DWP</td>
+                      <td class="govuk-table__cell">1u8t7F8T</td>
+                      <td class="govuk-table__cell">Used</td>
+                      <td class="govuk-table__cell"></td>
                     </tr>
                   </tbody>
                 </table>
             
               </div>
 
-
               <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="dispute-result">
-                <h2 class="govuk-heading-l">Dispute Result</h2>
-                <p>
-                  Contact us if you think your DBS certificate is wrong, including:
-                </p>
-                  <ul class="govuk-list govuk-list--bullet" style="margin-left: 20px">
-                    <li>incorrect personal details</li>
-                    <li>incorrect conviction information, or</li>
-                    <li>other discrepancies</li>
-                  </ul>
-  
-                  <div style="border-left: 10px solid #b1b4b6; padding: 1em 0 1em 1em; margin: 2em 0;" 
-                    role="note" aria-label="Information" class="application-notice info-notice">
-                  <p> If you receive a DBS certificate with a conviction that doesn't relate to you, 
-                    you should also inform the person who requested that you complete the form as soon as possible.
-                  </p>
-                  </div>
-              
-                
-  
-                
-                <h3 class="govuk-heading-m">By phone</h3>
-                <p>
-                  General enquiries: 03000 200 190
-                  <br>
-                  Monday to Friday, 9am to 5pm <br>
-                </p>
-  
-                <h3 class="govuk-heading-m">By post</h3>
-                <p>
-                  DBS customer services <br>
-                  PO Box 3961 <br>
-                  Royal Wootton Bassett <br>
-                  SN4 4HF <br>
-                  United Kingdom
-                </p>
-            
+                {% include "./partials/TABS_dispute_result.html" %}
               </div>
 
               <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="contact-dbs">
-                <h2 class="govuk-heading-l">Contact DBS</h2>
-                <p>
-                  Contact the Disclosure and Barring Service (DBS) if you need help when viewing or sharing your results.
-                  <br>
-                  <br>
-                  If you want to dispute your result select<a href="#dispute-result">
-                    dispute result
-                  </a>
-                  .   
-                </p>
-
-                <h3 class="govuk-heading-m">By email</h3>
-                <p>customerservices@dbs.gov.uk</p>
-                <p>Include your full name, address including postcode and telephone number.  Also include any DBS reference numbers if relevant.</p>
-                <h3 class="govuk-heading-m">By phone</h3>
-                <p>
-                  General enquiries: 03000 200 190 <br>
-                  Minicom: 03000 200 192 <br>
-                  International: +44 151 676 9390 <br>
-                  Welsh speaking: 03000 200 191 <br>
-                  <br>
-
-                  Monday to Friday, 8am to 6pm <br>
-                  Saturday 10am to 5pm
-                </p>
-
-                <h3 class="govuk-heading-m">By post</h3>
-                <p>
-                  DBS customer services <br>
-                  PO Box 3961 <br>
-                  Royal Wootton Bassett <br>
-                  SN4 4HF <br>
-                  United Kingdom
-                </p>
-            
+                {% include "./partials/TABS_contact_dbs.html" %}
               </div>
         </div>
     
-
-
-      
         <a class="govuk-link" style="font-weight: bold;" href="/results_certificate_3">&larr; Back to your DBS Online Result</a>
       
     </div>

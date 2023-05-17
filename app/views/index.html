@@ -4,15 +4,15 @@
 
 <h2 class="govuk-heading-s">Date: 17th August 2022 at 09:00:00 BST</h2>
 
-<h2 class="govuk-heading-s">To: tariq.doc@gmail.com </h2>
+<h2 class="govuk-heading-s">To: bill.carr@gmail.com </h2>
 
-<h2 class="govuk-heading-s">Subject: Sharing your Enhanced result </h2>
+<h2 class="govuk-heading-s">Subject: DBS Online Result available </h2>
 
 
 {% endblock %}
 
 
-{% extends "layout.html" %}
+{% extends "layout_email.html" %}
 
 {% block pageTitle %}
   Home – GOV.UK Prototype Kit
@@ -22,77 +22,52 @@
   <div class="govuk-grid-row">
 
     <div class="govuk-grid-column-three-thirds">
-     
 
-      <p>Application reference number: <strong>E2233445566</strong>
-      </p>
+      <p>Dear Bill Carr,</p>
 
-      <p>Dear Tariq,</p>
-      <p> Your Disclosure and Barring Service (DBS) check is complete and your DBS Online Result is ready to view.
-        You should save this email so you can return to it in the future. 
+      <p>Application reference number: E0123456789</p>
+
+      <p>Your Enhanced Disclosure and Barring Service (DBS) Check is complete and your DBS Online Result is ready to view online. 
       </p>
 
       <p>
-        Your certificate was issued on <strong> 25/07/2022 </strong> and your certificate number is: <strong>001122334455</strong>
+        Your DBS Online Result was issued on 08/12/2022 and your certificate number is: 001122334455.
       </p>
 
-      <p>Go to <a href="/start" id="start">https://dbs-or-alpha.herokuapp.com/start</a> to:</p>
+      <p>You should save this email so that you can return to it in future.</p>
+
+      <h2 class="govuk-heading-m">What you will need</h2>
+      <p>Before you select the link below to view your DBS Online Result, you will need:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>View your DBS Online Result</li>
-        <li>Share your DBS Online Result with someone else, like an employer</li>
-        <li>Cancel any share codes that haven't expired or been used</li>
+        <li>to sign into your GOV.UK One Login account. You can create a GOV.UK One Login account if you do not have one</li>
+        <li>your application number, detailed above in this email</li>
       </ul>
 
-      <h2 class="govuk-heading-m">What you'll need</h2>
-
-      <p>Before you view your DBS Online Result you'll need:</p>
-
+      <p>Go to <a href="/start" id="start">https://dbs-or-alpha.herokuapp.com/start</a> to:</p> to:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>Your mobile phone, as you will receive a text containing a security code to allow you to access the service</li>
-        <div style="border-left: 10px solid #b1b4b6; padding: 1em 0 1em 1em; margin: 2em 0;" 
-            role="note" aria-label="Information" class="application-notice info-notice">
-        <p>There is currently a problem sending one-time passcodes to users with international phone numbers. <br>
-          We are investigating this and will fix it as soon as possible. </p>
-        </div>
-        <li>Your certificate number detailed above in this email</li>
-        <li>
-            Your GOV.UK Sign In login details. You will be able to create an account if you do not already have one.  
-        </li>
+        <li>view your DBS Online Result</li>
+        <li>share your DBS Online Result with someone else, like an employer</li>
+        <li>cancel any share codes that haven’t expired or been used</li>
       </ul>
 
-      
+      <h2 class="govuk-heading-m">DBS Update Service</h2>
+      <p>You can register for the ((DBS Update Service)) using your application reference number.</p>
+      <p>The DBS Update Service allows you to keep your DBS check up to date. It costs £13 a year. There is no cost if you are a volunteer.</p>
 
       <h2 class="govuk-heading-m">Contact DBS</h2>
-
-      <p> 
-        If you have any questions, contact the DBS:
-      </p>
-
+      <p>If you have any questions, contact DBS:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>DBS Helpline: 03000 200 190 (Select option 2 and then press 1)</li>
-        <li>Minicom: 03000 200 912</li>
+        <li>DBS Helpline: 03000 200 190 (select option 2 and then press 1)</li>
+        <li>Minicom: 03000 200 192</li>
         <li>Welsh: 03000 200 191</li>
-        <li>International: +44 151 676 9390</li>
+        <li>International: +44151 676 9390</li>
+      </ul>
+      <p>Monday to Friday, 8am to 6pm (except public holidays)</p>
+      <p>Saturday, 10am to 5pm</p>
+      <p>Read the <a href="https://www.gov.uk/call-charges">call charges guidance</a> to find out how much this should cost.</p>
 
-        </ul>
-
-        <p> 
-          Opening times:
-        </p>
-  
-
-        <ul class="govuk-list govuk-list--bullet">
-          <li>Monday to Friday, 8am to 6pm</li>
-          <li>Saturday, 10am to 5pm</li>
-        </ul>
-
-
-
-        <h2 class="govuk-heading-m">Give Feedback</h2>
-        <p>
-          You can tell us what you think of the service through our <a href="https://give-feedback-dbs.service.gov.uk/#/en/e-result" id="feedback">feedback</a>  service <br>
-           
-        </p>
+      <h2 class="govuk-heading-m">Give feedback</h2>
+      <p>Use our <a href="https://give-feedback-dbs.service.gov.uk/#/en/e-result" id="feedback">feedback service</a> to tell us what you think of our service.</p>
     </div>
     
   </div>

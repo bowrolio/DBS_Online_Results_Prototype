@@ -47,19 +47,12 @@
 
       <h2 class="govuk-heading-m">What you will need</h2>
 
-      <p>To view your results, you will need your:</p>
+      <p>To view your DBS Online Result, you will need:</p>
 
       <ul class="govuk-list govuk-list--bullet">
-        <li>security code, which we will send to you by text</li>
-        <li>the application number, which we sent to you in the email</li>
-        <li><a href="http://gov.uk">GOV.UK</a> account login details. You will be able to create an account if you do not already have one</li>
+        <li>to sign into the GOV.UK One Login you provided when making your application</li>
+        <li>your application number, which we sent to you by email. You will only need this if you have more than one application in progress</li>
       </ul>
-
-      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-
-{{ govukInsetText({
-  text: "Your security code expires after 15 minutes and can only be used once. If you want to view your result again, you will need to get a new security code."
-}) }}
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
 

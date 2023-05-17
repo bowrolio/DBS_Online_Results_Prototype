@@ -12,16 +12,25 @@
     },
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }}
+
+  <div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="/start">DBS</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link">Your DBS Online Result</a>
+      </li>
+    </ol>
+  </div>
 {% endblock %}
 {% block content %}
-  <div class="govuk-grid-row">
+  <div class="govuk-grid-row results_certificate_3">
+    
 
-    <div class="govuk-width-container">
-      <div class="crest">
-        <h1 class="govuk-heading-m">
-          Disclosure and Barring Service
-      </h1>
-    </div>
+
+      <div style="margin-bottom: 40px; background-image: url(/public/images/Disclosure_and_Barring_Service_narrow.svg); background-size: contain; height:103px; background-repeat: no-repeat;"></div>
+    
     
       <div class="govuk-notification-banner govuk-notification-banner--success" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
         <div class="govuk-notification-banner__header">
@@ -103,7 +112,10 @@
         </thead>
         <tbody class="govuk-table__body">
           <tr class="govuk-table__row">
-            <td class="govuk-table__cell">TRAFFIC FLOW ADMINISTRATOR</td>
+            <td class="govuk-table__cell">TRAFFIC FLOW ADMINISTRATOR
+              <br>
+              PAID EMPLOYMENT - DBS FEE CHARGED
+            </td>
             <td class="govuk-table__cell">ADULT AND CHILDREN</td>
           </tr>
         </tbody>
@@ -178,5 +190,6 @@
   Use of DBS Online Result information
 The information contained in this DBS Online Result is confidential. All recipients must keep it secure and protect it from loss or unauthorised access."
 }) }}
+
 
 {% endblock %}
