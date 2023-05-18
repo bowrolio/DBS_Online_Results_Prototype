@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Sign in to your GOV.UK account – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="https://give-feedback-dbs.service.gov.uk/#/en/e-result" rel="noreferrer noopener" target="_blank">feedback (opens in a new tab)</a> will help us to improve it.'
+  }) }} 
+
+  <a href="/create_account" class="govuk-back-link">Back</a>
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form>
+      <h1 class="govuk-label-wrapper">
+        <label class="govuk-label govuk-label--l">
+          Enter your password
+        </label>
+        </h1>
+      
+      <div class="govuk-form-group">
+       
+        <label class="govuk-label" for="password">
+          Password
+        </label>
+          
+      <input class="govuk-input" id="password" name="password" type="password" spellcheck="false" autocomplete="false">
+      
+      </div>
+      
+      <a href="/sign_in_otp" role="button" class="govuk-button">
+        Continue
+      </a>
+      
+      </form>
+    
+  </div>
+
+</div>
+
+{% endblock %}

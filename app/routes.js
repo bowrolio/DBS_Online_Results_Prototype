@@ -19,8 +19,37 @@ const cms = {
 
 // Add your routes here - above the module.exports line
 
+// One Login
 router.get('/create_account', (req, res) => {
-  res.render('create_account');
+  res.render('one_login/create_account');
+});
+
+router.get('/sign_in', (req, res, _next) => {
+  let backButton = '/create_account';
+  res.render('one_login/sign_in', {
+    backButton: backButton,
+    emailAddr: req.session?.selectedCertificate?.emailAddress || '',
+    validation: null,
+  });
+});
+
+//sign in password
+router.get('/sign_in_verify', (req, res, _next) => {
+  let backButton = '/sign_in';
+  res.render('one_login/sign_in_verify', {
+    backButton: backButton,
+    password: req.session?.selectedCertificate?.signInPassword || '',
+    validation: null,
+  });
+});
+
+router.get('/sign_in_otp', (req, res, _next) => {
+  let backButton = '/sign_in_verify';
+  res.render('one_login/sign_in_otp', {
+    backButton: backButton,
+    password: req.session?.selectedCertificate?.signInPassword || '',
+    validation: null,
+  });
 });
 
 router.get('/test', (req, res) => {
@@ -129,14 +158,7 @@ router.post('/dashboard/enter-otp', (req, res, _next) => {
 });
 
 //sign in email
-router.get('/sign_in', (req, res, _next) => {
-  let backButton = '/create_account';
-  res.render('sign_in', {
-    backButton: backButton,
-    emailAddr: req.session?.selectedCertificate?.emailAddress || '',
-    validation: null,
-  });
-});
+
 
 router.post('/sign_in', (req, res, _next) => {
   let postEmail = req.body['subEmail'];
@@ -160,15 +182,7 @@ router.post('/sign_in', (req, res, _next) => {
   }
 });
 
-//sign in password
-router.get('/sign_in_verify', (req, res, _next) => {
-  let backButton = '/sign_in';
-  res.render('sign_in_verify', {
-    backButton: backButton,
-    password: req.session?.selectedCertificate?.signInPassword || '',
-    validation: null,
-  });
-});
+
 
 router.post('/sign_in_verify', (req, res, _next) => {
   let signInPass = req.body['userPass'];
