@@ -105,45 +105,14 @@
                 }) }}
             </div>
 
-
-            <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="manage-codes">
-              <h2 class="govuk-heading-l">Manage Share Codes</h2>
-              <table class="govuk-table">
-                <thead class="govuk-table__head">
-                  <tr class="govuk-table__row">
-                    <th scope="col" class="govuk-table__header">Shared with </th>
-                    <th scope="col" class="govuk-table__header">Code</th>
-                    <th scope="col" class="govuk-table__header">Expiry</th>
-                    <th scope="col" class="govuk-table__header">Code used</th>
-                    <th scope="col" class="govuk-table__header"></th>
-                  </tr>
-                </thead>
-                <tbody class="govuk-table__body">
-                  <br>
-                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">North Tees Hospital</td>
-                    <td class="govuk-table__cell">8w Ds xn 72</td>
-                    <td class="govuk-table__cell">29/11/22</td>
-                    <td class="govuk-table__cell">No</td>
-                    <td class="govuk-table__cell"><a href="#">Cancel</a></td>
-                  </tr>
-                  <br>
-                  <tr class="govuk-table__row">
-                    <td class="govuk-table__cell">Biggest Employ PLC</td>
-                    <td class="govuk-table__cell">O8 o9 j8 46</td>
-                    <td class="govuk-table__cell">16/08/22</td>
-                    <td class="govuk-table__cell">Yes</td>
-                    <td class="govuk-table__cell"><a href="#">Cancel</a></td>
-                  </tr>
-                </tbody>
-              </table>
-          
+            <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="manage-codes">
+              {% include "./partials/TABS_manage.html" %}
             </div>
-            <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="dispute-result">
+            <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="dispute-result">
               {% include "./partials/TABS_dispute_result.html" %}
             </div>
 
-            <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="contact-dbs">
+            <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="contact-dbs">
               {% include "./partials/TABS_contact_dbs.html" %}
             </div>
           </div>
