@@ -19,13 +19,13 @@
   <div class="govuk-breadcrumbs">
     <ol class="govuk-breadcrumbs__list">
       <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="https://www.gov.uk">Home</a>
+        <a class="govuk-breadcrumbs__link" href="/employer_enter_cert">Enter the share details</a>
       </li>
       <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="/start">DBS</a>
+        <a class="govuk-breadcrumbs__link" href="/employer_view_cert_2">View DBS Online Result</a>
       </li>
       <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link">View Complete</a>
+        <a class="govuk-breadcrumbs__link">View DBS Online Result Complete</a>
       </li>
     </ol>
   </div>
@@ -35,29 +35,38 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
-      {% from "govuk/components/panel/macro.njk" import govukPanel %}
-      {{ govukPanel({
-        titleText: "View  results complete",
-        html: ""
-      }) }}
-      <p>
-        We have let the applicant know you have viewed their result
-      </p>
-      <br>
-      <br>
+      {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
 
-      <h3 class="govuk-heading-m">Want to view the certificate again?</h3>
+{% set html %}
+<div style="text-align: center">
+  <h1 class="govuk-heading-xl" style="margin-bottom: 25px">DBS Online Result Viewed</h1>
+  <p class="govuk-body">Certificate reference number</p>
+  <p class="govuk-!-font-weight-bold" style="margin-bottom: 0;">XXXXXX176560</p>
+</div>
+
+{% endset %}
+
+{{ govukNotificationBanner({
+  html: html,
+  type: "success",
+  titleText: "Complete"
+}) }}
       <p>
-        If you want to view the result again you'll need to contact the person who shared it with you and ask them to send you a new share code.
+        We have let the applicant know you have viewed their DBS Online Result
       </p>
-      <br>
-      <br>
-      <h3 class="govuk-heading-s">Give feedback on your experience of the service</h3>
+      <p>If you need to view the DBS Online Result again you'll need a new share code from the applicant.</p>
+
+      <h2 class="govuk-heading-m">Give feedback</h2>
       <p>
-        Thank you for using this service. Give us <a class="govuk-link" href="https://give-feedback-dbs.service.gov.uk/#/en/e-result">feedback</a> to help us improve it. You'll need about 10 minutes to answer a few questions.
+You can tell us what you think of the service through our <a class="govuk-link" href="https://give-feedback-dbs.service.gov.uk/#/en/e-result">feedback form.</a>
       </p>
 
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+        text: "Finish",
+        href: "/employer_view_check"
+      }) }}  
     </div>
-
   </div>
 {% endblock %}

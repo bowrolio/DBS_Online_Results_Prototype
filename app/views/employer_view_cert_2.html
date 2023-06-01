@@ -12,156 +12,30 @@
     },
     html: 'This is a new service – your <a class="govuk-link" href="https://give-feedback-dbs.service.gov.uk/#/en/e-result">feedback</a> will help us to improve it.'
   }) }}
+
+  <div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link">DBS</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link">Someone's DBS Online Result</a>
+      </li>
+    </ol>
+  </div>
 {% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
 
-    <div class="govuk-width-container">
-      <div class="crest">
-        <h1 class="govuk-heading-m">
-          Disclosure and Barring Service
-      </h1>
-    </div>
-    
-      <div class="govuk-notification-banner govuk-notification-banner--success" role="region" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-        <div class="govuk-notification-banner__header">
-          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            DBS Check Result
-          </h2>
-        </div>
-        
-        <div class="govuk-notification-banner__content">
-          <p class="govuk-notification-banner__heading" id="banner-content">
-            This Enhanced DBS Check is clear
-          </p>
-          <p>This Enhanced DBS Check was issued on <strong>08/12/2022</strong>. It is only valid when viewed online. It is not valid if printed.</p>
-        </div>
-      </div>
+  {% include "./partials/RESULT_main.html" %}
 
-      <table class="govuk-table">
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header govuk-!-width-one-half-override">Certificate Number</th>
-            <th scope="col" class="govuk-table__header govuk-!-width-one-half-override">Application Number</th>
-          </tr>
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">001122334455</td>
-            <td class="govuk-table__cell">E0123456789</td>
-          </tr>
-        </tbody>
-      </table>
+  {% from "govuk/components/button/macro.njk" import govukButton %}
 
-      <table class="govuk-table">
-        <caption class="govuk-table__caption govuk-table__caption--m">Applicant Details</caption>
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header govuk-!-width-one-half-override">Name</th>
-            <th scope="col" class="govuk-table__header govuk-!-width-one-half-override">Other/Previous Names</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">BILL CARR</td>
-            <td class="govuk-table__cell">NONE DECLARED</td>
-          </tr>
-        </tbody>
-
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header govuk-!-width-one-half-override">Date of Birth</th>
-            <th scope="col" class="govuk-table__header govuk-!-width-one-half-override">Place of Birth</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">02 APRIL 1955</td>
-            <td class="govuk-table__cell">IPSWICH</td>
-          </tr>
-        </tbody>
-
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header govuk-!-width-one-half-override">Address</th>
-            <th scope="col" class="govuk-table__header govuk-!-width-one-half-override">Gender</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">10 KING ROAD, IP24 1QR</td>
-            <td class="govuk-table__cell">MALE</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <table class="govuk-table">
-        <caption class="govuk-table__caption govuk-table__caption--m">Position Details</caption>
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header govuk-!-width-one-half-override">Post Applied For</th>
-            <th scope="col" class="govuk-table__header govuk-!-width-one-half-override">Workforce Type</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">TRAFFIC FLOW ADMINISTRATOR</td>
-            <td class="govuk-table__cell">ADULT AND CHILDREN</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <table class="govuk-table">
-        <caption class="govuk-table__caption govuk-table__caption--m">Recorded Details</caption>
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Police records of convictions and cautions</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">NONE RECORDED</td>
-          </tr>
-        </tbody>
-
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">DBS Children's Barred List information</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">NONE RECORDED</td>
-          </tr>
-        </tbody>
-
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">DBS Adults' Barred List information</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">NONE RECORDED</td>
-          </tr>
-        </tbody>
-
-        <thead class="govuk-table__head">
-          <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Other relevant information disclosed at the Chief Police Officer(s) discretion</th>
-          </tr>
-        </thead>
-        <tbody class="govuk-table__body">
-          <tr class="govuk-table__row">
-            <td class="govuk-table__cell">NONE RECORDED</td>
-          </tr>
-        </tbody>
-      </table>
-              
-              <a href="/employer_view_complete" role="button" draggable="false" class="govuk-button govuk-button--start govuk-!-margin-top-2 govuk-!-margin-bottom-8"  data-module="govuk-button">
-                Finish viewing DBS Online Result
-              </a>
-            </div>
-            
+        {{ govukButton({
+          text: "Finish viewing DBS Online Result",
+          href: "/employer_view_complete"
+        }) }}            
         </div>
 
         {% from "govuk/components/details/macro.njk" import govukDetails %}
