@@ -1,0 +1,69 @@
+<div id="containOne">
+    <h1 class="govuk-heading-l">Share your DBS Online Result</h1>
+      <p>
+        You can share your DBS Online Result with someone else, like your employer.
+      </p>
+
+      <h3 class="govuk-heading-m">How to share your DBS Online Result</h3>
+      
+      <p>
+        To share your DBS Online Result with someone else, you will need to send them:
+      </p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>a share code, which will be generated on the next screen</li>
+        <li>the last 6 digits of your certificate number</li>
+        <li>a link: 
+        <a href="https://www.view-criminal-record-check.service.gov.uk/view-result/employer">https://www.view-criminal-record-check.service.gov.uk/view-result/employer</a>
+        </li>
+      </ul>
+
+      <p>
+        When you generate a share code you will receive an email containing the last 6 digits of your certificate number and the web link.
+      </p>
+
+      {% from "govuk/components/warning-text/macro.njk" import govukWarningText %}
+
+{{ govukWarningText({
+text: "The share code you receive can only be used once.",
+iconFallbackText: "Warning"
+}) }}
+
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{{ govukButton({
+text: "Continue",
+attributes: {"onclick": "reveal()"}
+}) }}
+
+      </div>
+      
+      <div id="containTwo" style="display: none;">
+        <div id="share-result">
+          <h2 class="govuk-heading-m">Tell us who you are sharing your DBS Online Result with</h2>
+          <div class="govuk-form-group">
+            <div class="govuk-grid-column-two-thirds" style="padding: 0;">
+            <label class="govuk-label" for="event-name">
+                Organisation name
+              </label>
+              
+              <input class="govuk-input" id="event-name" name="event-name" type="text">
+              </div>
+          </div>
+
+          {% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+          {% if data.version === 1 %}
+        {{ govukButton({
+        text: "Get share code",
+        href: "/share_OT_code_cert#share-result"
+        }) }}
+        {% else %}
+        {{ govukButton({
+          text: "Get share code",
+          href: "/tab-view-2-share-code#share-result"
+          }) }}
+          {% endif %}
+        </div>
+      </div>

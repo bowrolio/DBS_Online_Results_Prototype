@@ -56,14 +56,27 @@
           </div>
       </details>
 
+
+
       {% from "govuk/components/button/macro.njk" import govukButton %}
 
-      {{ govukButton({
-        text: "Continue",
-        href: "/results_certificate_3",
-        isStartButton: false
-      }) }}
-       
+      {% if data.version === 1 %}
+
+        {{ govukButton({
+          text: "Continue",
+          href: "/results_certificate_3",
+          isStartButton: false
+        }) }}
+
+      {% else %}
+
+        {{ govukButton({
+          text: "Continue",
+          href: "/tab-view-2",
+          isStartButton: false
+        }) }}
+
+      {% endif %}
     </div>
 
   </div>

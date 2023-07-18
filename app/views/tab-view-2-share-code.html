@@ -1,0 +1,70 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Your online result – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+
+    <div class="govuk-width-container">
+
+        <div class="govuk-tabs" data-module="govuk-tabs">
+            <h2 class="govuk-tabs__title">
+              Contents
+            </h2>
+            <ul class="govuk-tabs__list">
+            <li class="govuk-tabs__list-item">
+                <a class="govuk-tabs__tab" href="#show-result" onclick="selectTab('show-result')">
+                    Your DBS Online Result
+                </a>
+                </li>
+              <li class="govuk-tabs__list-item">
+                <a class="govuk-tabs__tab" href="#share-result" onclick="selectTab('share-result')">
+                  Share your DBS Online Result
+                </a>
+              </li>
+              <li class="govuk-tabs__list-item">
+                <a class="govuk-tabs__tab" href="#manage-codes" onclick="selectTab('manage-codes')">
+                  Manage Share Codes
+                </a>
+              </li>
+              <li class="govuk-tabs__list-item">
+                <a class="govuk-tabs__tab" href="#contact-dbs" onclick="selectTab('contact-dbs')">
+                  Contact DBS
+                </a>
+              </li>
+            </ul>
+
+            <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="show-result">
+                {% include "./partials/RESULT_main.html" %}
+              </div>
+
+              <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="share-result">
+                {% include "./partials/TABS_share_result_generated.html" %}
+              </div>
+
+
+              <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="manage-codes">
+                {% include "./partials/TABS_manage.html" %}
+              </div>
+
+              <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="contact-dbs">
+                {% include "./partials/TABS_contact_dbs.html" %}
+              </div>
+        </div>
+      
+    </div>
+</div>
+
+
+{% endblock %}

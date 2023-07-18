@@ -17,6 +17,16 @@ const cms = {
   },
 };
 
+router.get('/version1', (req, res) => {
+  req.session.data.version = 1;
+  res.redirect('/');
+});
+
+router.get('/version2', (req, res) => {
+  req.session.data.version = 2;
+  res.redirect('/');
+});
+
 // Add your routes here - above the module.exports line
 
 // One Login
