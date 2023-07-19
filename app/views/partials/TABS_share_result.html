@@ -11,11 +11,9 @@
       </p>
 
       <ul class="govuk-list govuk-list--bullet">
-        <li>a share code, which will be generated on the next screen</li>
+        <li>a share code, which will be generated when you select the 'Continue' button below</li>
         <li>the last 6 digits of your certificate number</li>
-        <li>a link: 
-        <a href="https://www.view-criminal-record-check.service.gov.uk/view-result/employer">https://www.view-criminal-record-check.service.gov.uk/view-result/employer</a>
-        </li>
+        <li>a web link</li>
       </ul>
 
       <p>
@@ -57,13 +55,22 @@ attributes: {"onclick": "reveal()"}
           {% if data.version === 1 %}
         {{ govukButton({
         text: "Get share code",
-        href: "/share_OT_code_cert#share-result"
+        href: "/share_OT_code_cert#share-result",
+        classes: "govuk-!-margin-bottom-0"
         }) }}
         {% else %}
         {{ govukButton({
           text: "Get share code",
-          href: "/tab-view-2-share-code#share-result"
+          href: "/tab-view-2-share-code#share-result",
+          classes: "govuk-!-margin-bottom-0"
           }) }}
           {% endif %}
+
+          {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{{ govukInsetText({
+  text: "	
+  When you select \"Get share code\" we will generate a share code which we will display on the next screen. We will also send you the email you need to forward to whoever you are sharing your DBS Online Result with. The email should arrive within a minute."
+}) }}
         </div>
       </div>

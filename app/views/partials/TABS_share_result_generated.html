@@ -1,9 +1,10 @@
+<h1 class="govuk-heading-l">How to share your DBS Online Result</h1>
 {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
 
 {% set html %}
   <h3 class="govuk-heading-l govuk-notification-banner__heading " style="text-align: center; font-size: 2.25rem;">8wDsxn72</h3>
   <div style="width: 100%; max-width: 100%;">
-  <button class="govuk-button govuk-button--secondary" data-module="govuk-button" style="display: block; margin: 0 auto; font-weight: bold;" onclick="(navigator.clipboard.writeText('8wDsxn72'))">
+  <button class="govuk-button govuk-button--secondary" data-module="govuk-button" style="display: block; margin: 0 auto;" onclick="(navigator.clipboard.writeText('8wDsxn72'))">
     Copy this share code
   </button>
   </div>
@@ -27,8 +28,8 @@
                 <h3 class="govuk-heading-m">What you need to do now</h3>
                 <p>You need to:</p>
                 <ul class="govuk-list govuk-list--bullet">
-                    <li>give the share code to the person you want to see your DBS Online Result</li>
-                    <li>forward the email we have just sent you, to the person you want to see your DBS Online Result. If you did not receive an email or you cannot find it you can <a href="/RB_cert_email">request another email</a></li>
+                    <li>forward the email we have just sent you, to the person you want to see your DBS Online Result. You should have already received the email but if you have not or you cannot find it you can <a href="/RB_cert_email">request another email</a></li>
+                    <li>give the share code to the person you want to see your DBS Online Result. You must send this separately to the email, for example by phone</li>
                 </ul>
 
 
@@ -36,10 +37,10 @@
 
                 {% if data.version === 1 %}
                   {{ govukInsetText({
-                    html: "<p>If you need to share your DBS Online Result with another person you will need to <a href='/tab-view'>request another share code</a></p>"
+                    html: "<p>If you need to share your DBS Online Result with another person you will need to <a href='/tab-view'>request another share code.</a> You can view all the share codes you generate on the 'Manage Share Codes' tab</p>"
                   }) }}
                 {% else %}
                 {{ govukInsetText({
-                  html: "<p>If you need to share your DBS Online Result with another person you will need to <a href='/tab-view-2#share-result'>request another share code</a></p>"
+                  html: "<p>If you need to share your DBS Online Result with another person you will need to <a href='/tab-view-2#share-result'>request another share code.</a> You can view all the share codes you generate on the 'Manage Share Codes' tab</p>"
                 }) }}
                 {% endif %}

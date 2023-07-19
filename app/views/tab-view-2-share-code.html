@@ -47,6 +47,28 @@
 
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="show-result">
                 {% include "./partials/RESULT_main.html" %}
+
+                {% from "govuk/components/button/macro.njk" import govukButton %}
+
+                <a href="#share-result" onclick="selectTab('share-result')" class="govuk-button">
+                  Share Result
+                </a>
+               
+                <p class="govuk-body"><strong>If you want to do anything else, like contact DBS or dispute the result, you can select <a class="govuk-link" href="#contact-dbs" onclick="selectTab('contact-dbs')">Continue.</a></strong></p>
+        
+              {% from "govuk/components/details/macro.njk" import govukDetails %}
+        
+        {{ govukDetails({
+          summaryText: "Disclaimer",
+          text: "This Disclosure and Barring Service (DBS) Online Result is a ((DBS Check level)) Criminal Record Certificate within the meaning of the following sections of the Police Act 1997 (the Act):
+        
+          ((section))
+          
+          ((section))
+        
+          Use of DBS Online Result information
+        The information contained in this DBS Online Result is confidential. All recipients must keep it secure and protect it from loss or unauthorised access."
+        }) }}
               </div>
 
               <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="share-result">
@@ -59,7 +81,7 @@
               </div>
 
               <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="contact-dbs">
-                {% include "./partials/TABS_contact_dbs.html" %}
+                {% include "./partials/TABS_contact_dbs_v2.html" %}
               </div>
         </div>
       
