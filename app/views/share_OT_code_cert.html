@@ -64,45 +64,7 @@
           </ul>
 
           <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="share-result">
-              {% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
-
-{% set html %}
-  <h3 class="govuk-heading-l govuk-notification-banner__heading " style="text-align: center; font-size: 2.25rem;">8wDsxn72</h3>
-  <div style="width: 100%; max-width: 100%;">
-  <button class="govuk-button govuk-button--secondary" data-module="govuk-button" style="display: block; margin: 0 auto; font-weight: bold;" onclick="(navigator.clipboard.writeText('8wDsxn72'))">
-    Copy this share code
-  </button>
-  </div>
-  
-  <p>This share code:</p>
-  <ul>
-    <li>is case sensitive</li>
-    <li>is valid for 21 days</li>
-    <li>can only be used once</li>
-  </ul>
-  
-{% endset %}
-
-{{ govukNotificationBanner({
-  html: html,
-  titleText: 'Share Code'
-}) }}
-              <br>
-
-
-                <h3 class="govuk-heading-m">What you need to do now</h3>
-                <p>You need to:</p>
-                <ul class="govuk-list govuk-list--bullet">
-                    <li>give the share code to the person you want to see your DBS Online Result</li>
-                    <li>forward the email we have just sent you, to the person you want to see your DBS Online Result. If you did not receive an email or you cannot find it you can <a href="/RB_cert_email">request another email</a></li>
-                </ul>
-
-
-                {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-
-                {{ govukInsetText({
-                  html: "<p>If you need to share your DBS Online Result with another person you will need to <a href='/tab-view'>request another share code</a></p>"
-                }) }}
+            {% include "./partials/TABS_share_result_generated.html" %}
             </div>
 
             <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="manage-codes">
