@@ -61,8 +61,11 @@
                 <div style="padding-top: 70px"></div>
                 {% endif %}
 
-               
-                <p class="govuk-body"><strong>If you want to do anything else, like contact DBS or dispute the result, you can select <a class="govuk-link" href="#contact-dbs" onclick="selectTab('contact-dbs')">Continue.</a></strong></p>
+                {% if data.version === 1 %}
+                  <p class="govuk-body"><strong>If you want to do anything else, like contact DBS or dispute the result, you can select <a class="govuk-link" href="#contact-dbs" onclick="selectTab('contact-dbs')">Continue.</a></strong></p>
+                {% else %}
+                <p class="govuk-body"><strong>If you want to dispute the result, you can select <a class="govuk-link" href="#contact-dbs" onclick="selectTab('contact-dbs')">Contact DBS</a> for details</strong></p>
+                {% endif %}
         
               {% from "govuk/components/details/macro.njk" import govukDetails %}
         
