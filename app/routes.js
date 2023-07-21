@@ -19,11 +19,19 @@ const cms = {
 
 router.get('/version1', (req, res) => {
   req.session.data.version = 1;
+  console.log("version 1 loaded");
   res.redirect('/');
 });
 
 router.get('/version2', (req, res) => {
   req.session.data.version = 2;
+  console.log("version 2 loaded");
+  res.redirect('/');
+});
+
+router.get('/version3', (req, res) => {
+  req.session.data.version = 3;
+  console.log("version 3 loaded");
   res.redirect('/');
 });
 

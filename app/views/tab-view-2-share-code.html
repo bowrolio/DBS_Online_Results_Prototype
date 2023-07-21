@@ -50,9 +50,15 @@
 
                 {% from "govuk/components/button/macro.njk" import govukButton %}
 
+                {% if data.version <= 2 %}
                 <a href="#share-result" onclick="selectTab('share-result')" class="govuk-button">
                   Share Result
                 </a>
+                {% endif %}
+
+                {% if data.version > 2 %}
+                <div style="padding-top: 70px"></div>
+                {% endif %}
                
                 <p class="govuk-body"><strong>If you want to do anything else, like contact DBS or dispute the result, you can select <a class="govuk-link" href="#contact-dbs" onclick="selectTab('contact-dbs')">Continue.</a></strong></p>
         
