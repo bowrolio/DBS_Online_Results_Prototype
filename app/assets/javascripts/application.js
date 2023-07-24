@@ -13,13 +13,7 @@ function ready(fn) {
   }
 }
 
-// Warn about using the kit in production
-if (window.console && window.console.info) {
-  window.console.info('GOV.UK Prototype Kit - do not use for production');
-}
-
 ready(() => {
-  window.GOVUKFrontend.initAll();
   const hashVal = window.location.href.split('#').pop();
   if (hashVal === 'share-result') {
     selectTab('share-result');
