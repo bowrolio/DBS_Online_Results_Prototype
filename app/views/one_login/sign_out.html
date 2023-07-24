@@ -1,0 +1,30 @@
+{% extends "../layouts/layout.html" %}
+
+{% block pageTitle %}
+  Signed out of your GOV.UK account – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block header %}
+  <!-- Blank header - no service name -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="https://give-feedback-dbs.service.gov.uk/#/en/e-result" rel="noreferrer noopener" target="_blank">feedback (opens in a new tab)</a> will help us to improve it.'
+  }) }} 
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">You have signed out</h1>
+        <p class="govuk-body"><a href="https://gov.uk">Go to the GOV.UK homepage</a> or <a href="https://www.gov.uk/sign-in">sign in</a> to your GOV.UK One Login.</p>
+      
+    </div>
+
+  </div>
+{% endblock %}
