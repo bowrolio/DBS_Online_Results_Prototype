@@ -1,21 +1,12 @@
-const express = require('express');
-const router = express.Router();
+//
+// For guidance on how to create routes see:
+// https://prototype-kit.service.gov.uk/docs/create-routes
+//
 
-// middleware import
-const {
-  validateWorkforceSelect,
-} = require('./middleware/validateWorkforceSelect');
-const {
-  invalidateCache,
-  loadPageData,
-  savePageData,
-} = require('./middleware/utilsMiddleware');
+const govukPrototypeKit = require('govuk-prototype-kit')
+const router = govukPrototypeKit.requests.setupRouter()
 
-const cms = {
-  generalContent: {
-    continue: 'Continue',
-  },
-};
+// Add your routes here
 
 router.get('/version1', (req, res) => {
   req.session.data.version = 1;
@@ -35,7 +26,6 @@ router.get('/version3', (req, res) => {
   res.redirect('/');
 });
 
-// Add your routes here - above the module.exports line
 
 // One Login
 router.get('/create_account', (req, res) => {
@@ -515,4 +505,3 @@ const generateAccounts = (req, refresh) => {
     generateAccounts(req, false);
   }
 };
-module.exports = router;
