@@ -1,5 +1,5 @@
 
-{% extends "layout.html" %}
+{% extends "layouts/layout.html" %}
 
 {% block pageTitle %}
   Home – GOV.UK Prototype Kit
@@ -28,13 +28,13 @@
 {% block content %}
 <div class="govuk-grid-row">
 
-  {% include "./partials/RESULT_main.html" %}
+  {% include "../partials/RESULT_main.html" %}
 
   {% from "govuk/components/button/macro.njk" import govukButton %}
 
         {{ govukButton({
           text: "Finish viewing DBS Online Result",
-          href: "/employer_view_complete"
+          href: "/employer/employer_view_complete"
         }) }}            
         </div>
 

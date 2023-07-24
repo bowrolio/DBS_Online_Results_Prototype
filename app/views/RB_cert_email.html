@@ -11,7 +11,7 @@
 {% endblock %}
 
 
-{% extends "layout.html" %}
+{% extends "layouts/layout.html" %}
 
 {% block pageTitle %}
   Email with share details – {{ serviceName }} – GOV.UK Prototype Kit
@@ -32,13 +32,13 @@
       <ul class="govuk-list govuk-list--bullet">
         <li>a share code</li>
         <li>the last six digits of your certificate number ******334455</li>
-        <li>the web link: <a href="/employer_view_check"> https://dbs-or-alpha.herokuapp.com/employer_view_check</a></li>
+        <li>the web link: <a href="/employer/employer_view_check"> https://dbs-or-alpha.herokuapp.com/employer/employer_view_check</a></li>
       </ul>
       <p>You can forward this email to them but it is important to send the share code separately. For example, by phone. You can only use the share code once and it must be used within 21 days.</p>
 
       <p>They need to:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li>select the web link: <a href="/employer_view_check"> https://dbs-or-alpha.herokuapp.com/employer_view_check</a></li>
+        <li>select the web link: <a href="/employer/employer_view_check"> https://dbs-or-alpha.herokuapp.com/employer/employer_view_check</a></li>
         <li>copy and paste the last six digits of your certificate number and share code into the right sections</li>
       </ul>
       <p>We let applicants know when their DBS Online Result has been viewed. A share code can only be used once and must be used within 21 days. Applicants can get a new share code if their DBS Online Result needs to be viewed again.</p>

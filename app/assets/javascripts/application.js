@@ -20,7 +20,6 @@ if (window.console && window.console.info) {
 
 ready(() => {
   window.GOVUKFrontend.initAll();
-  window.MOJFrontend.initAll();
   const hashVal = window.location.href.split('#').pop();
   if (hashVal === 'share-result') {
     selectTab('share-result');

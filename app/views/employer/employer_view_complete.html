@@ -1,11 +1,6 @@
-{% extends "layout.html" %}
+{% extends "layouts/layout.html" %}
 {% block pageTitle %}
   View results complete – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
-
-{% block header %}
-  <!-- Blank header with no service name for the start page -->
-  {{ govukHeader() }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,10 +14,10 @@
   <div class="govuk-breadcrumbs">
     <ol class="govuk-breadcrumbs__list">
       <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="/employer_enter_cert">Enter the share details</a>
+        <a class="govuk-breadcrumbs__link" href="/employer/employer_enter_cert">Enter the share details</a>
       </li>
       <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="/employer_view_cert_2">View DBS Online Result</a>
+        <a class="govuk-breadcrumbs__link" href="/employer/employer_view_cert">View DBS Online Result</a>
       </li>
       <li class="govuk-breadcrumbs__list-item">
         <a class="govuk-breadcrumbs__link">View DBS Online Result Complete</a>
@@ -65,7 +60,7 @@ You can tell us what you think of the service through our <a class="govuk-link" 
 
       {{ govukButton({
         text: "Finish",
-        href: "/employer_view_check"
+        href: "/employer/employer_view_check"
       }) }}  
     </div>
   </div>

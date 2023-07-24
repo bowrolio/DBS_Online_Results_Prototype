@@ -1,12 +1,7 @@
-{% extends "layout.html" %}
+{% extends "layouts/layout.html" %}
 
 {% block pageTitle %}
   View someone's DBS check result – {{ serviceName }} – GOV.UK Prototype Kit
-{% endblock %}
-
-{% block header %}
-  <!-- Blank header with no service name for the start page -->
-  {{ govukHeader() }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -65,7 +60,7 @@
 {{ govukButton({
   text: "Start",
   isStartButton: true,
-  href: "/employer_enter_cert"
+  href: "/employer/employer_enter_cert"
 }) }}
       
       </div>
