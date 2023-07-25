@@ -8,6 +8,14 @@ const router = govukPrototypeKit.requests.setupRouter()
 
 // Add your routes here
 
+router.get('/', (req, res) => {
+  if (!req.session.data.version) {
+    res.redirect('/version');
+  } else {
+    res.render('/index');
+  }
+})
+
 router.get('/version1', (req, res) => {
   req.session.data.version = 1;
   console.log("version 1 loaded");
