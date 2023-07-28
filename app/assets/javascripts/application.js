@@ -45,11 +45,6 @@ function selectTab(id) {
   document.getElementById(id).style.display = 'block';
 }
 
-function reveal() {
-  document.getElementById('containOne').style.display = 'none';
-  document.getElementById('containTwo').style.display = 'block';
-}
-
 function copyLink(event) {
   navigator.clipboard.writeText(event.target.dataset.link);
 }

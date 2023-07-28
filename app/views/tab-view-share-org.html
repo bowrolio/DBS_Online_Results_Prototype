@@ -1,0 +1,85 @@
+
+{% extends "layouts/layout.html" %}
+
+{% block pageTitle %}
+  Your online result – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+  }) }}
+
+  <div class="govuk-breadcrumbs">
+    <ol class="govuk-breadcrumbs__list">
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="/start">Home</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="/results_certificate_3">Your DBS Online Result</a>
+      </li>
+      <li class="govuk-breadcrumbs__list-item">
+        <a class="govuk-breadcrumbs__link" href="/tab-view">Share your DBS Online Result</a>
+      </li>
+    </ol>
+  </div>
+{% endblock %}
+{% block content %}
+  <div class="govuk-grid-row">
+
+    <div class="govuk-width-container">
+
+        <div class="govuk-tabs" data-module="govuk-tabs">
+            <h2 class="govuk-tabs__title">
+              Contents
+            </h2>
+            <ul class="govuk-tabs__list">
+              <li class="govuk-tabs__list-item">
+                <a class="govuk-tabs__tab" href="#share-result" onclick="selectTab('share-result')">
+                  Share your DBS Online Result
+                </a>
+              </li>
+              <li class="govuk-tabs__list-item">
+                <a class="govuk-tabs__tab" href="#manage-codes" onclick="selectTab('manage-codes')">
+                  Manage Share Codes
+                </a>
+              </li>
+              <li class="govuk-tabs__list-item">
+                <a class="govuk-tabs__tab" href="#dispute-result" onclick="selectTab('dispute-result')">
+                  Dispute Result
+                </a>
+              </li>
+              <li class="govuk-tabs__list-item">
+                <a class="govuk-tabs__tab" href="#contact-dbs" onclick="selectTab('contact-dbs')">
+                  Contact DBS
+                </a>
+              </li>
+            </ul>
+
+            <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="share-result">
+              {% include "./partials/TABS_share_result_org.html" %}
+              </div>
+
+              <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="manage-codes">
+                {% include "./partials/TABS_manage.html" %}
+              </div>
+
+              <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="dispute-result">
+                {% include "./partials/TABS_dispute_result.html" %}
+              </div>
+
+              <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="contact-dbs">
+                {% include "./partials/TABS_contact_dbs.html" %}
+              </div>
+        </div>
+    
+        <a class="govuk-link" style="font-weight: bold;" href="/results_certificate_3">&larr; Back to your DBS Online Result</a>
+      
+    </div>
+</div>
+
+
+{% endblock %}

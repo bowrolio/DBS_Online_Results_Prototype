@@ -37,10 +37,10 @@
 
                 {% if data.version === 1 %}
                   {{ govukInsetText({
-                    html: "<p>If you need to share your DBS Online Result with another person you will need to <a href='/tab-view'>request another share code.</a> You can view all the share codes you generate on the 'Manage Share Codes' tab</p>"
+                    html: "<p>If you need to share your DBS Online Result with another person you will need to <a href='/tab-view-share-org'>request another share code.</a> You can view all the share codes you generate on the 'Manage Share Codes' tab</p>"
                   }) }}
                 {% else %}
                 {{ govukInsetText({
-                  html: "<p>If you need to share your DBS Online Result with another person you will need to <a href='/tab-view-2#share-result'>request another share code.</a> You can view all the share codes you generate on the 'Manage Share Codes' tab</p>"
+                  html: "<p>If you need to share your DBS Online Result with another person you will need to <a href='/tab-view-2-share-org#share-result'>request another share code.</a> You can view all the share codes you generate on the 'Manage Share Codes' tab</p>"
                 }) }}
                 {% endif %}
