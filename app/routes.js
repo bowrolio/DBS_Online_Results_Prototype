@@ -16,21 +16,24 @@ router.get('/', (req, res) => {
   }
 })
 
-router.get('/version1', (req, res) => {
+router.get('/version1/:hj', (req, res) => {
   req.session.data.version = 1;
-  console.log("version 1 loaded");
+  req.session.data.hj = req.params.hj === 'on' ? true : false;
+  console.log(`version 1 loaded, hj: ${req.session.data.hj}`);
   res.redirect('/');
 });
 
-router.get('/version2', (req, res) => {
+router.get('/version2/:hj', (req, res) => {
   req.session.data.version = 2;
-  console.log("version 2 loaded");
+  req.session.data.hj = req.params.hj === 'on' ? true : false;
+  console.log(`version 2 loaded, hj: ${req.session.data.hj}`);
   res.redirect('/');
 });
 
-router.get('/version3', (req, res) => {
+router.get('/version3/:hj', (req, res) => {
   req.session.data.version = 3;
-  console.log("version 3 loaded");
+  req.session.data.hj = req.params.hj === 'on' ? true : false;
+  console.log(`version 3 loaded, hj: ${req.session.data.hj}`);
   res.redirect('/');
 });
 

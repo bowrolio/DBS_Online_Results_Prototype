@@ -24,7 +24,7 @@
               Contents
             </h2>
             <ul class="govuk-tabs__list">
-            <li class="govuk-tabs__list-item">
+            <li class="govuk-tabs__list-item" data-hj-suppress>
                 <a class="govuk-tabs__tab" href="#show-result" onclick="selectTab('show-result')">
                     Your DBS Online Result
                 </a>
@@ -82,22 +82,38 @@
         }) }}
               </div>
 
-              <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="share-result">
+              <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="share-result" data-hj-suppress>
                 {% include "./partials/TABS_share_result.html" %}
               </div>
 
 
-              <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="manage-codes">
+              <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="manage-codes" data-hj-suppress>
                 {% include "./partials/TABS_manage.html" %}
               </div>
 
-              <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="contact-dbs">
+              <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="contact-dbs" data-hj-suppress>
                 {% include "./partials/TABS_contact_dbs_v2.html" %}
               </div>
         </div>
       
     </div>
 </div>
+
+{% if data.hj == true %}
+
+<!-- Hotjar Tracking Code for DORS - Private Beta -->
+<script>
+  (function(h,o,t,j,a,r){
+      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+      h._hjSettings={hjid:3598247,hjsv:6};
+      a=o.getElementsByTagName('head')[0];
+      r=o.createElement('script');r.async=1;
+      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+      a.appendChild(r);
+  })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+</script>
+
+{% endif %}
 
 
 {% endblock %}
