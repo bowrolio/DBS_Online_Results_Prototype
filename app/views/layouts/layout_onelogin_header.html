@@ -1,7 +1,7 @@
-{% from "../one_login/header/macro.njk" import govukOneLoginHeader %}
 {% extends "govuk-prototype-kit/layouts/unbranded.njk" %}
+{% from "../one_login/header/service-header.njk" import govukOneLoginHeader %}
 
 <!-- Override default header with gov uk one login header -->
 {% block header %}
-    {{ govukOneLoginHeader({}) }}
+    {{ govukOneLoginHeader(data.hj) }}
 {% endblock %}
