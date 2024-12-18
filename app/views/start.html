@@ -13,22 +13,6 @@
     html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
   }) }} 
 
-  {% if data.version === 1 %}
-
-  <div class="govuk-breadcrumbs">
-    <ol class="govuk-breadcrumbs__list">
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="https://www.gov.uk">Home</a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="/start">DBS</a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link">View your DBS Online Result</a>
-      </li>
-    </ol>
-  </div>
-  {% endif %}
 {% endblock %}
 
 {% block content %}
@@ -44,18 +28,20 @@
 
       <ul class="govuk-list govuk-list--bullet">
         <li>view your DBS Online Result</li>
-        <li>manage sharing your DBS Online Result</li>
-        <li>contact us if you believe any information on your DBS Online Result is incorrect</li>
+        <li>share your result with someone else, like an employer</li>
+        <li>find out how to contact us if you believe any information on your result is incorrect</li>
       </ul>
 
-      <h2 class="govuk-heading-m">What you will need</h2>
+      <h2 class="govuk-heading-m">Viewing your result</h2>
 
-      <p>To view your DBS Online Result, you will need:</p>
+      <p>To view your result you will need to sign in to the GOV.UK One Login you created when you applied.</p>
+      <p>If you have more than one application you will also need your application number, which we have emailed to you.</p>
 
-      <ul class="govuk-list govuk-list--bullet">
-        <li>to sign into the GOV.UK One Login you provided when making your application</li>
-        <li>your application number, which we sent to you by email. You will only need this if you have more than one application in progress</li>
-      </ul>
+      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+      {{ govukInsetText({
+        text: "We will sign you out if you are inactive for 15 minutes. This is to help protect your information. Your information will not be saved and you will need to start again."
+      }) }}
 
       {% from "govuk/components/button/macro.njk" import govukButton %}
 

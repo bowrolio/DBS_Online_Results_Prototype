@@ -22,7 +22,7 @@
             <h2 class="govuk-tabs__title">
               Contents
             </h2>
-            <ul class="govuk-tabs__list">
+            <ul class="govuk-tabs__list" style="display: none;">
             <li class="govuk-tabs__list-item">
                 <a class="govuk-tabs__tab" href="#show-result" onclick="selectTab('show-result')">
                     Your DBS Online Result
@@ -45,26 +45,22 @@
               </li>
             </ul>
 
-            <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="show-result">
+            <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" style="border: none;" id="show-result">
                 {% include "./partials/RESULT_main.html" %}
 
                 {% from "govuk/components/button/macro.njk" import govukButton %}
 
-                {% if data.version <= 2 %}
+
                 <a href="#share-result" onclick="selectTab('share-result')" class="govuk-button">
                   Share Result
                 </a>
-                {% endif %}
+                
 
-                {% if data.version > 2 %}
-                <div style="padding-top: 70px"></div>
-                {% endif %}
-               
-                {% if data.version === 1 %}
-                  <p class="govuk-body"><strong>If you want to do anything else, like contact DBS or dispute the result, you can select <a class="govuk-link" href="#contact-dbs" onclick="selectTab('contact-dbs')">Continue.</a></strong></p>
-                {% else %}
-                <p class="govuk-body"><strong>If you want to dispute the result, you can select <a class="govuk-link" href="#contact-dbs" onclick="selectTab('contact-dbs')">Contact DBS</a> for details</strong></p>
-                {% endif %}
+                {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+                {{ govukInsetText({
+                  html: "<p>You can <a onclick='selectTab(\"contact-dbs\")' href='#contact-dbs'>contact DBS</a> if you need to report a mistake or dispute the result.</p>"
+                }) }}
         
               {% from "govuk/components/details/macro.njk" import govukDetails %}
         
@@ -81,16 +77,16 @@
         }) }}
               </div>
 
-              <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="share-result">
+              <div class="govuk-tabs__panel govuk-tabs__panel--hidden" style="border: none;" id="share-result">
                 {% include "./partials/TABS_share_result_generated.html" %}
               </div>
 
 
-              <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="manage-codes">
+              <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" style="border: none;" id="manage-codes">
                 {% include "./partials/TABS_manage.html" %}
               </div>
 
-              <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" id="contact-dbs">
+              <div class="govuk-tabs__panel govuk-tabs__panel--hidden tabs-mobile" style="border: none;" id="contact-dbs">
                 {% include "./partials/TABS_contact_dbs_v2.html" %}
               </div>
         </div>

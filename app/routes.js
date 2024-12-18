@@ -6,37 +6,13 @@
 const govukPrototypeKit = require('govuk-prototype-kit')
 const router = govukPrototypeKit.requests.setupRouter()
 
-// Add your routes here
-
 router.get('/', (req, res) => {
-  if (!req.session.data.version) {
-    res.redirect('/version');
-  } else {
-    res.render('/index');
-  }
-})
-
-router.get('/version1/:hj', (req, res) => {
-  req.session.data.version = 1;
-  req.session.data.hj = req.params.hj === 'on' ? true : false;
-  console.log(`version 1 loaded, hj: ${req.session.data.hj}`);
-  res.redirect('/');
+  res.render('/journeys');
 });
 
-router.get('/version2/:hj', (req, res) => {
-  req.session.data.version = 2;
-  req.session.data.hj = req.params.hj === 'on' ? true : false;
-  console.log(`version 2 loaded, hj: ${req.session.data.hj}`);
-  res.redirect('/');
+router.get('/applicant', (req, res) => {
+  res.render("/index");
 });
-
-router.get('/version3/:hj', (req, res) => {
-  req.session.data.version = 3;
-  req.session.data.hj = req.params.hj === 'on' ? true : false;
-  console.log(`version 3 loaded, hj: ${req.session.data.hj}`);
-  res.redirect('/');
-});
-
 
 // One Login
 router.get('/create_account', (req, res) => {

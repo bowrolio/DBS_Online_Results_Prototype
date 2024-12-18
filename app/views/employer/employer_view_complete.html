@@ -11,19 +11,6 @@
     html: 'This is a new service – your <a class="govuk-link" href="https://give-feedback-dbs.service.gov.uk/#/en/e-result">feedback</a> will help us to improve it.'
   }) }} 
 
-  <div class="govuk-breadcrumbs">
-    <ol class="govuk-breadcrumbs__list">
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="/employer/employer_enter_cert">Enter the share details</a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link" href="/employer/employer_view_cert">View DBS Online Result</a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link">View DBS Online Result Complete</a>
-      </li>
-    </ol>
-  </div>
 {% endblock %}
 
 {% block content %}
@@ -34,7 +21,7 @@
 
 {% set html %}
 <div style="text-align: center">
-  <h1 class="govuk-heading-xl" style="margin-bottom: 25px">DBS Online Result Viewed</h1>
+  <h1 class="govuk-heading-xl" style="margin-bottom: 25px">DBS Online Result viewed</h1>
   <p class="govuk-body">Certificate reference number</p>
   <p class="govuk-!-font-weight-bold" style="margin-bottom: 0;">XXXXXX176560</p>
 </div>
@@ -44,16 +31,16 @@
 {{ govukNotificationBanner({
   html: html,
   type: "success",
-  titleText: "Complete"
+  titleText: "Success"
 }) }}
       <p>
-        We have let the applicant know you have viewed their DBS Online Result
+        We have told the applicant you have viewed their result.
       </p>
-      <p>If you need to view the DBS Online Result again you'll need a new share code from the applicant.</p>
+      <p>If you need to view the result again you will need a new share code from the applicant.</p>
 
       <h2 class="govuk-heading-m">Give feedback</h2>
       <p>
-You can tell us what you think of the service through our <a class="govuk-link" href="https://give-feedback-dbs.service.gov.uk/#/en/e-result">feedback form.</a>
+        Please <a class="govuk-link" href="https://give-feedback-dbs.service.gov.uk/#/en/e-result" target="_blank">use our feedback form (opens in a new tab)</a> to tell us what you think of our service.
       </p>
 
       {% from "govuk/components/button/macro.njk" import govukButton %}

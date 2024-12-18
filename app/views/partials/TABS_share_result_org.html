@@ -1,37 +1,21 @@
 
-    <div id="share-result">
-      <h2 class="govuk-heading-m">Tell us who you are sharing your DBS Online Result with</h2>
-      <div class="govuk-form-group">
-        <div class="govuk-grid-column-two-thirds" style="padding: 0;">
-        <label class="govuk-label" for="event-name">
-            Organisation name
-          </label>
-          
-          <input class="govuk-input" id="event-name" name="event-name" type="text">
-          </div>
+{% from "govuk/components/button/macro.njk" import govukButton %}
+<div id="share-result">
+  <h2 class="govuk-heading-m">Tell us who you are sharing your DBS Online Result with</h2>
+  <div class="govuk-form-group">
+    <div class="govuk-grid-column-two-thirds" style="padding: 0;">
+    <label class="govuk-label" for="event-name" style="color: #505a5f;">
+        Organisation name
+      </label>
+      
+      <input class="govuk-input" id="event-name" name="event-name" type="text">
       </div>
+  </div>
 
-      {% from "govuk/components/button/macro.njk" import govukButton %}
-
-
-      {% if data.version === 1 %}
-    {{ govukButton({
+  {{ govukButton({
     text: "Get share code",
-    href: "/share_OT_code_cert#share-result",
+    href: "/tab-view-2-share-code#share-result",
     classes: "govuk-!-margin-bottom-0"
     }) }}
-    {% else %}
-    {{ govukButton({
-      text: "Get share code",
-      href: "/tab-view-2-share-code#share-result",
-      classes: "govuk-!-margin-bottom-0"
-      }) }}
-      {% endif %}
-
-      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
-
-{{ govukInsetText({
-text: "	
-When you select \"Get share code\" we will generate a share code which we will display on the next screen. We will also send you the email you need to forward to whoever you are sharing your DBS Online Result with. The email should arrive within a minute."
-}) }}
-    </div>
+ 
+</div>

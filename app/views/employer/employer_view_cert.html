@@ -13,16 +13,6 @@
     html: 'This is a new service – your <a class="govuk-link" href="https://give-feedback-dbs.service.gov.uk/#/en/e-result">feedback</a> will help us to improve it.'
   }) }}
 
-  <div class="govuk-breadcrumbs">
-    <ol class="govuk-breadcrumbs__list">
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link">DBS</a>
-      </li>
-      <li class="govuk-breadcrumbs__list-item">
-        <a class="govuk-breadcrumbs__link">Someone's DBS Online Result</a>
-      </li>
-    </ol>
-  </div>
 {% endblock %}
 
 {% block content %}
@@ -33,7 +23,7 @@
   {% from "govuk/components/button/macro.njk" import govukButton %}
 
         {{ govukButton({
-          text: "Finish viewing DBS Online Result",
+          text: "Finish viewing result",
           href: "/employer/employer_view_complete"
         }) }}            
         </div>

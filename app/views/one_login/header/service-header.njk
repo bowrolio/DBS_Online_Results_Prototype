@@ -1,21 +1,23 @@
 {% macro govukOneLoginHeader (data) %}
-  <!--
-  
-  {% set navigationItems = navigationItems if navigationItems else [ {
-      href: "#",
-      text: 'service link 1',
-      id: 'servicelink1'
-  },{
-      href: "#",
-      text: 'service link 2',
-      id: 'servicelink2'
-  },{
-      href: "#",
-      text: 'service link 3',
-      id: 'servicelink3'
-  }] %} -->
 
-  {% set navigationItems = null %}
+  {% set navigationItems = navigationItems if navigationItems else [ {
+      id: 'show-results',
+      text: "Your DBS Online Result",
+      href: '#show-result'
+  },{
+      href: "#share-result",
+      text: 'Share your DBS Online Result',
+      id: 'share-results'
+  },{
+      href: "#manage-codes",
+      text: 'Manage Share Codes',
+      id: 'manage-codess'
+  }, {
+      href: "#contact-dbs",
+      text: 'Contact DBS',
+      id: 'contact-dbss'
+  }] %}
+
   <!-- Disables navigation -->
 
   {% set serviceName = serviceName if serviceName else "Name of service" %}
@@ -133,7 +135,7 @@
         <div
           class="service-header__container">
           <!-- The name of your service goes here -->
-          <h2 class="service-header__heading">View your DBS result</h2>
+          <h2 class="service-header__heading">DBS Online Result Service</h2>
           {% if navigationItems %}
             <div>
               <!-- Label the toggle button appropriately (you might want to use the name of your service) to provide support for
@@ -164,10 +166,8 @@
                     <li
                       class="service-header__nav-list-item {{ 'service-header__nav-list-item--active' if (item.id == activeLinkId) else '' }} ">
                       <!-- Use the aria-current="page" attribute on the anchor tag -->
-                      <a class="service-header__nav-list-item-link" {% if (item.id == activeLinkId) %} aria-current="page" {% endif %} href="
-                          
-                                                                                                                                                                                                                                                                                                {{ item.href }}  ">
 
+                      <a {% if (item.id == 'show-results') %} onclick="selectTab('show-result')" {% endif %} {% if (item.id == 'share-results') %} onclick="selectTab('share-result')" {% endif %} {% if (item.id == 'manage-codess') %} onclick="selectTab('manage-codes')" {% endif %} {% if (item.id == 'contact-dbss') %} onclick="selectTab('contact-dbs')" {% endif %} class="service-header__nav-list-item-link" {% if (item.id == activeLinkId) %} aria-current="page" {% endif %} href="{{ item.href }}">
                         {{ item.text }}
                       </a>
                     </li>

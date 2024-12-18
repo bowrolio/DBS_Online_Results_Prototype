@@ -9,13 +9,6 @@
   </button>
   </div>
   
-  <p>This share code:</p>
-  <ul>
-    <li>is case sensitive</li>
-    <li>is valid for 21 days</li>
-    <li>can only be used once</li>
-  </ul>
-  
 {% endset %}
 
 {{ govukNotificationBanner({
@@ -24,32 +17,36 @@
 }) }}
               <br>
 
+              <p>Your share code is:</p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>single use</li>
+                <li>case sensitive</li>
+                <li>only valid for 21 days</li>
+              </ul>
+
 
                 <h3 class="govuk-heading-m">What you need to do now</h3>
                 <p>You need to:</p>
                 <ul class="govuk-list govuk-list--bullet">
-                    <li>forward the email we have just sent you, to the person you want to see your DBS Online Result. You should have already received the email but if you have not or you cannot find it you can <a href="/RB_cert_email">request another email</a></li>
-                    <li>give the share code to the person you want to see your DBS Online Result. You must send this separately to the email, for example by phone</li>
+                  <li>send the email we have just sent you, to the person you want to see your result</li>
+                  <li>give the share code to the person you want to see your result</li>
                 </ul>
+
+                <p>You can <a href="/RB_cert_email">request another email</a> if you have not received the email or you cannot find it. For your security you must send the share code separately to the email, for example by text message.</p>
 
 
                 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
-                {% if data.version === 1 %}
                   {{ govukInsetText({
-                    html: "<p>If you need to share your DBS Online Result with another person you will need to <a href='/tab-view-share-org'>request another share code.</a> You can view all the share codes you generate on the 'Manage Share Codes' tab</p>"
+                    text: "You can view all the share codes you generate on the ‘Manage Share Codes’ tab. You can also cancel any unused share codes."
                   }) }}
-                {% endif %}
 
-                {% if data.version >= 2 %}
-                <p>You can view all the share codes you generate on the 'Manage Share Codes' tab.</p>
                 {% from "govuk/components/button/macro.njk" import govukButton %}
                 {{ govukButton({
                   text: "Get another share code",
                   href: "/tab-view-2-share-org#share-result"
                   }) }}
                 
-                {% endif %}
 
 
 

@@ -43,6 +43,10 @@ function selectTab(id) {
   }
   
   document.getElementById(id).style.display = 'block';
+  setTimeout(() => {
+    document.body.scrollTop = document.documentElement.scrollTop = 0;
+  }, 0);
+  
 }
 
 function copyLink(event) {
