@@ -1,0 +1,68 @@
+
+{% extends "layouts/layout_employer.html" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% block pageTitle %}
+  Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service – your <a class="govuk-link" href="https://give-feedback-dbs.service.gov.uk/#/en/e-result">feedback</a> will help us to improve it.'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <img src="/public/images/Disclosure_and_Barring_Service.svg" style="margin-bottom: 40px;">
+
+    <h1 class="govuk-heading-l">Online Result receipt</h1>
+
+    <h3 class="govuk-heading-s" style="margin-bottom: 6px;">Applicant name</h3>
+    <p class="govuk-body">Bill Carr</p>
+
+    <h3 class="govuk-heading-s" style="margin-bottom: 6px;">Date result was viewed</h3>
+    <p class="govuk-body">12 December 2022</p>
+
+    <h3 class="govuk-heading-s" style="margin-bottom: 6px;">Applicant name</h3>
+    <p class="govuk-body">Bill Carr</p>
+
+    <h2 class="govuk-heading-m">DBS check details</h2>
+
+    <h3 class="govuk-heading-s" style="margin-bottom: 6px;">Certificate number</h3>
+    <p class="govuk-body">001034176560</p>
+
+    <h3 class="govuk-heading-s" style="margin-bottom: 6px;">Certificate date of issue</h3>
+    <p class="govuk-body">8 December 2022</p>
+
+    <h3 class="govuk-heading-s" style="margin-bottom: 6px;">Check level</h3>
+    <p class="govuk-body">Enhanced</p>
+
+    <h3 class="govuk-heading-s" style="margin-bottom: 6px;">Barred lists checked</h3>
+    <p class="govuk-body">Adults' and Children's</p>
+
+    <h3 class="govuk-heading-s" style="margin-bottom: 6px;">Workforce type</h3>
+    <p class="govuk-body">Adult and Children</p>
+
+    <h3 class="govuk-heading-s" style="margin-bottom: 6px;">Post applied for</h3>
+    <p class="govuk-body">Traffic Flow Administrator</p>
+
+    
+    <div class="govuk-button-group" style="margin-top: 64px;">
+      {{ govukButton({
+        text: "Download PDF receipt",
+        href: "/public/pdfs/176560-result-receipt.pdf",
+        attributes: { "download": "176560-result-receipt.pdf" }
+      }) }}
+
+      <a class="govuk-link" data-action="dbs-close" style="color: #1d70b8;">Cancel</a>
+
+      </div>
+
+    </div>
+
+{% endblock %}

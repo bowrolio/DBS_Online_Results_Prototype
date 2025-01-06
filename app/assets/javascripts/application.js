@@ -18,6 +18,7 @@ ready(() => {
   if (hashVal === 'share-result') {
     selectTab('share-result');
   }
+  closeTab();
 });
 
 function selectTab(id) {
@@ -51,4 +52,15 @@ function selectTab(id) {
 
 function copyLink(event) {
   navigator.clipboard.writeText(event.target.dataset.link);
+}
+
+function closeTab() {
+  const buttons = document.querySelectorAll(
+    `a[data-action="dbs-close"]`,
+  );
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      window.close();
+    });
+  });
 }

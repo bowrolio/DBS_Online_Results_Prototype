@@ -12,3 +12,9 @@
   margin-bottom: 0 !important;
   border-bottom: unset !important;
 }
+
+@media print{
+  .noprint{
+      display:none;
+  }
+}
