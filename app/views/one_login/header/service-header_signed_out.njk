@@ -1,23 +1,5 @@
 {% macro govukOneLoginHeader (data) %}
 
-  {% set navigationItems = navigationItems if navigationItems else [ {
-      id: 'show-results',
-      text: "View your result",
-      href: '#show-result'
-  },{
-      href: "#share-result",
-      text: 'Share your result',
-      id: 'share-results'
-  },{
-      href: "#manage-codes",
-      text: 'Manage share codes',
-      id: 'manage-codess'
-  }, {
-      href: "#contact-dbs",
-      text: 'Contact DBS',
-      id: 'contact-dbss'
-  }] %}
-
   <!-- Disables navigation -->
 
   {% set serviceName = serviceName if serviceName else "Name of service" %}
@@ -103,30 +85,6 @@
 
           {{ littlePersonIcon("focus") }}
         </button>
-        <nav
-          aria-label="GOV.UK One Login menu"
-          class="one-login-header__nav"
-          data-open-class="one-login-header__nav--open"
-          id="one-login-header__nav">
-          <ul class="one-login-header__nav__list">
-            <li class="one-login-header__nav__list-item">
-              <a class="one-login-header__nav__link one-login-header__nav__link--one-login" href="/one_login/your-services.html">
-                <span class="one-login-header__nav__link-content">
-                  GOV.UK One Login
-                </span>
-
-                {{ littlePersonIcon() }}
-
-                {{ littlePersonIcon("focus") }}
-              </a>
-            </li>
-            <li class="one-login-header__nav__list-item">
-              <a class="one-login-header__nav__link" href="/one_login/sign_out.html">
-                Sign out
-              </a>
-            </li>
-          </ul>
-        </nav>
       </div>
     </div>
     <!-- Start of service navigation -->

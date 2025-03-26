@@ -1,5 +1,5 @@
 
-{% extends "layouts/layout.html" %}
+{% extends "layouts/layout_new.html" %}
 
 {% block pageTitle %}
   View your online result – {{ serviceName }} – GOV.UK Prototype Kit
@@ -10,7 +10,7 @@
     tag: {
       text: "beta"
     },
-    html: 'This is a new service – your <a class="govuk-link" href="#">feedback</a> will help us to improve it.'
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" target="_blank" href="#">give your feedback (opens in a new tab).</a>'
   }) }} 
 
 {% endblock %}
@@ -56,4 +56,8 @@
     
   </div>
 
+{% endblock %}
+
+{% block footer %}
+{% include "footer.html" %}
 {% endblock %}

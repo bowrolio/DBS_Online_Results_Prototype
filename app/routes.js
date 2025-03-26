@@ -279,15 +279,6 @@ router.get('/results_certificate', (req, res, _next) => {
   });
 });
 
-//share OT code for viewing cert
-router.get('/share_OT_code_cert', (req, res, _next) => {
-  let OT_code_cert = req.session?.selectedCertificate?.oneTimeShareCode;
-  res.render('share_OT_code_cert', {
-    OT_code_cert: OT_code_cert,
-    validation: null,
-  });
-});
-
 //needs to be updated from /sign in to /share_OT_code_cert and functionality
 router.post('/sign_in', (req, res, _next) => {
   let postEmail = req.body['subEmail'];
