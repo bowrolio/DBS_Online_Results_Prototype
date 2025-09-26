@@ -1,0 +1,62 @@
+{% extends "layouts/layout_standard.njk" %}
+
+{% block pageTitle %}
+  View your online result – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" target="_blank" href="#">give your feedback (opens in a new tab).</a>'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">
+        View your DBS Online Result
+      </h1>
+
+      <p>You can use this service to:</p>
+
+      <ul class="govuk-list govuk-list--bullet">
+        <li>view your DBS Online Result</li>
+        <li>share your result with someone else, like an employer</li>
+        <li>find out how to contact us if you believe any information on your result is incorrect</li>
+      </ul>
+
+      <h2 class="govuk-heading-m">Viewing your result</h2>
+
+      <p>To view your result you will need to sign in to the GOV.UK One Login you created when you applied.</p>
+      <p>If you have more than one application you will also need your application number, which we have emailed to you.</p>
+
+      {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+      {{ govukInsetText({
+        text: "We will sign you out if you are inactive for 15 minutes. This is to help protect your information. Your information will not be saved and you will need to start again."
+      }) }}
+
+      {% from "govuk/components/button/macro.njk" import govukButton %}
+
+      {{ govukButton({
+          text: "Start",
+          isStartButton: true,
+          classes: 'govuk-!-margin-top-2 govuk-!-margin-bottom-8',
+          href: "/create_account"
+        }) }}
+
+    </div>
+
+  </div>
+
+{% endblock %}
+
+{% block footer %}
+  {% include "footer.njk" %}
+{% endblock %}

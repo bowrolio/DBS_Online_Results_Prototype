@@ -1,0 +1,50 @@
+{% extends "layouts/layout_onelogin.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+{% set pageId = "share-your-result" %}
+
+{% block pageTitle %}
+  Your online result – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" target="_blank" href="#">give your feedback (opens in a new tab).</a>'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+
+    <div class="govuk-width-container">
+
+      <div id="share-result">
+        <h2 class="govuk-heading-m">Tell us who you are sharing your DBS Online Result with</h2>
+        <div class="govuk-form-group">
+          <div class="govuk-grid-column-two-thirds" style="padding: 0;">
+            <label class="govuk-label" for="event-name" style="color: #505a5f;">
+              Organisation name
+            </label>
+
+            <input class="govuk-input" id="event-name" name="event-name" type="text"></div>
+          </div>
+
+          {{ govukButton({
+            text: "Get share code",
+            href: "/applicant-share-3",
+            classes: "govuk-!-margin-bottom-0"
+          }) }}
+
+        </div>
+      </div>
+    </div>
+
+  {% endblock %}
+
+  {% block footer %}
+    {% include "footer.njk" %}
+  {% endblock %}

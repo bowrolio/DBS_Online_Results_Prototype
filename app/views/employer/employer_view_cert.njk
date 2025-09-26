@@ -1,0 +1,44 @@
+{% extends "layouts/layout_employer.njk" %}
+
+{% block pageTitle %}
+  Home – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" target="_blank" href="#">give your feedback (opens in a new tab).</a>'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+
+    {% include "../result_partial.njk" %}
+
+    {% from "govuk/components/button/macro.njk" import govukButton %}
+
+    {{ govukButton({
+          text: "Finish and get receipt",
+          href: "/employer/employer_view_complete"
+        }) }}
+  </div>
+
+  {% from "govuk/components/details/macro.njk" import govukDetails %}
+
+  {{ govukDetails({
+  summaryText: "Disclaimer",
+  text: "This Disclosure and Barring Service (DBS) Online Result is a ((DBS Check level)) Criminal Record Certificate within the meaning of the following sections of the Police Act 1997 (the Act):
+
+  ((section))
+
+  ((section))
+
+  Use of DBS Online Result information
+The information contained in this DBS Online Result is confidential. All recipients must keep it secure and protect it from loss or unauthorised access."
+}) }}
+
+{% endblock %}

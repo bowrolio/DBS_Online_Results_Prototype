@@ -6,10 +6,14 @@
   },
   "name": "govuk-prototype-kit",
   "dependencies": {
-    "@govuk-prototype-kit/step-by-step": "2.2.1",
-    "govuk-frontend": "4.7.0",
-    "govuk-prototype-kit": "13.11.0",
-    "jquery": "3.7.0",
+    "@govuk-prototype-kit/common-templates": "2.0.1",
+    "@govuk-prototype-kit/step-by-step": "2.2.3",
+    "govuk-frontend": "5.12.0",
+    "govuk-prototype-kit": "13.18.1",
+    "jquery": "3.7.1",
     "notifications-node-client": "5.2.3"
+  },
+  "devDependencies": {
+    "prettier": "^3.6.2"
   }
 }

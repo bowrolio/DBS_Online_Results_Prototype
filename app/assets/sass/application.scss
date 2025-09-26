@@ -1,18 +1,6 @@
-@import 'node_modules/govuk-frontend/govuk/all';
-@import 'results_certificate_3.scss';
-@import 'header_one_login.scss';
+@import 'node_modules/govuk-frontend/dist/govuk/all';
 @import 'dbs_logo_banner.scss';
-
-.js-enabled {
-    .tabs-mobile {
-        display: none;
-      }
-}
-
-.govuk-tabs__list-item--selected {
-  margin-bottom: 0 !important;
-  border-bottom: unset !important;
-}
+@import "service-header.min";
 
 @media print{
   .noprint{

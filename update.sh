@@ -155,7 +155,7 @@ copy () {
 		fi
 
 		# copy unbranded layout - needed for the password page
-		cp -v "update/app/views/layout_unbranded.html" "app/views/"
+		cp -v "update/app/views/layout_unbranded.njk" "app/views/"
 
 		set +x
 

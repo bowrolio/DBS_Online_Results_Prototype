@@ -4,63 +4,16 @@
 //
 
 function ready(fn) {
-  if (document.readyState !== 'loading') {
+  if (document.readyState !== "loading") {
     // IE9 support
     fn();
   } else {
     // Everything else
-    document.addEventListener('DOMContentLoaded', fn);
+    document.addEventListener("DOMContentLoaded", fn);
   }
-}
-
-ready(() => {
-  const hashVal = window.location.href.split('#').pop();
-  if (hashVal === 'share-result') {
-    selectTab('share-result');
-  }
-  closeTab();
-});
-
-function selectTab(id) {
-  
-  if (document.getElementById('show-result')) {
-    document.getElementById('show-result').style.display = 'none';
-  }
-  
-  if (document.getElementById('share-result')) {
-    document.getElementById('share-result').style.display = 'none';
-  }
-  
-  if (document.getElementById('manage-codes')) {
-    document.getElementById('manage-codes').style.display = 'none';
-  }
-  
-  if (document.getElementById('dispute-result')) {
-    document.getElementById('dispute-result').style.display = 'none';
-  }
-  
-  if (document.getElementById('contact-dbs')) {
-    document.getElementById('contact-dbs').style.display = 'none';
-  }
-  
-  document.getElementById(id).style.display = 'block';
-  setTimeout(() => {
-    document.body.scrollTop = document.documentElement.scrollTop = 0;
-  }, 0);
-  
 }
 
 function copyLink(event) {
+  console.log("COPY LINK", event);
   navigator.clipboard.writeText(event.target.dataset.link);
-}
-
-function closeTab() {
-  const buttons = document.querySelectorAll(
-    `a[data-action="dbs-close"]`,
-  );
-  buttons.forEach((button) => {
-    button.addEventListener("click", () => {
-      window.close();
-    });
-  });
 }

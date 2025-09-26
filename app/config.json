@@ -1,1 +1,9 @@
-{"port":4000,"serviceName":"View your DBS result"}
+{
+    "port":4000,
+    "serviceName":"View your DBS result",
+    "plugins": {
+        "govuk-frontend": {
+            "rebrand": true
+        }
+    }
+}

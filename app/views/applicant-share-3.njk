@@ -1,0 +1,81 @@
+{% extends "layouts/layout_onelogin.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+
+{% set pageId = "share-your-result" %}
+
+{% set html %}
+<h3 class="govuk-heading-l govuk-notification-banner__heading " style="text-align: center; font-size: 2.25rem;">8wDsxn72</h3>
+<div style="width: 100%; max-width: 100%;">
+  <button
+    class="govuk-button govuk-button--secondary"
+    data-module="govuk-button"
+    style="display: block; margin: 0 auto;"
+    onclick="(navigator.clipboard.writeText('8wDsxn72'))">
+    Copy this share code
+  </button>
+</div>
+
+{% endset %}
+
+{% block pageTitle %}
+  Your online result – {{ serviceName }} – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" target="_blank" href="#">give your feedback (opens in a new tab).</a>'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+
+    <div class="govuk-width-container">
+
+      {{ govukNotificationBanner({
+  html: html,
+  titleText: 'Share Code'
+}) }}
+      <br>
+
+        <p>Your share code is:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>single use</li>
+          <li>case sensitive</li>
+          <li>only valid for 21 days</li>
+        </ul>
+
+        <h3 class="govuk-heading-m">What you need to do now</h3>
+        <p>You need to:</p>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>send the email we have just sent you, to the person you want to see your result</li>
+          <li>give the share code to the person you want to see your result</li>
+        </ul>
+
+        <p>You can
+          <a href="/RB_cert_email">request another email</a>
+          if you have not received the email or you cannot find it. For your security you must send the share code separately to
+          the email, for example by text message.</p>
+
+        {{ govukInsetText({
+                    text: "You can view all the share codes you generate on the ‘Manage Share Codes’ tab. You can also cancel any unused share codes."
+                  }) }}
+
+        {{ govukButton({
+                  text: "Get another share code",
+                  href: "/applicant-share-2"
+                  }) }}
+      </div>
+    </div>
+
+  {% endblock %}
+
+  {% block footer %}
+    {% include "footer.njk" %}
+  {% endblock %}

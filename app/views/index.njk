@@ -1,0 +1,90 @@
+{% block bodyStart %}
+  <h2 class="govuk-heading-s">From: Enhanced DBS Check (enhanced.dbs.check@notifications.service.gov.uk)</h2>
+
+  <h2 class="govuk-heading-s">Date: 17th August 2022 at 09:00:00 BST</h2>
+
+  <h2 class="govuk-heading-s">To: bill.carr@gmail.com
+  </h2>
+
+  <h2 class="govuk-heading-s">Subject: Your Enhanced DBS result is ready to view</h2>
+
+{% endblock %}
+
+{% extends "layouts/layout_email.njk" %}
+
+{% block pageTitle %}
+  Home – GOV.UK Prototype Kit
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-three-thirds">
+
+      <p>Dear Bill Carr,</p>
+
+      <p>
+        <b>Application reference number: E0123456789</b>
+      </p>
+
+      <p>
+        Your Enhanced Disclosure and Barring Service (DBS) check is complete and your result is ready to view. We issued your
+        result on 08/12/2022. Your certificate number is: 001122334455.
+      </p>
+
+      <p>You should save this email so that you can return to it in future.</p>
+
+      <h2 class="govuk-heading-m">Viewing or sharing your result</h2>
+      <p>You can use this service to:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>view your result</li>
+        <li>share your result with someone else, like an employer</li>
+        <li>cancel any unused share codes that have not expired</li>
+      </ul>
+
+      <p class="govuk-body">To use this service you will need to sign in to your GOV.​UK One Login. If you have more than one
+        application you will also need your application reference number.</p>
+
+      <p>You can
+        <a href="/start" id="start">go to the DBS Online Result service</a>
+        to view or share your result.</p>
+
+      <h2 class="govuk-heading-m">DBS Update Service</h2>
+      <p>You can
+        <a href="">register for the DBS Update Service</a>
+        using your application reference number.</p>
+      <p>The DBS Update Service allows you to keep your DBS check up to date. It costs £16 a year. There is no cost if you are
+        a volunteer.</p>
+
+      <h2 class="govuk-heading-m">Contact DBS</h2>
+      <p>If you have any questions you can contact DBS:</p>
+      <h3 class="govuk-heading-s">By phone</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>DBS Helpline: 03000 200 190 (select option 2 and then press 1)</li>
+        <li>Minicom: 03000 200 192</li>
+        <li>Welsh: 03000 200 191</li>
+        <li>International: +44151 676 9390</li>
+      </ul>
+      <p>Monday to Friday, 8am to 5pm (except public holidays)</p>
+      <p>Please
+        <a href="https://www.gov.uk/call-charges" target="_blank">read the call charges guidance (opens in a new tab)</a>
+        to find out how much this should cost.</p>
+
+      <h3 class="govuk-heading-s">By email</h3>
+      <p class="govuk-body">You should include any relevant DBS reference numbers and your:</p>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>full name</li>
+        <li>address, including postcode</li>
+        <li>telephone number</li>
+      </ul>
+
+      <h2 class="govuk-heading-m">Give feedback</h2>
+      <p>Please
+        <a href="https://give-feedback-dbs.service.gov.uk/#/en/dors-applicant" target="_blank" id="feedback">use our feedback
+          form</a>
+        to tell us what you think of our service.</p>
+    </div>
+
+  </div>
+
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends "govuk-prototype-kit/layouts/unbranded.njk" %}
+{% from "one_login/header/service-header.njk" import govukOneLoginServiceHeader %}
+{% block head %}
+  {% include "includes/head.njk" %}
+
+{% endblock %}
+
+<!-- Override default header with gov uk one login header -->
+{% block header %}
+  {% set navItems = [{
+      active: true if pageId == 'view-your-result',
+      href: "/applicant-result",
+      text: "View your result"
+    },{
+      active: true if pageId == 'share-your-result',
+      href: "/applicant-share-1",
+      text: "Share your result"
+    },{
+      active: true if pageId == 'manage-share-codes',
+      href: "/applicant-manage-share",
+      text: "Manage share codes"
+    },
+    {
+      active: true if pageId == 'contact-dbs',
+      href: "/applicant-contact",
+      text: "Contact DBS"
+    }] %}
+
+  {{ govukOneLoginServiceHeader({
+    rebrand: true,
+    serviceNavigationParams:
+    {
+      serviceName: "DBS online result service",
+      navigation: navItems
+    },
+    signOutLink: "#",
+    signOutText: "Sign out",
+    oneLoginLink: "#"
+  }) }}
+{% endblock %}
