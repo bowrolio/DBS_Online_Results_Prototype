@@ -1,27 +1,23 @@
-{% extends "layouts/layout_email.njk" %}
+{% extends "layouts/layout_employer.njk" %}
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
 {% block pageTitle %}
-  Home – GOV.UK Prototype Kit
+  Email with share details – {{ serviceName }} – GOV.UK Prototype Kit
 {% endblock %}
 {% block content %}
 
   <div class="govuk-grid-row">
 
     <div class="govuk-grid-column-two-thirds">
-
       <p>Dear Bill Carr,</p>
-      <p>Your enhanced DBS check is complete.</p>
+
+      <p>We have received your application and have started your enhanced DBS check.</p>
+      <p>Standard or enhanced DBS checks usually take around 14 calendar days. We will email you when your DBS check is
+        complete.</p>
 
       {{ govukInsetText({
-        html: "<p>Your application reference number is E0361254987</p>
-        Your certificate number is 001034176560"
+        text: "Your application reference number is E036125498"
       }) }}
-
-      <h2 class="govuk-heading-m">View and share your DBS online result</h2>
-      <p>You can now
-        <a href="/start">sign in to view and share your DBS online result.</a>
-      </p>
 
       <h2 class="govuk-heading-m">Registering for the DBS update service</h2>
       <p>The Update Service allows your to keep your DBS check up to date. It costs £16 a year. There is no cost if you are a
@@ -49,6 +45,7 @@
       <p>Please
         <a href="https://give-feedback-dbs.service.gov.uk/#/en/dors-applicant" target="_blank">use our feedback form</a>
         to tell us what you think of our service.</p>
+
     </div>
 
   </div>

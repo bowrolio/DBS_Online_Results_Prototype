@@ -1,16 +1,3 @@
-
-{% block bodyStart %}
-<h2 class="govuk-heading-s">From: View Your DBS Check (results.dbs.check@notifications.service.gov.uk)</h2> 
-
-<h2 class="govuk-heading-s">Date: 17th August 2022 at 09:00:00 BST</h2>
-
-<h2 class="govuk-heading-s">To: bill.carr@gmail.com </h2>
-
-<h2 class="govuk-heading-s">Subject: Share your DBS Online Result</h2>
-
-{% endblock %}
-
-
 {% extends "layouts/layout_employer.njk" %}
 
 {% block pageTitle %}
@@ -20,63 +7,50 @@
 
   <div class="govuk-grid-row">
 
-    <div class="govuk-grid-column-three-thirds">
+    <div class="govuk-grid-column-two-thirds">
       <p>Dear Bill Carr,</p>
 
-      <p class="govuk-heading-s">Application reference number: E0123456789</p>
+      <p>To share your DBS online result with East Suffolk Council you must:</p>
 
-      <p>You can share your DBS Online Result with someone else, like an employer. Your DBS online result contains sensitive personal information. You should be sure who is viewing your result before you share it.</p>
-
-      <h3 class="govuk-heading-m">Sharing your result</h3>
-      <p>To share your result with someone else they will need:</p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>a share code</li>
-        <li>the last six digits of your certificate number: 176560</li>
-        <li>The result link</li>
+      <ul class="govuk-list govuk-list--number">
+        <li>Forward them this email so they can follow the instructions below.</li>
+        <li>Give them the share code you created, make sure to send it separately - such as by phone or in a separate email.</li>
       </ul>
-      <p>You can forward this email to them but you must send the share code separately. For example, by phone. You can only use the share code once and it must be used within 21 days. You can get a new share code if your result needs to be viewed again.</p>
 
-      <h3 class="govuk-heading-m">Viewing your result</h3>
-      <p>To view your result, the person with the share code will need to:</p>
+      <h2 class="govuk-heading-m">View the online result for Bill Carr</h2>
+      <p>To view their online result you should:</p>
       <ul class="govuk-list govuk-list--bullet">
-        <li><a href="/employer/employer_view_check">go to the DBS online result service</a></li>
-        <li>enter the share code and the last six digits of your certificate number into the right sections</li>
+        <li>
+          <a href="/employer/employer_view_check">go to the DBS online result service</a>
+        </li>
+        <li>enter the last six digits of their certificate number: 123456</li>
+        <li>enter the share code they gave you</li>
       </ul>
-      <p>We will let you know when your result has been viewed.</p>
+      <p>The share code can only be used once and must be used within 21 days.</p>
+      <p>We will let the Bill Carr know when you have viewed their online result.</p>
 
-      <h3 class="govuk-heading-m">Cancel a share code</h3>
-      <p>You can cancel a share code if it has not expired or been used. To do this you must <a href="/start">sign in again</a> and select ‘Cancel’ for the code on the ‘Manage share codes’ tab.</p>
+      <h2 class="govuk-heading-m">Contact DBS</h2>
 
-        <h2 class="govuk-heading-m">Contact DBS</h2>
-        <p>If you have any questions you can contact DBS:</p>
-        
-        <h3 class="govuk-heading-s">By phone</h3>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>DBS Helpline: 03000 200 190 (select option 2 and then press 1)</li>
-          <li>Relay UK: (18001) 03000 200 912</li>
-          <li>Welsh: 03000 200 191</li>
-          <li>International: +44 151 676 9390</li>
-        </ul>
-        <p>Monday to Friday, 9am to 5pm (except public holidays)</p>
-        <p>Please <a href="https://www.gov.uk/call-charges">read the call charges guidance (opens in a new tab)</a> to find out how much this should cost.</p>
-  
-        <h3 class="govuk-heading-s">By email</h3>
-        <p><a href="mailto:customerservices@dbs.gov.uk">customerservices@dbs.gov.uk</a></p>
-        <p>You should include your:</p>
-        <ul class="govuk-list govuk-list--bullet">
-          <li>full name</li>
-          <li>address, including postcode</li>
-          <li>telephone number</li>
-          <li>any relevant DBS reference numbers</li>
-        </ul>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>DBS Helpline: 03000 200 190 (select option 2 and then press 1)</li>
+        <li>Welsh language: 03000 200 191</li>
+        <li>Relay UK: If you have difficulty with your speech or hearing, dial 18001 then 03000 200 192</li>
+        <li>SignLive: If you are a British Sign Language (BSL) user, you can
+          <a href="#">use SignLive to connect to DBS
+          </a>via an Interpreter.</li>
+      </ul>
+      <p>Monday to Friday, 9am to 5pm (except public holidays)</p>
+      <p>
+        <a href="#">Find out about call charges</a>
+      </p>
 
-        <h2 class="govuk-heading-m">Give feedback</h2>
-        <p>Please <a href="https://give-feedback-dbs.service.gov.uk/#/en/e-result" id="feedback">use our feedback form</a> to tell us what you think of our service.</p>
-        
-
+      <h2 class="govuk-heading-m">Give feedback</h2>
+      <p>Please
+        <a href="https://give-feedback-dbs.service.gov.uk/#/en/dors-applicant" target="_blank">use our feedback form</a>
+        to tell us what you think of our service.</p>
 
     </div>
-    
+
   </div>
 
 {% endblock %}

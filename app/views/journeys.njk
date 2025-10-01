@@ -26,10 +26,31 @@
               }
             ],
             rows: [
+                          [
+              {
+                classes: "govuk-!-width-one-quarter",
+                  text: "Applicant Submitted Confirmation Email"
+              },
+              {
+                classes: "govuk-!-width-one-quarter",
+                html:
+                  govukButton({
+                    text: "Start",
+                    href: "/applicant_submitted_email"
+                  }) + "" +
+                    "<button class='govuk-button govuk-button--secondary center' onclick='navigator.clipboard.writeText(\"https://dbs-or-alpha.herokuapp.com/applicant_submitted_email\")'>
+                        Copy Link
+                      </button>"
+                },
+                {
+                  classes: "govuk-!-width-one-half",
+                    text: "The first email an applicant receives from DORS, confirming their application has been submitted."
+                  }
+              ],
               [
               {
                 classes: "govuk-!-width-one-quarter",
-                  text: "Applicant Email"
+                  text: "Applicant Result Available Email"
               },
               {
                 classes: "govuk-!-width-one-quarter",
@@ -92,7 +113,7 @@
               [
               {
                 classes: "govuk-!-width-one-quarter",
-                  text: "Applicant Share Email"
+                  text: "Applicant Share Result Email"
               },
               {
                 classes: "govuk-!-width-one-quarter",
