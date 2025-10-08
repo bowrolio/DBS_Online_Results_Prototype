@@ -1,0 +1,73 @@
+{% extends "layouts/layout_onelogin.njk" %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+{% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
+{% from "govuk/components/details/macro.njk" import govukDetails %}
+
+{% set pageId = "view-your-result" %}
+
+<!-- Override default header with gov uk one login header -->
+{% block header %}
+  {% set navItems = [{
+      }] %}
+
+  {{ govukOneLoginServiceHeader({
+    rebrand: true,
+    serviceNavigationParams:
+    {
+      serviceName: "DBS online result service",
+      navigation: navItems
+    },
+    signOutLink: "/sign-out",
+    signOutText: "Sign out",
+    oneLoginLink: "#"
+  }) }}
+{% endblock %}
+
+{% block pageTitle %}
+  We have sent your DBS result in the post – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" target="_blank" href="#">give your feedback (opens in a new tab).</a>'
+  }) }}
+
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">We have sent your DBS result in the post</h1>
+      <p>It will be delivered by Royal Mail to the address you gave us in your application. It should arrive within 7 working
+        days. You can share this printed result with someone else, like your employer.</p>
+
+      <p>We cannot display the result of your DBS check online.</p>
+
+      <h3 class="govuk-heading-m">Contact DBS</h3>
+      <ul class="govuk-list govuk-list--bullet">
+        <li>DBS Helpline: 03000 200 190 (Select option 2 and then press 1)</li>
+        <li>Welsh language: 03000 200 191</li>
+        <li>Relay UK: If you have difficulty with your speech or hearing, dial 18001 tjem 03000 200 192</li>
+        <li>SignLive: If you are a British Sign Language (BSL) user, you can
+          <a href="#">use SignLive to connect to DBS (opens in a new tab)</a>
+          via an interpreter.</li>
+        <li>International: +44 (0)151 676 9390</li>
+      </ul>
+      <p>Monday to Friday, 9am to 5pm (excluding public holidays)</p>
+      <p>
+        <a href="https://www.gov.uk/call-charges" target="_blank">Find out about call charges (opens in a new tab)</a>
+      </p>
+
+      {{ govukButton({
+  text: "Finish",
+  href: "/start"
+}) }}
+    </div>
+
+  </div>
+</div>{% endblock %}{% block footer %}
+{% include "footer.njk" %}{% endblock %}

@@ -1,0 +1,91 @@
+{% extends "layouts/layout_progress_tracker.njk" %}
+{% from "govuk/components/task-list/macro.njk" import govukTaskList %}
+
+{% block pageTitle %}
+  Your DBS check is complete – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-full">
+      <h1 class="govuk-heading-xl">Your DBS check is complete</h1>
+      <p>You can share your result with someone else, like your employer.</p>
+      <p>
+        <a href="/start-nc">Sign in
+        </a>
+        to find out how to view and share your result.
+      </p>
+      <br/> <br/>
+
+      {{ govukTaskList({
+  idPrefix: "company-details",
+  items: [
+    {
+      title: {
+        text: "Stage 1",
+        classes: "govuk-heading-s"
+      },
+      hint: {
+        text: "Application received"
+      },
+      status: {
+        text: "Completed " + formattedDateSevenDaysAgo
+      }
+    },
+    {
+      title: {
+        text: "Stage 2",
+        classes: "govuk-heading-s"
+      },
+      hint: {
+        text: "Police National Computer searched"
+      },
+      status: {
+        text: "Completed " + formattedDateSixDaysAgo
+      }
+    },
+    {
+      title: {
+        text: "Stage 3",
+        classes: "govuk-heading-s"
+      },
+      hint: {
+        text: "Barred lists checked (if required)"
+      },
+      status: {
+        text: "Completed " + formattedDateSixDaysAgo
+      }
+    },
+    {
+      title: {
+        text: "Stage 4",
+        classes: "govuk-heading-s"
+      },
+      hint: {
+        text: "Records held by police searched"
+      },
+      status: {
+        text: "Completed " + formattedDateFiveDaysAgo
+      }
+    },
+    {
+      title: {
+        text: "Stage 5",
+        classes: "govuk-heading-s"
+      },
+      hint: {
+        text: "DBS check issued"
+      },
+      status: {
+        text: "Completed " + formattedDateTwoDaysAgo
+      }
+    }
+  ]
+}) }}
+
+    </div>
+  </div>
+
+{% endblock %}

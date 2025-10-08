@@ -2,7 +2,7 @@
 {% from "govuk/components/inset-text/macro.njk" import govukInsetText %}
 
 {% block pageTitle %}
-  Email with share details – {{ serviceName }} – GOV.UK Prototype Kit
+  Email cannot view online result – GOV.UK Prototype Kit
 {% endblock %}
 {% block content %}
 
@@ -11,20 +11,13 @@
     <div class="govuk-grid-column-two-thirds">
       <p>Dear Bill Carr,</p>
 
-      <p>We have received your application and have started your enhanced DBS check.</p>
-      <p>Standard or enhanced DBS checks usually take around 14 calendar days. We will email you when your DBS check is
-        complete.</p>
+      <p>Your Enhanced Disclosure and Barring Service (DBS) check is complete.</p>
+      <p>You cannot view an online result for this DBS check. We have sent your DBS certificate in the post. It should arrive
+        within 7 working days.</p>
 
       {{ govukInsetText({
-        text: "Your application reference number is E036125498"
+        html: "Your application reference number is E036125498 <br/>Your certificate number is 001034176560"
       }) }}
-
-      <h2 class="govuk-heading-m">Track your DBS check</h2>
-      <p>You can
-        <a href="./progress_tracker/stage2.njk">track the progress of your DBS check.
-        </a>
-      </p>
-      <p>Standard or enhanced DBS checks usually take around 14 calendar days.</p>
 
       <h2 class="govuk-heading-m">Registering for the DBS update service</h2>
       <p>The Update Service allows your to keep your DBS check up to date. It costs £16 a year. There is no cost if you are a

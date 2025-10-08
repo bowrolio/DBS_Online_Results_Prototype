@@ -1,0 +1,68 @@
+{% from "govuk/components/header/macro.njk" import govukHeader %}
+{% from "govuk/components/footer/macro.njk" import govukFooter %}
+{% from "govuk/components/service-navigation/macro.njk" import govukServiceNavigation %}
+{% extends "govuk-prototype-kit/layouts/unbranded.njk" %}
+
+{% block head %}
+  {% include "includes/head.njk" %}
+{% endblock %}
+
+<!-- Override default header -->
+{% block header %}
+  <!-- Blank header with no service name for the start page -->
+  {{ govukHeader() }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    tag: {
+      text: "beta"
+    },
+    html: 'This is a new service. Help us improve it and <a class="govuk-link" target="_blank" href="#">give your feedback (opens in a new tab).</a>'
+  }) }}
+
+{% endblock %}
+
+{% block footer %}
+  {{ govukFooter({
+  navigation: [
+    {
+      title: "Tracker",
+      width: "one-third",
+      columns: 1,
+      items: [
+        {
+          href: "./stage2",
+          text: "Stage 2"
+        },
+        {
+          href: "./stage5_option1",
+          text: "Stage 5 - option 1"
+        },
+        {
+          href: "./stage5_option2",
+          text: "Stage 5 - option 2"
+        }
+      ]
+    },
+    {
+      title: "Emails",
+      width: "one-third",
+      items: [
+        {
+          href: "/applicant_submitted_email",
+          text: "Application submitted"
+        },
+        {
+          href: "/applicant",
+          text: "Result ready"
+        },
+        {
+          href: "/email-applicant-result-not-clear",
+          text: "Result sent in post"
+        }
+      ]
+    }
+  ]
+}) }}
+{% endblock %}

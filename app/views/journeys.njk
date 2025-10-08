@@ -26,7 +26,7 @@
               }
             ],
             rows: [
-                          [
+                  [
               {
                 classes: "govuk-!-width-one-quarter",
                   text: "Applicant Submitted Confirmation Email"
@@ -45,6 +45,27 @@
                 {
                   classes: "govuk-!-width-one-half",
                     text: "The first email an applicant receives from DORS, confirming their application has been submitted."
+                  }
+              ],
+              [
+              {
+                classes: "govuk-!-width-one-quarter",
+                  text: "Application Status Tracker"
+              },
+              {
+                classes: "govuk-!-width-one-quarter",
+                html:
+                  govukButton({
+                    text: "Start",
+                    href: "/progress_tracker/stage2"
+                  }) + "" +
+                    "<button class='govuk-button govuk-button--secondary center' onclick='navigator.clipboard.writeText(\"https://dbs-or-alpha.herokuapp.com/progress_tracker/stage2\")'>
+                        Copy Link
+                      </button>"
+                },
+                {
+                  classes: "govuk-!-width-one-half",
+                    text: "Application progress tracker, showing various stages of an application status prior to the result being ready to view. Prototype navigation for this feature in the footer."
                   }
               ],
               [
@@ -108,6 +129,27 @@
                 {
                   classes: "govuk-!-width-one-half",
                     text: "The result page an applicant will see after signing in using Gov UK One Login (1 result)."
+                  }
+              ],
+              [
+              {
+                classes: "govuk-!-width-one-quarter",
+                  text: "Applicant Result (not clear)"
+              },
+              {
+                classes: "govuk-!-width-one-quarter",
+                html:
+                  govukButton({
+                    text: "Start",
+                    href: "/applicant-result-nc"
+                  }) + "" +
+                    "<button class='govuk-button govuk-button--secondary center' onclick='navigator.clipboard.writeText(\"https://dbs-or-alpha.herokuapp.com/applicant-result-nc\")'>
+                        Copy Link
+                      </button>"
+                },
+                {
+                  classes: "govuk-!-width-one-half",
+                    text: "The result page an applicant will see after signing in using Gov UK One Login (1 result) and the result is not clear."
                   }
               ],
               [

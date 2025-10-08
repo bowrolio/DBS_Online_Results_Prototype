@@ -1,0 +1,23 @@
+{% extends "layouts/layout_progress_tracker.njk" %}
+
+{% block pageTitle %}
+  Completed your DBS check – GOV.UK Prototype Kit
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">We completed your DBS check on {{ currentDate }}</h1>
+      <p>You can share your result with someone else, like your employer.</p>
+      <p>
+        <a href="/start-nc">Sign in
+        </a>
+        to find out how to view and share your result.
+      </p>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -3,203 +3,322 @@
 // https://prototype-kit.service.gov.uk/docs/create-routes
 //
 
-const govukPrototypeKit = require('govuk-prototype-kit')
-const router = govukPrototypeKit.requests.setupRouter()
+const govukPrototypeKit = require("govuk-prototype-kit");
+const { get } = require("jquery");
+const router = govukPrototypeKit.requests.setupRouter();
 
-router.get('/', (req, res) => {
-  res.render('/journeys');
+router.get("/progress_tracker/stage2", function (req, res) {
+  const today = new Date();
+  const options = {
+    weekday: "long",
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const formattedDate = today.toLocaleDateString("en-GB", options);
+
+  const oneWeekAgo = new Date(today);
+  oneWeekAgo.setDate(today.getDate() - 7);
+  const optionsOneWeekAgo = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const formattedDateOneWeekAgo = oneWeekAgo.toLocaleDateString(
+    "en-GB",
+    optionsOneWeekAgo,
+  );
+
+  res.render("progress_tracker/stage2", {
+    currentDate: formattedDate,
+    formattedDateOneWeekAgo,
+  });
 });
 
-router.get('/applicant', (req, res) => {
+router.get("/progress_tracker/stage5_option1", function (req, res) {
+  const today = new Date();
+
+  const sevenDaysAgo = new Date(today);
+  const sixDaysAgo = new Date(today);
+  const fiveDaysAgo = new Date(today);
+  const twoDaysAgo = new Date(today);
+  sevenDaysAgo.setDate(today.getDate() - 7);
+  sixDaysAgo.setDate(today.getDate() - 6);
+  fiveDaysAgo.setDate(today.getDate() - 5);
+  twoDaysAgo.setDate(today.getDate() - 2);
+
+  const formattedDateSevenDaysAgo = sevenDaysAgo.toLocaleDateString("en-GB", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const formattedDateSixDaysAgo = sixDaysAgo.toLocaleDateString("en-GB", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const formattedDateFiveDaysAgo = fiveDaysAgo.toLocaleDateString("en-GB", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+  const formattedDateTwoDaysAgo = twoDaysAgo.toLocaleDateString("en-GB", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  });
+
+  res.render("progress_tracker/stage5_option1", {
+    formattedDateSevenDaysAgo,
+    formattedDateSixDaysAgo,
+    formattedDateFiveDaysAgo,
+    formattedDateTwoDaysAgo,
+  });
+});
+
+router.get("/progress_tracker/stage5_option2", function (req, res) {
+  const today = new Date();
+  const options = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const formattedDate = today.toLocaleDateString("en-GB", options);
+
+  const oneWeekAgo = new Date(today);
+  oneWeekAgo.setDate(today.getDate() - 7);
+  const optionsOneWeekAgo = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+  };
+  const formattedDateOneWeekAgo = oneWeekAgo.toLocaleDateString(
+    "en-GB",
+    optionsOneWeekAgo,
+  );
+
+  res.render("progress_tracker/stage5_option2", {
+    currentDate: formattedDate,
+    formattedDateOneWeekAgo,
+  });
+});
+
+router.get("/", (req, res) => {
+  delete req.session.nc;
+  res.render("/journeys");
+});
+
+router.get("/sign-out", (req, res) => {
+  delete req.session.nc;
+  res.redirect("/start");
+});
+
+router.get("/applicant", (req, res) => {
+  delete req.session.nc;
   res.render("/index");
 });
 
-// One Login
-router.get('/create_account', (req, res) => {
-  res.render('one_login/create_account');
+// start applicant journey with intention of showing not clear result after sign in
+router.get("/start-nc", (req, res) => {
+  req.session.nc = true;
+  res.render("start");
 });
 
-router.get('/sign_in', (req, res, _next) => {
-  let backButton = '/create_account';
-  res.render('one_login/sign_in', {
+router.get("/applicant-result", (req, res) => {
+  if (req.session?.nc === true) {
+    res.render("applicant-result-not-clear");
+  } else {
+    res.render("applicant-result");
+  }
+});
+
+router.get("/applicant-result-nc", (req, res) => {
+  res.render("applicant-result-not-clear");
+});
+
+// One Login
+router.get("/create_account", (req, res) => {
+  res.render("one_login/create_account");
+});
+
+router.get("/sign_in", (req, res, _next) => {
+  let backButton = "/create_account";
+  res.render("one_login/sign_in", {
     backButton: backButton,
-    emailAddr: req.session?.selectedCertificate?.emailAddress || '',
+    emailAddr: req.session?.selectedCertificate?.emailAddress || "",
     validation: null,
   });
 });
 
 //sign in password
-router.get('/sign_in_verify', (req, res, _next) => {
-  let backButton = '/sign_in';
-  res.render('one_login/sign_in_verify', {
+router.get("/sign_in_verify", (req, res, _next) => {
+  let backButton = "/sign_in";
+  res.render("one_login/sign_in_verify", {
     backButton: backButton,
-    password: req.session?.selectedCertificate?.signInPassword || '',
+    password: req.session?.selectedCertificate?.signInPassword || "",
     validation: null,
   });
 });
 
-router.get('/sign_in_otp', (req, res, _next) => {
-  let backButton = '/sign_in_verify';
-  res.render('one_login/sign_in_otp', {
+router.get("/sign_in_otp", (req, res, _next) => {
+  let backButton = "/sign_in_verify";
+  res.render("one_login/sign_in_otp", {
     backButton: backButton,
-    password: req.session?.selectedCertificate?.signInPassword || '',
+    password: req.session?.selectedCertificate?.signInPassword || "",
     validation: null,
   });
 });
 
-router.get('/list-accounts', (req, res, _next) => {
+router.get("/list-accounts", (req, res, _next) => {
   if (!req.session?.mockDBaccounts) {
     generateAccounts(req, false);
   }
-  res.render('list-accounts', { accounts: req.session?.mockDBaccounts });
+  res.render("list-accounts", { accounts: req.session?.mockDBaccounts });
 });
 
 //enter cert num
-router.get('/enter-certificate', (req, res, _next) => {
-  res.render('/dashboard/enter-certificate');
+router.get("/enter-certificate", (req, res, _next) => {
+  res.render("/dashboard/enter-certificate");
 });
 
-router.post('/dashboard/enter-certificate', (req, res, _next) => {
-  const dbsCertificateNumber = req.body['dbs-certificate-nr'];
+router.post("/dashboard/enter-certificate", (req, res, _next) => {
+  const dbsCertificateNumber = req.body["dbs-certificate-nr"];
   savePageData(req, req.body);
   const inputCache = loadPageData(req);
   const dataValidation = {};
   let selectedCertificate = undefined;
 
   if (!dbsCertificateNumber) {
-    dataValidation['dbs-certificate-nr'] = 'Enter certificate number';
+    dataValidation["dbs-certificate-nr"] = "Enter certificate number";
   }
   if (
     dbsCertificateNumber.length !== 12 ||
-    dbsCertificateNumber.slice(0, 2) !== '00' ||
+    dbsCertificateNumber.slice(0, 2) !== "00" ||
     /^[0-9]+$/.test(dbsCertificateNumber) === false
   ) {
-    dataValidation['dbs-certificate-nr'] = 'Enter valid certificate number';
+    dataValidation["dbs-certificate-nr"] = "Enter valid certificate number";
   }
 
   if (dbsCertificateNumber) {
     if (req.session?.mockDBaccounts) {
       selectedCertificate = req.session?.mockDBaccounts.find(
-        (el) => dbsCertificateNumber === el.certificateNumber
+        (el) => dbsCertificateNumber === el.certificateNumber,
       );
       if (selectedCertificate) {
         req.session.selectedCertificate = selectedCertificate;
       } else {
-        dataValidation['dbs-certificate-nr'] = 'Enter valid certificate number';
+        dataValidation["dbs-certificate-nr"] = "Enter valid certificate number";
       }
     }
   }
 
   if (Object.keys(dataValidation).length) {
-    res.render('dashboard/enter-certificate', {
+    res.render("dashboard/enter-certificate", {
       cache: inputCache,
       validation: dataValidation,
     });
   } else {
-    res.redirect('/create_account');
+    res.redirect("/create_account");
   }
 });
 
 //request OTP
-router.get('/dashboard/request-otp', (req, res, _next) => {
-  let backButton = '/dashboard/enter-certificate';
-  res.render('dashboard/request-otp', {
+router.get("/dashboard/request-otp", (req, res, _next) => {
+  let backButton = "/dashboard/enter-certificate";
+  res.render("dashboard/request-otp", {
     backButton: backButton,
     cache: null,
-    mobileNumber: req.session?.selectedCertificate?.mobileNumber || '',
+    mobileNumber: req.session?.selectedCertificate?.mobileNumber || "",
     validation: null,
   });
 });
 
-router.post('/dashboard/request-otp', (req, res, _next) => {
-  res.redirect('/dashboard/enter-otp');
+router.post("/dashboard/request-otp", (req, res, _next) => {
+  res.redirect("/dashboard/enter-otp");
 });
 
 //enter OTP
-router.get('/dashboard/enter-otp', (req, res, _next) => {
-  let backButton = '/dashboard/request-otp';
+router.get("/dashboard/enter-otp", (req, res, _next) => {
+  let backButton = "/dashboard/request-otp";
   req.session.selectedCertificate.securityCode;
-  res.render('dashboard/enter-otp', {
+  res.render("dashboard/enter-otp", {
     backButton: backButton,
-    mobileNumber: req.session?.selectedCertificate?.mobileNumber || '',
+    mobileNumber: req.session?.selectedCertificate?.mobileNumber || "",
     validation: null,
   });
 });
 
-router.post('/dashboard/enter-otp', (req, res, _next) => {
-  let securityCode = req.body['securityCode'];
+router.post("/dashboard/enter-otp", (req, res, _next) => {
+  let securityCode = req.body["securityCode"];
   const dataValidation = {};
 
   if (!securityCode) {
-    dataValidation['securityCode'] = 'Enter security code';
+    dataValidation["securityCode"] = "Enter security code";
   }
 
   if (securityCode != req.session.selectedCertificate.securityCode) {
-    dataValidation['securityCode'] = 'Incorrect security code';
+    dataValidation["securityCode"] = "Incorrect security code";
   }
 
   if (Object.keys(dataValidation).length) {
-    res.render('dashboard/enter-otp', {
-      backButton: '/dashboard/request-otp',
+    res.render("dashboard/enter-otp", {
+      backButton: "/dashboard/request-otp",
       validation: dataValidation,
     });
   } else {
-    res.redirect('/create_account');
+    res.redirect("/create_account");
   }
 });
 
 //sign in email
 
-
-router.post('/sign_in', (req, res, _next) => {
-  let postEmail = req.body['subEmail'];
+router.post("/sign_in", (req, res, _next) => {
+  let postEmail = req.body["subEmail"];
   const dataValidation = {};
 
   if (!postEmail) {
-    dataValidation['subEmail'] = 'Enter email address';
+    dataValidation["subEmail"] = "Enter email address";
   }
 
   if (postEmail != req.session.selectedCertificate.emailAddress) {
-    dataValidation['subEmail'] = 'Invalid email address';
+    dataValidation["subEmail"] = "Invalid email address";
   }
 
   if (Object.keys(dataValidation).length) {
-    res.render('sign_in', {
-      backButton: '/start',
+    res.render("sign_in", {
+      backButton: "/start",
       validation: dataValidation,
     });
   } else {
-    res.redirect('/sign_in_verify');
+    res.redirect("/sign_in_verify");
   }
 });
 
-
-
-router.post('/sign_in_verify', (req, res, _next) => {
-  let signInPass = req.body['userPass'];
+router.post("/sign_in_verify", (req, res, _next) => {
+  let signInPass = req.body["userPass"];
   const dataValidation = {};
 
   if (!signInPass) {
-    dataValidation['userPass'] = 'Enter password';
+    dataValidation["userPass"] = "Enter password";
   }
 
   if (signInPass != req.session.selectedCertificate.signInPassword) {
-    dataValidation['userPass'] = 'Incorrect password';
+    dataValidation["userPass"] = "Incorrect password";
   }
 
   if (Object.keys(dataValidation).length) {
-    res.render('sign_in_verify', {
-      backButton: '/sign_in',
+    res.render("sign_in_verify", {
+      backButton: "/sign_in",
       validation: dataValidation,
     });
   } else {
-    res.redirect('/results_certificate');
+    res.redirect("/results_certificate");
   }
 });
 
 //applicant certificate
-router.get('/results_certificate', (req, res, _next) => {
-  let backButton = '/start';
+router.get("/results_certificate", (req, res, _next) => {
+  let backButton = "/start";
   let certificateIssueDate =
     req.session?.selectedCertificate?.certificateIssueDate;
   let certificateNumber = req.session?.selectedCertificate?.certificateNumber;
@@ -211,18 +330,18 @@ router.get('/results_certificate', (req, res, _next) => {
   let firstLineAddress = req.session?.selectedCertificate?.firstLineAddress;
   let policeRecordsOfConvictions =
     req.session?.selectedCertificate?.policeRecordsOfConvictions;
-  let bannerColour = '';
-  let dateOfConviction = '';
-  let offence = '';
-  let date_offence = '';
-  let court = '';
-  let disposal = '';
-  let police_force = '';
+  let bannerColour = "";
+  let dateOfConviction = "";
+  let offence = "";
+  let date_offence = "";
+  let court = "";
+  let disposal = "";
+  let police_force = "";
   let organisationName = req.session.selectedCertificate.organisationName;
   let shareCode = req.session.selectedCertificate.oneTimeShareCode;
 
-  if (policeRecordsOfConvictions != 'None recorded') {
-    bannerColour = 'blue';
+  if (policeRecordsOfConvictions != "None recorded") {
+    bannerColour = "blue";
     dateOfConviction += policeRecordsOfConvictions[0].date_conviction;
     offence += policeRecordsOfConvictions[1].offence;
     date_offence += policeRecordsOfConvictions[2].date_offence;
@@ -237,20 +356,20 @@ router.get('/results_certificate', (req, res, _next) => {
   let dbsAdultBarList = req.session?.selectedCertificate?.dbsAdultBarList;
   let otherInfoChiefPolice =
     req.session?.selectedCertificate?.otherInfoChiefPolice;
-  let result = 'revelant information';
+  let result = "revelant information";
   if (
     policeRecordsOfConvictions[0].date_conviction ==
-      'None recorded - Not applicable' &&
-    infoSection142Education == 'None recorded' &&
-    dbsChildrenBarList == 'None recorded' &&
-    dbsAdultBarList == 'None recorded' &&
-    otherInfoChiefPolice == 'None recorded'
+      "None recorded - Not applicable" &&
+    infoSection142Education == "None recorded" &&
+    dbsChildrenBarList == "None recorded" &&
+    dbsAdultBarList == "None recorded" &&
+    otherInfoChiefPolice == "None recorded"
   ) {
-    bannerColour = 'green';
-    result = 'no relevant information';
+    bannerColour = "green";
+    result = "no relevant information";
   }
 
-  res.render('results_certificate', {
+  res.render("results_certificate", {
     backButton: backButton,
     certificateIssueDate: certificateIssueDate,
     certificateNumber: certificateNumber,
@@ -280,105 +399,105 @@ router.get('/results_certificate', (req, res, _next) => {
 });
 
 //needs to be updated from /sign in to /share_OT_code_cert and functionality
-router.post('/sign_in', (req, res, _next) => {
-  let postEmail = req.body['subEmail'];
+router.post("/sign_in", (req, res, _next) => {
+  let postEmail = req.body["subEmail"];
   const dataValidation = {};
 
   if (!postEmail) {
-    dataValidation['subEmail'] = 'Enter email address';
+    dataValidation["subEmail"] = "Enter email address";
   }
 
   if (postEmail != req.session.selectedCertificate.emailAddress) {
-    dataValidation['subEmail'] = 'Invalid email address';
+    dataValidation["subEmail"] = "Invalid email address";
   }
 
   if (Object.keys(dataValidation).length) {
-    res.render('sign_in', {
-      backButton: '/start',
+    res.render("sign_in", {
+      backButton: "/start",
       validation: dataValidation,
     });
   } else {
-    res.redirect('/sign_in_verify');
+    res.redirect("/sign_in_verify");
   }
 });
 
 //employer enter cert num
-router.get('/employer_enter_cert', (req, res, _next) => {
-  res.render('employer_enter_cert');
+router.get("/employer_enter_cert", (req, res, _next) => {
+  res.render("employer_enter_cert");
 });
 
 // Clear all data in session if you open /prototype-admin/clear-data
-router.post('/prototype-admin/clear-data', function (req, res) {
+router.post("/prototype-admin/clear-data", function (req, res) {
   req.session.data = {};
   req.session.cache = {};
   generateAccounts(req, true);
-  res.redirect('/start');
+  res.redirect("/start");
 });
 
 const generateAccounts = (req, refresh) => {
   if (!req.session?.mockDBaccounts) {
     const accounts = [];
     accounts.push({
-      applicationNumber: 'E2233445566',
-      firstName: 'Tariq',
-      lastName: 'Aziz',
-      DOB: '14/05/1995',
-      certificateIssueDate: '25/07/2022',
-      certificateNumber: '001122334455',
-      emailAddress: 'tariq.doc@gmail.com',
-      signInPassword: 'superman3',
-      mobileNumber: '07456782308',
-      securityCode: '123456',
-      resultsDayPerformed: '25/07/2022',
-      typeOfCheck: 'Enhanced with Barred',
-      typeOfWorkforce: 'Adult and Children',
-      dateOfIssue: '25/07/2022',
-      firstLineAddress: '1 Arcadia Avenue',
+      applicationNumber: "E2233445566",
+      firstName: "Tariq",
+      lastName: "Aziz",
+      DOB: "14/05/1995",
+      certificateIssueDate: "25/07/2022",
+      certificateNumber: "001122334455",
+      emailAddress: "tariq.doc@gmail.com",
+      signInPassword: "superman3",
+      mobileNumber: "07456782308",
+      securityCode: "123456",
+      resultsDayPerformed: "25/07/2022",
+      typeOfCheck: "Enhanced with Barred",
+      typeOfWorkforce: "Adult and Children",
+      dateOfIssue: "25/07/2022",
+      firstLineAddress: "1 Arcadia Avenue",
       policeRecordsOfConvictions: [
-        { date_conviction: 'None recorded - Not applicable' },
-        { offence: 'None recorded - Not applicable' },
-        { date_offence: 'None recorded - Not applicable' },
-        { court: 'None recorded - Not applicable' },
-        { disposal: 'None recorded - Not applicable' },
-        { police_force: 'None recorded - Not applicable' },
+        { date_conviction: "None recorded - Not applicable" },
+        { offence: "None recorded - Not applicable" },
+        { date_offence: "None recorded - Not applicable" },
+        { court: "None recorded - Not applicable" },
+        { disposal: "None recorded - Not applicable" },
+        { police_force: "None recorded - Not applicable" },
       ],
-      infoSection142Education: 'None recorded',
-      dbsChildrenBarList: 'None recorded',
-      dbsAdultBarList: 'None recorded',
-      otherInfoChiefPolice: 'None recorded',
-      organisationName: 'North Tees Hospital',
-      oneTimeShareCode: '8wDsxn72',
+      infoSection142Education: "None recorded",
+      dbsChildrenBarList: "None recorded",
+      dbsAdultBarList: "None recorded",
+      otherInfoChiefPolice: "None recorded",
+      organisationName: "North Tees Hospital",
+      oneTimeShareCode: "8wDsxn72",
     });
     accounts.push({
-      applicationNumber: 'E1177889910',
-      firstName: 'Jack',
-      lastName: 'Morton',
-      DOB: '03/02/1978',
-      certificateIssueDate: '04/08/2022',
-      certificateNumber: '006677889910',
-      emailAddress: 'jack.beanstalk@hotmail.co.uk',
-      signInPassword: 'spiderman99!',
-      mobileNumber: '07621432112',
-      securityCode: '654321',
-      resultsDayPerformed: '04/08/2022',
-      typeOfCheck: 'Enhanced',
-      typeOfWorkforce: 'Adult and Children',
-      dateOfIssue: '04/08/2022',
-      firstLineAddress: '23a Flatts Lane',
+      applicationNumber: "E1177889910",
+      firstName: "Jack",
+      lastName: "Morton",
+      DOB: "03/02/1978",
+      certificateIssueDate: "04/08/2022",
+      certificateNumber: "006677889910",
+      emailAddress: "jack.beanstalk@hotmail.co.uk",
+      signInPassword: "spiderman99!",
+      mobileNumber: "07621432112",
+      securityCode: "654321",
+      resultsDayPerformed: "04/08/2022",
+      typeOfCheck: "Enhanced",
+      typeOfWorkforce: "Adult and Children",
+      dateOfIssue: "04/08/2022",
+      firstLineAddress: "23a Flatts Lane",
       policeRecordsOfConvictions: [
-        { date_conviction: '12/08/2017' },
-        { offence: 'Obtaining property by deception' },
-        { date_offence: '1/09/2006' },
-        { court: 'Coventry' },
-        { disposal: 'Probation order - 12 months' },
-        { police_force: 'Merseyside Police' },
+        { date_conviction: "12/08/2017" },
+        { offence: "Obtaining property by deception" },
+        { date_offence: "1/09/2006" },
+        { court: "Coventry" },
+        { disposal: "Probation order - 12 months" },
+        { police_force: "Merseyside Police" },
       ],
-      infoSection142Education: 'None recorded',
-      dbsChildrenBarList: 'None recorded',
-      dbsAdultBarList: 'None recorded',
-      otherInfoChiefPolice: 'None recorded',
-      organisationName: 'JW Building Services',
-      oneTimeShareCode: '2FvcPB24',
+      infoSection142Education: "None recorded",
+      dbsChildrenBarList: "None recorded",
+      dbsAdultBarList: "None recorded",
+      otherInfoChiefPolice: "None recorded",
+      organisationName: "JW Building Services",
+      oneTimeShareCode: "2FvcPB24",
     });
     req.session.mockDBaccounts = accounts;
   } else if (req.session.mockDBaccounts && refresh) {
