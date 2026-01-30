@@ -19,9 +19,15 @@
       }) }}
 
       <h2 class="govuk-heading-m">View and share your DBS online result</h2>
-      <p>You can now
-        <a href="/start">sign in to view and share your DBS online result.</a>
-      </p>
+      {% if title %}
+        <p>You can now
+          <a href="/start/title">sign in to view and share your DBS online result.</a>
+        </p>
+      {% else %}
+        <p>You can now
+          <a href="/start">sign in to view and share your DBS online result.</a>
+        </p>
+      {% endif %}
 
       <h2 class="govuk-heading-m">Registering for the DBS update service</h2>
       <p>The Update Service allows your to keep your DBS check up to date. It costs £16 a year. There is no cost if you are a

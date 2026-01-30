@@ -115,13 +115,31 @@ router.get("/sign-out", (req, res) => {
 
 router.get("/applicant", (req, res) => {
   delete req.session.nc;
+  delete req.session.title;
   res.render("/index");
+});
+
+router.get("/applicant/title", (req, res) => {
+  req.session.title = true;
+  res.render("/index", { title: req.session.title });
+});
+
+router.get("/start", (req, res) => {
+  delete req.session.nc;
+  delete req.session.title;
+  res.render("start", { title: req.session.title });
+});
+
+router.get("/start/title", (req, res) => {
+  delete req.session.nc;
+  req.session.title = true;
+  res.render("start", { title: req.session.title });
 });
 
 // start applicant journey with intention of showing not clear result after sign in
 router.get("/start-nc", (req, res) => {
   req.session.nc = true;
-  res.render("start");
+  res.render("start", { title: req.session.title });
 });
 
 router.get("/applicant-result", (req, res) => {

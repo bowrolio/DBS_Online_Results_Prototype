@@ -19,14 +19,20 @@
   <div class="govuk-grid-row">
 
     <div class="govuk-grid-column-two-thirds">
-      <h1 class="govuk-heading-xl">
-        View your DBS Online Result
-      </h1>
+      {% if title %}
+        <h1 class="govuk-heading-xl">
+          View your DBS Result
+        </h1>
+      {% else %}
+        <h1 class="govuk-heading-xl">
+          View or Share your DBS Result
+        </h1>
+      {% endif %}
 
       <p>You can use this service to:</p>
 
       <ul class="govuk-list govuk-list--bullet">
-        <li>view your DBS Online Result</li>
+        <li>view your DBS Result</li>
         <li>share your result with someone else, like an employer</li>
         <li>find out how to contact us if you believe any information on your result is incorrect</li>
       </ul>
